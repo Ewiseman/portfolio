@@ -210,15 +210,7 @@
 			return false;
 		});
 
-		const tilt = $('.js-tilt').tilt();
-
-		tilt.tilt({
-			maxTilt: 2
-		});
-
-		$('.js-tilt.large').tilt({
-			maxTilt: 1.4
-		});
+		
 
 		$(window).on('resize', function() {
 			setTimeout(function() {
