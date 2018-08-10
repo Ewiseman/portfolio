@@ -2,12 +2,13 @@
 <div class="wrapper">
 
   <!-- Page Header-->
-  <section class="module-header full-height parallax bg-dark bg-dark-30 text-left" id="home" data-background="assets/images/module-1.jpg">
+  <section class="module-header full-height parallax bg-dark bg-dark-30 text-left" id="home">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="h1 m-b-15">Daniel <br/> Raleway</h1>
-          <h1 class="h6 m-b-60">Visual designer & Front-end developer</h1>
+          <h1 class="h1 m-b-15">Eric <br/> Wiseman</h1>
+          <h1 class="h6 m-b-60">Entrepreneur / UX Designer / Rails Developer </h1>
+          <!-- <h1 class="h6 m-b-60 rotate">UX Design / Data Visualization / Rails Development | Entreprenuer | Backcountry Skier</h1> -->
           <p><a class="btn btn-brand" href="#"><span>Download resume</span></a></p>
         </div>
       </div>
@@ -21,28 +22,21 @@
       <div class="row">
         <div class="col-md-12">
           <div class="m-title c-align">
-            <h2>Daniel Raleway</h2>
-            <h6>Visual Designer & Front-end Developer</h6>
+            <h2>Eric Wiseman</h2>
+            <h6>You know...this stuff</h6>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-4">
-          <p><img src="assets/images/im.jpg" alt=""></p>
+          <p> <img class="img-responsive wow fadeIn feature-image" <%= image_tag('banner_images/orizaba.jpg') %></p>
         </div>
         <div class="col-md-4">
           <h5>Profesional Profile</h5>
-          <p>Map where your photos were taken and discover local points of interest. Map where your photos. Map where your photos were taken and discover local points of interest. Map where your photos.</p>
-          <p>Map where your photos were taken and discover local points of interest. Map where your photos. Map where your photos were taken and discover local points of interest. Map where your photos.</p>
+          <p>I design and engineer custom visualizations, data-rich web applications, and shared visualization components to help people see and reason about data. Strong history of delivering and supporting quality, scalable, and tested web development applications. Highly cross-functional, with expertise that spans entrepreneurship, data, engineering, and design.</p>
         </div>
         <div class="col-md-4">
           <h5>My Skills</h5>
-          <div class="progress-item">
-            <div class="progress-title">Gulp</div>
-            <div class="progress">
-              <div class="progress-bar progress-bar-brand" aria-valuenow="60" role="progressbar" aria-valuemin="0" aria-valuemax="100"><span class="pb-number-box"><span class="pb-number"></span>%</span></div>
-            </div>
-          </div>
           <div class="progress-item">
             <div class="progress-title">UX Design</div>
             <div class="progress">
@@ -52,13 +46,25 @@
           <div class="progress-item">
             <div class="progress-title">HTML / CSS3 / SASS</div>
             <div class="progress">
-              <div class="progress-bar progress-bar-brand" aria-valuenow="50" role="progressbar" aria-valuemin="0" aria-valuemax="100"><span class="pb-number-box"><span class="pb-number"></span>%</span></div>
+              <div class="progress-bar progress-bar-brand" aria-valuenow="95" role="progressbar" aria-valuemin="0" aria-valuemax="100"><span class="pb-number-box"><span class="pb-number"></span>%</span></div>
             </div>
           </div>
           <div class="progress-item">
-            <div class="progress-title">Gulp</div>
+            <div class="progress-title">Rails Development</div>
             <div class="progress">
-              <div class="progress-bar progress-bar-brand" aria-valuenow="60" role="progressbar" aria-valuemin="0" aria-valuemax="100"><span class="pb-number-box"><span class="pb-number"></span>%</span></div>
+              <div class="progress-bar progress-bar-brand" aria-valuenow="90" role="progressbar" aria-valuemin="0" aria-valuemax="100"><span class="pb-number-box"><span class="pb-number"></span>%</span></div>
+            </div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-title">JavaScript</div>
+            <div class="progress">
+              <div class="progress-bar progress-bar-brand" aria-valuenow="70" role="progressbar" aria-valuemin="0" aria-valuemax="100"><span class="pb-number-box"><span class="pb-number"></span>%</span></div>
+            </div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-title">Data Visualization</div>
+            <div class="progress">
+              <div class="progress-bar progress-bar-brand" aria-valuenow="85" role="progressbar" aria-valuemin="0" aria-valuemax="100"><span class="pb-number-box"><span class="pb-number"></span>%</span></div>
             </div>
           </div>
         </div>
@@ -119,7 +125,7 @@
         <div class="col-md-12">
           <div class="m-title c-align">
             <h2>My Portfolio</h2>
-            <h6>An eye for detail makes our works excellent</h6>
+            <h6>For work and for fun</h6>
           </div>
         </div>
       </div>
@@ -127,10 +133,8 @@
         <div class="col-md-12">
           <ul class="filters h6" id="filters">
             <li><a class="current" href="#" data-filter="*">All</a></li>
-            <li><a href="#" data-filter=".branding">Branding</a></li>
-            <li><a href="#" data-filter=".design">Design</a></li>
-            <li><a href="#" data-filter=".photo">Photo</a></li>
-            <li><a href="#" data-filter=".web">Web</a></li>
+            <li><a href="#" data-filter=".rails">Rails Development</a></li>
+            <li><a href="#" data-filter=".dv">Data Visualization</a></li>
           </ul>
         </div>
       </div>
@@ -138,19 +142,19 @@
     <div class="container-fluid">
       <div class="row row-portfolio" data-columns="4">
         <div class="grid-sizer"></div>
-        <div class="portfolio-item js-tilt branding photo large">
+        <div class="portfolio-item js-tilt dv photo large">
           <div class="portfolio-wrapper">
-            <div class="portfolio-img-wrap" data-background="assets/images/portfolio/g-5.jpg"></div>
+            <div class="img-responsive"><%= image_tag('projects/chord-big-two.png') %></div>
             <div class="portfolio-overlay"></div>
             <div class="portfolio-caption">
-              <h5 class="portfolio-title">Raleway</h5>
-              <h6 class="portfolio-subtitle">Branding</h6>
+              <h5 class="portfolio-title">Colorado Ski Resort Chord Diagram</h5>
+              <h6 class="portfolio-subtitle">Data Visualization</h6>
             </div>
           </div><a class="portfolio-link" href="portfolio-single-1.html"></a>
         </div>
-        <div class="portfolio-item js-tilt web design ">
+        <div class="portfolio-item js-tilt rails">
           <div class="portfolio-wrapper">
-            <div class="portfolio-img-wrap" data-background="assets/images/portfolio/g-1.jpg"></div>
+            <div class="portfolio-img-wrap"><%= image_tag('projects/analytics-ipad-three.png') %></div>
             <div class="portfolio-overlay"></div>
             <div class="portfolio-caption">
               <h5 class="portfolio-title">Hilltop</h5>
@@ -158,29 +162,9 @@
             </div>
           </div><a class="portfolio-link" href="portfolio-single-1.html"></a>
         </div>
-        <div class="portfolio-item js-tilt photo web ">
+        <div class="portfolio-item js-tilt dv">
           <div class="portfolio-wrapper">
-            <div class="portfolio-img-wrap" data-background="assets/images/portfolio/g-4.jpg"></div>
-            <div class="portfolio-overlay"></div>
-            <div class="portfolio-caption">
-              <h5 class="portfolio-title">Popcorn</h5>
-              <h6 class="portfolio-subtitle">Design</h6>
-            </div>
-          </div><a class="portfolio-link" href="portfolio-single-1.html"></a>
-        </div>
-        <div class="portfolio-item js-tilt design branding ">
-          <div class="portfolio-wrapper">
-            <div class="portfolio-img-wrap" data-background="assets/images/portfolio/g-3.jpg"></div>
-            <div class="portfolio-overlay"></div>
-            <div class="portfolio-caption">
-              <h5 class="portfolio-title">Color</h5>
-              <h6 class="portfolio-subtitle">Design</h6>
-            </div>
-          </div><a class="portfolio-link" href="portfolio-single-1.html"></a>
-        </div>
-        <div class="portfolio-item js-tilt design photo ">
-          <div class="portfolio-wrapper">
-            <div class="portfolio-img-wrap" data-background="assets/images/portfolio/g-2.jpg"></div>
+          <div class="portfolio-img-wrap"><%= image_tag('projects/radial-column-modal.png') %></div>
             <div class="portfolio-overlay"></div>
             <div class="portfolio-caption">
               <h5 class="portfolio-title">Bicycles</h5>
@@ -188,6 +172,77 @@
             </div>
           </div><a class="portfolio-link" href="portfolio-single-1.html"></a>
         </div>
+        <div class="portfolio-item js-tilt rails">
+          <div class="portfolio-wrapper">
+            <div class="portfolio-img-wrap"><%= image_tag('projects/web-app.png') %></div>
+            <div class="portfolio-overlay"></div>
+            <div class="portfolio-caption">
+              <h5 class="portfolio-title">Popcorn</h5>
+              <h6 class="portfolio-subtitle">Design</h6>
+            </div>
+          </div><a class="portfolio-link" href="portfolio-single-1.html"></a>
+        </div>
+        <div class="portfolio-item js-tilt rails branding ">
+          <div class="portfolio-wrapper">
+            <div class="portfolio-img-wrap"><%= image_tag('projects/wooden-desk-mac.png') %></div>
+            <div class="portfolio-overlay"></div>
+            <div class="portfolio-caption">
+              <h5 class="portfolio-title">Color</h5>
+              <h6 class="portfolio-subtitle">Design</h6>
+            </div>
+          </div><a class="portfolio-link" href="portfolio-single-1.html"></a>
+        </div>
+        <div class="portfolio-item js-tilt dv photo ">
+          <div class="portfolio-wrapper">
+          <div class="portfolio-img-wrap"><%= image_tag('projects/radial-column-modal.png') %></div>
+            <div class="portfolio-overlay"></div>
+            <div class="portfolio-caption">
+              <h5 class="portfolio-title">Bicycles</h5>
+              <h6 class="portfolio-subtitle">Design</h6>
+            </div>
+          </div><a class="portfolio-link" href="portfolio-single-1.html"></a>
+        </div>
+        <div class="portfolio-item js-tilt dv photo ">
+          <div class="portfolio-wrapper">
+          <div class="portfolio-img-wrap"><%= image_tag('projects/cy-plot.png') %></div>
+            <div class="portfolio-overlay"></div>
+            <div class="portfolio-caption">
+              <h5 class="portfolio-title">Bicycles</h5>
+              <h6 class="portfolio-subtitle">Design</h6>
+            </div>
+          </div><a class="portfolio-link" href="portfolio-single-1.html"></a>
+        </div>
+        <div class="portfolio-item js-tilt dv photo ">
+          <div class="portfolio-wrapper">
+          <div class="portfolio-img-wrap"><%= image_tag('projects/us-map-final.png') %></div>
+            <div class="portfolio-overlay"></div>
+            <div class="portfolio-caption">
+              <h5 class="portfolio-title">Bicycles</h5>
+              <h6 class="portfolio-subtitle">Design</h6>
+            </div>
+          </div><a class="portfolio-link" href="portfolio-single-1.html"></a>
+        </div>
+        <div class="portfolio-item js-tilt dv photo ">
+          <div class="portfolio-wrapper">
+          <div class="portfolio-img-wrap"><%= image_tag('projects/scrum-final.png') %></div>
+            <div class="portfolio-overlay"></div>
+            <div class="portfolio-caption">
+              <h5 class="portfolio-title">Bicycles</h5>
+              <h6 class="portfolio-subtitle">Design</h6>
+            </div>
+          </div><a class="portfolio-link" href="portfolio-single-1.html"></a>
+        </div>
+        <div class="portfolio-item js-tilt dv photo ">
+          <div class="portfolio-wrapper">
+          <div class="portfolio-img-wrap"><%= image_tag('projects/lollipop-chart.png') %></div>
+            <div class="portfolio-overlay"></div>
+            <div class="portfolio-caption">
+              <h5 class="portfolio-title">Bicycles</h5>
+              <h6 class="portfolio-subtitle">Design</h6>
+            </div>
+          </div><a class="portfolio-link" href="portfolio-single-1.html"></a>
+        </div>
+
       </div>
     </div>
   </section>
@@ -549,15 +604,3 @@
   <!-- Footer end-->
 </div>
 <!-- Wrapper end-->
-
-<!-- Scripts-->
-<script src="assets/js/jquery-2.2.4.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA0rANX07hh6ASNKdBr4mZH0KZSqbHYc3Q"></script>
-<script src="assets/js/plugins.min.js"></script>
-<script src="assets/js/custom.min.js"></script>
-<!-- Color Switcher (Remove these lines)-->
-<script src="assets/js/style-switcher.min.js"></script>
-</body>
-</html>

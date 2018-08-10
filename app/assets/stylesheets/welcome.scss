@@ -1124,6 +1124,11 @@ button {
     width: 100%;
 }
 
+#home {
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0)), asset-url('banner_images/orizaba.jpg')no-repeat center center;
+	background-size: cover;
+}
+
 .image-slider.owl-carousel .owl-prev,
 .image-slider.owl-carousel .owl-next {
     background: rgba(0, 0, 0, .2);
@@ -2394,7 +2399,7 @@ button {
 }
 
 .module-header {
-    text-align: center;
+    text-align: left;
     background-color: #f7f7f7;
     background-position: 50%;
     background-repeat: no-repeat;
@@ -2837,7 +2842,7 @@ button {
 .row-portfolio .portfolio-item {
     width: 33.333333%;
     padding: 20px;
-    float: left;
+    float: center;
 }
 
 .row-portfolio .grid-sizer.large,
@@ -2847,12 +2852,12 @@ button {
 
 .row-portfolio[data-columns="4"] .grid-sizer,
 .row-portfolio[data-columns="4"] .portfolio-item {
-    width: 25%;
+    width: 20%;
 }
 
 .row-portfolio[data-columns="4"] .grid-sizer.large,
 .row-portfolio[data-columns="4"] .portfolio-item.large {
-    width: 50%;
+    width: 40%;
 }
 
 /*------------------------------------------------------------------
@@ -2869,7 +2874,7 @@ button {
     background-size: cover;
     background-position: 50%;
     position: relative;
-    padding-top: 100%;
+    padding-top: 0%;
     padding-bottom: 1px;
 }
 
