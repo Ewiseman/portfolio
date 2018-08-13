@@ -8,7 +8,7 @@
         <div class="col-md-12">
           <h1 class="h1 m-b-15">Eric <br/> Wiseman</h1>
           <h1 class="h6 m-b-60">Entrepreneur / UX Designer / Rails Developer </h1>
-          <!-- <h1 class="h6 m-b-60 rotate">UX Design / Data Visualization / Rails Development | Entreprenuer | Backcountry Skier</h1> -->
+          <!-- <h1 class="h6 m-b-60 rotate"> Entreprenuer / UX Designer / Rails Developer | Climber / Skier / Mt Biker </h1> -->
           <p><a class="btn btn-brand" href="#"><span>Download resume</span></a></p>
         </div>
       </div>
@@ -23,7 +23,7 @@
         <div class="col-md-12">
           <div class="m-title c-align">
             <h2>Eric Wiseman</h2>
-            <h6>You know...this stuff</h6>
+            <h6>What I Do</h6>
           </div>
         </div>
       </div>
@@ -32,8 +32,9 @@
           <p> <img class="img-responsive wow fadeIn feature-image" <%= image_tag('banner_images/orizaba.jpg') %></p>
         </div>
         <div class="col-md-4">
-          <h5>Profesional Profile</h5>
-          <p>I design and engineer data-rich web applications and custom visualizations to help people see and reason about data. I have strong history of delivering and supporting quality, scalable, and tested web development applications. Highly cross-functional, with expertise that spans entrepreneurship, engineering, and design.</p>
+          <h5>Profile</h5>
+          <p>I design and engineer data-rich web applications and custom visualizations to help people see and reason about data.
+            I have a cross-functional skill set, with expertise that spans entrepreneurship, engineering, and design. I love to create, problem solve, and be with my family in the mountains.  </p>
         </div>
         <div class="col-md-4">
           <h5>My Skills</h5>
@@ -79,20 +80,20 @@
       <div class="row">
         <div class="col-md-3">
           <div class="counter">
+            <div class="counter-icon"><span class="icon-strategy"></span></div>
+            <h5 class="counter-number">
+              <div class="counter-timer" data-from="0" data-to="4">0</div>
+            </h5>
+            <h5 class="counter-title">Current Businesses</h5>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="counter">
             <div class="counter-icon"><span class="icon-telescope"></span></div>
             <h5 class="counter-number">
               <div class="counter-timer" data-from="0" data-to="3">0</div>
             </h5>
             <h5 class="counter-title">Full Stack Projects</h5>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="counter">
-            <div class="counter-icon"><span class="icon-strategy"></span></div>
-            <h5 class="counter-number">
-              <div class="counter-timer" data-from="0" data-to="2">0</div>
-            </h5>
-            <h5 class="counter-title">Current Businesses</h5>
           </div>
         </div>
         <div class="col-md-3">
@@ -187,11 +188,13 @@
 
       </div>
     </div>
+    <br>
+      <br>
   </section>
   <!-- Portfolio end-->
 
   <!-- Services-->
-  <section class="module" id="services">
+  <!-- <section class="module" id="services">
     <div class="container">
       <div class="row">
         <div class="col-md-4">
@@ -262,7 +265,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
   <!-- Services end-->
 
   <!-- Resume-->
@@ -272,7 +275,7 @@
         <div class="col-md-12">
           <div class="m-title c-align">
             <h2>Resume</h2>
-            <h6>My experience</h6>
+            <h6>Where I've Been</h6>
           </div>
         </div>
       </div>
@@ -282,7 +285,18 @@
             <li>
               <div class="timeline-badge"></div>
               <div class="timeline-panel">
-                <div class="timeline-preview"><img src="assets/images/features/1.jpg" alt=""></div>
+                <div class="timeline-preview"><%= image_tag('banner_images/powder.png') %></div>
+                <div class="timeline-body">
+                  <h5 class="timeline-title">Gear Lift</h5>
+                  <h6 class="timeline-description">Founder / CEO | Oct 2017 - Present</h6>
+                  <p>Founder, CEO, and pricincple developer at Gear Lift, an outdoor gear recomendation web application.  As the solopreneur I've owned all aspect of the business process - from design and development, to operations and financing. </p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="timeline-badge"></div>
+              <div class="timeline-panel">
+                <div class="timeline-preview"><%= image_tag('projects/radial_bubble_cy.png') %></div>
                 <div class="timeline-body">
                   <h5 class="timeline-title">Data Visualization Engineer</h5>
                   <h6 class="timeline-description">Freelance | Aug 2017 - Present</h6>
@@ -293,7 +307,7 @@
             <li>
               <div class="timeline-badge"></div>
               <div class="timeline-panel">
-                <div class="timeline-preview"><img src="assets/images/features/2.jpg" alt=""></div>
+                <div class="timeline-preview"><%= image_tag('projects/web-app.png') %></div>
                 <div class="timeline-body">
                   <h5 class="timeline-title">Full Stack Web Developer / CTO</h5>
                   <h6 class="timeline-description">First Class Financial Services | 2014 - 2017</h6>
@@ -315,7 +329,7 @@
             <li>
               <div class="timeline-badge"></div>
               <div class="timeline-panel">
-                <div class="timeline-preview"><img src="assets/images/features/4.jpg" alt=""></div>
+                <div class="timeline-preview"><%= image_tag('banner_images/Aconcagua.jpg') %></div>
                 <div class="timeline-body">
                   <h5 class="timeline-title">Owner / Mountain Guide</h5>
                   <h6 class="timeline-description">14er Fitness | 2009 - 2012</h6>
@@ -326,7 +340,7 @@
             <li>
               <div class="timeline-badge"></div>
               <div class="timeline-panel">
-                <div class="timeline-preview"><img src="assets/images/features/3.jpg" alt=""></div>
+                <div class="timeline-preview"><%= image_tag('banner_images/chicago.jpg') %></div>
                 <div class="timeline-body">
                   <h5 class="timeline-title">Mergers & Acquisitions Analyst</h5>
                   <h6 class="timeline-description">Panthera Global | 2008 - 2009</h6>
@@ -374,19 +388,6 @@
               </div>
               <div class="tms-content">
                 <blockquote>
-                  <p>If you want to know what a man's like, take a good look at how he treats his inferiors, not his equals.</p>
-                </blockquote>
-              </div>
-              <div class="tms-author">
-                <h6>J.K. Rowling</h6>
-              </div>
-            </div>
-            <div class="tms-item">
-              <div class="tms-icons">
-                <h2 class="icon-chat"></h2>
-              </div>
-              <div class="tms-content">
-                <blockquote>
                   <p>To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment.</p>
                 </blockquote>
               </div>
@@ -400,11 +401,11 @@
               </div>
               <div class="tms-content">
                 <blockquote>
-                  <p>Imperfection is beauty, madness is genius and it's better to be absolutely ridiculous than absolutely boring.</p>
+                  <p>Life should not be a journey to the grave with the intention of arriving safely in a pretty and well-preserved body, but rather to skid in broadside in a cloud of smoke, thoroughly used up, totally worn out, and loudly proclaiming “Wow! What a Ride!" </p>
                 </blockquote>
               </div>
               <div class="tms-author">
-                <h6>Marilyn Monroe</h6>
+                <h6>Hunter S. Thompson</h6>
               </div>
             </div>
           </div>
