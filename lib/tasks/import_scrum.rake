@@ -7,7 +7,7 @@ task :import_scrum => :environment do
   CSV.foreach(csv, headers: true) do |row|
     p " '#{row['category']}'"
 
-    Scrum.create!(category: row['category'], task: row['task'], value: row['value'], date: row['date'])
+    Scrum.create!(category: row['category'], task: row['task'], value: row['value'], date: row['date'], day: row['day'])
   end
 
 end
