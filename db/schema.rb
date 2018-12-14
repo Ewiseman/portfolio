@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2018_12_13_230621) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "scrums", force: :cascade do |t|
     t.string "category"
     t.string "task"
