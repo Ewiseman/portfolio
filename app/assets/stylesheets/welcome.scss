@@ -314,7 +314,7 @@ h5,
 h6,
 .h6 {
     letter-spacing: 2.2px;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 12px;
     margin: 0 0 10px;
 }
@@ -359,7 +359,7 @@ blockquote p:last-child {
 }
 
 .lead {
-    font-weight: 400;
+    font-weight: 600;
     font-size: 17px;
 }
 
@@ -499,7 +499,7 @@ select.form-control-sm:not([size]):not([multiple]) {
     font-family: "Montserrat", Arial, serif;
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-weight: 400;
+    font-weight: 600;
     font-size: .625rem;
     padding: 1.25rem 2.8125rem;
 }
@@ -1125,7 +1125,7 @@ button {
 }
 
 #home {
-	background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.0)), asset-url('banner_images/crash_2.jpg')no-repeat center center;
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), asset-url('banner_images/dv.png')no-repeat center center;
 	background-size: cover;
   height: 100vh;
 }
@@ -1791,7 +1791,7 @@ button {
 .st-sw-layout {
     display: block;
     padding: 2px 0;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .color-picker {
@@ -1858,7 +1858,7 @@ button {
     font-size: 12px;
     letter-spacing: 2.2px;
     text-transform: uppercase;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .header.header-small {
@@ -2529,6 +2529,7 @@ button {
     letter-spacing: 2.8px;
     font-size: 12px;
     margin-right: -2.8px;
+    font-weight: 600;
 }
 
 .module-header p,
