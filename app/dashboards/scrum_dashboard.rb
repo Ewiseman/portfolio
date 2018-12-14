@@ -16,7 +16,7 @@ class ScrumDashboard < Administrate::BaseDashboard
     value: Field::Select.with_options(
       collection: ["", 1, 3, 5, 8, 10]
     ),
-    date: Field::DateTime,
+    date: Field::DateTime.with_options(format: "%b %d, %Y"),
     day:  Field::Select.with_options(
       collection: ["", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
     ),
