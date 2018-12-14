@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'pg'
+gem "administrate"
 
 group :production do
 
