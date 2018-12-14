@@ -1,0 +1,4 @@
+# To deploy to production, run: bin/deploy
+git push "heroku" master
+heroku run rake db:migrate --remote "heroku"
+heroku restart --remote "heroku"
