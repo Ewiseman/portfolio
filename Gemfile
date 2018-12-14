@@ -12,9 +12,10 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
+gem 'pg'
 
 group :production do
-  gem 'pg'
+
   gem 'rails_12factor'
 end
 
