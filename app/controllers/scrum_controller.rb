@@ -1,0 +1,3 @@
+class ScrumController < ApplicationController
+
+end

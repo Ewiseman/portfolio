@@ -15,6 +15,7 @@ gem 'font-awesome-sass'
 gem 'pg'
 gem "administrate"
 gem 'groupdate'
+gem 'd3-rails', '~> 3.5.16'
 
 group :production do
 

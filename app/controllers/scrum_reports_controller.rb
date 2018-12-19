@@ -1,7 +1,7 @@
 class ScrumReportsController < ApplicationController
 require 'csv'
   def show
-    time_ago = 11.months.ago
+    time_ago = 6.months.ago
     health = Scrum.where(scrums: { category: "health" }).group_by_week(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
     vacation = Scrum.where(scrums: { category: "vacation" }).group_by_week(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
     personal = Scrum.where(scrums: { category: "personal" }).group_by_week(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
@@ -15,32 +15,41 @@ require 'csv'
     csv = "key,value,date\n"
 
     health.each do |row|
-      csv << "health,#{row[1]},#{row[0]},\n"
+      csv << "health,#{row[1]},#{row[0]}\n"
     end
+
     vacation.each do |row|
-      csv << "vacation,#{row[1]},#{row[0]},\n"
+      csv << "vacation,#{row[1]},#{row[0]}\n"
     end
+
     personal.each do |row|
-      csv << "personal,#{row[1]},#{row[0]},\n"
+      csv << "personal,#{row[1]},#{row[0]}\n"
     end
+
     gear_lift.each do |row|
-      csv << "gear_lift,#{row[1]},#{row[0]},\n"
+      csv << "gear_lift,#{row[1]},#{row[0]}\n"
     end
+
     snowmass.each do |row|
-      csv << "snowmass,#{row[1]},#{row[0]},\n"
+      csv << "snowmass,#{row[1]},#{row[0]}\n"
     end
+
     fcfs.each do |row|
-      csv << "fcfs,#{row[1]},#{row[0]},\n"
+      csv << "fcfs,#{row[1]},#{row[0]}\n"
     end
+
     one_dataset.each do |row|
-      csv << "one_dataset,#{row[1]},#{row[0]},\n"
+      csv << "one_dataset,#{row[1]},#{row[0]}\n"
     end
+
     board.each do |row|
-      csv << "board,#{row[1]},#{row[0]},\n"
+      csv << "board,#{row[1]},#{row[0]}\n"
     end
+
     career_development.each do |row|
-      csv << "career_development,#{row[1]},#{row[0]},\n"
+      csv << "career_development,#{row[1]},#{row[0]}\n"
     end
+
 
 
 
