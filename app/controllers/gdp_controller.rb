@@ -1,0 +1,3 @@
+class GdpController < ApplicationController
+
+end

@@ -14,7 +14,7 @@ $(document).ready(function() {
 
   var margin = {top: 10, right: 40, bottom: 30, left: 80},
       screen_width = $("#gdp-area-tool").width()-60,
-      height = 900 - margin.top - margin.bottom;
+      height = 500 - margin.top - margin.bottom;
 
   var x = d3.scale.linear()
       .range([0, screen_width]);

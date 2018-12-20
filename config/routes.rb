@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resource :scrum_reports, only: :show, :defaults => { :format => 'csv' }
   root to: 'welcome#home'
   get '/scrum/area_chart' => 'scrum#area_chart'
+  get '/gdp/area_tool' => 'gdp#area_tool'
 
 
 end
