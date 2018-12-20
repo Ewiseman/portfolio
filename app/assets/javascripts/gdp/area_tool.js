@@ -30,13 +30,12 @@ $(document).ready(function() {
   var xAxis = d3.svg.axis()
       .scale(x)
       .orient("bottom")
-      .tickSize(height)
-      .tickSize(.3)
+      .tickSize(1)
       .tickFormat(function(d) { return (d); })
 
   var yAxis = d3.svg.axis()
       .scale(y)
-      .tickSize(.3)
+      .tickSize(1)
       .tickFormat(function(d) { return "%" + commasFormatter(d); })
       .orient("left");
 
@@ -115,7 +114,7 @@ $(document).ready(function() {
   ///////////////////////// Draw Initial Chart ///////////////////////////////
   ////////////////////////////////////////////////////////////////////////////
 
- var svg = d3.select("#gdp-area-tool").append("svg")
+  var svg = d3.select("#gdp-area-tool").append("svg")
       .attr("width", screen_width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
@@ -143,7 +142,7 @@ $(document).ready(function() {
   var layers = stack(nest.entries(data));
 
   x.domain(d3.extent(data, function(d) { return d.date; }));
-  y.domain([-24, 24]);
+  y.domain([-30, 30]);
 
   // x-axis
   svg.append("g")
@@ -199,7 +198,7 @@ $(document).ready(function() {
       }
     })
     .style("fill", function(d, i) { return z(i); })
-    .style("opacity", 1)
+    .style("opacity", .8)
     .on("mouseover", function(d) {
       line = d3.select(this)
       tooltip.transition()
@@ -219,7 +218,7 @@ $(document).ready(function() {
         .style("opacity", 0)
       line.transition()
         .duration(200)
-        .style("opacity", 1)
+        .style("opacity", .6)
         .style("stroke-width", 1)
     });
 
