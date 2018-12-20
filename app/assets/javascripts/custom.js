@@ -210,7 +210,7 @@
 			return false;
 		});
 
-		
+
 
 		$(window).on('resize', function() {
 			setTimeout(function() {

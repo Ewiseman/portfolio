@@ -16,6 +16,7 @@ gem 'pg'
 gem "administrate"
 gem 'groupdate'
 gem 'd3-rails', '~> 3.5.16'
+gem 'ionicons-rails'
 
 group :production do
 
