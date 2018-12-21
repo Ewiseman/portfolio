@@ -103,9 +103,15 @@ GEM
     debug_inspector (0.0.3)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.5.0)
+    dotenv-rails (2.5.0)
+      dotenv (= 2.5.0)
+      railties (>= 3.2, < 6.0)
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.25)
+    figaro (1.1.1)
+      thor (~> 0.14)
     font-awesome-sass (5.2.0)
       sassc (>= 1.11)
     globalid (0.4.1)
@@ -284,6 +290,8 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   d3-rails (~> 3.5.16)
+  dotenv-rails
+  figaro
   font-awesome-sass
   groupdate
   ionicons-rails

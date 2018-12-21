@@ -20,10 +20,20 @@
 # Ignore uploaded files in development
 /storage/*
 
+# Ignore application configuration
+/config/application.yml
+.env
+
+
 /node_modules
 /yarn-error.log
 
+# Ignore asset files
 /public/assets
+.DS_Store
+log/*.log
+tmp/**/*
+config/database.yml
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.

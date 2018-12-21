@@ -14,6 +14,8 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'pg'
 gem "administrate"
+gem 'dotenv-rails'
+gem "figaro"
 gem 'groupdate'
 gem 'd3-rails', '~> 3.5.16'
 gem 'ionicons-rails'
