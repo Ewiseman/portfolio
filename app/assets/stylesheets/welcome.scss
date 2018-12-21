@@ -3339,7 +3339,10 @@ a[rel~="gallery"]:hover {
 .post-content ul,
 .post-content ol {
     margin: 0 0 30px;
-}
+//     white-space: nowrap;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+ }
 
 .post-content blockquote {
     border-left: 2px solid #eaeaea;
