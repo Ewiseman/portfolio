@@ -1,3 +1,4 @@
+
 {
     "master_picture": "app/assets/images/banner_images/favicon.png",
     "favicon_design": {
@@ -40,6 +41,10 @@
                 "legacy_icon": false,
                 "low_resolution_icons": false
             }
+        },
+        "safari_pinned_tab": {
+            "picture_aspect": "silhouette",
+            "theme_color": "#5bbad5"
         }
     },
     "settings": {
