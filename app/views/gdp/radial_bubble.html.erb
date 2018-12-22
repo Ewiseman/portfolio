@@ -1,0 +1,70 @@
+<button type="button" class="hamburger is-closed" onclick="openNav()">
+   <span class="hamb-top"></span>
+   <span class="hamb-middle"></span>
+   <span class="hamb-bottom"></span>
+ </button>
+
+<div id="mySidenav" class="sidenav">
+  <center class="text-white">
+    Bubble Spacing
+    <input id="spacer-value" type="range" min="0" max="20" value="6" class="disabled">
+    <br>
+    <br>
+    Bubble Radius
+    <input id="bubble-radius" type="range" min="0" max="10" value="1" step=".25" class="disabled">
+    <br>
+    <br>
+    Center Padding
+    <input id="center-slider" type="range" min="0" max="20" value="7" class="disabled">
+    <br>
+    <br>
+    <br>
+    Bubble Colors
+    <br>
+    R<input id="color-slider-one" type="range" min="1" max="255" value="19" class="slider-js disabled">
+    <br>
+    G<input id="color-slider-two" type="range" min="1" max="255" value="50" class="slider-js disabled">
+    <br>
+    B<input id="color-slider-three" type="range" min="1" max="255" value="100" class="slider-js disabled">
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <input type="checkbox" id="radialText" checked> Text
+    <br>
+    <br>
+    <input type="checkbox" id="negativeValues" checked> Negative %
+    <br>
+    <br>
+    <input type="checkbox" id="positiveValues" checked> Positive %
+    <br>
+    <br>
+    <input type="checkbox" id="radialPlot" checked> CY Plot
+    <br>
+    <br>
+    <input type="checkbox" id="darkBackground"> Dark Background
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </center>
+</div>
+<div class="container">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="row">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="section-box-big gdp center-block">
+        <h3 class="label-indent basic-line-title">Global GDP % Change (1960-2016)</h3>
+        <div id="gdp-radial-bubble-updated"></div>
+      </div>
+    </div>
+  </div>
+</div>
