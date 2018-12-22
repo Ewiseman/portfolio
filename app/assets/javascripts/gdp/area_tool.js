@@ -198,7 +198,7 @@ $(document).ready(function() {
       }
     })
     .style("fill", function(d, i) { return z(i); })
-    .style("opacity", .8)
+    .style("opacity", .6)
     .on("mouseover", function(d) {
       line = d3.select(this)
       tooltip.transition()
