@@ -63,6 +63,10 @@ $(document).ready(function() {
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+      var tooltip = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
+
 
  //////////// *** DATA INTEGRATION *** ////////////
 
@@ -101,6 +105,10 @@ $(document).ready(function() {
       .on("mouseover", function(d, i) {
         svg.selectAll(".layer")
         .style("cursor", "pointer")
+          tooltip.html("<b>"+d.key+"</b>" + "<br/>")
+          .style("opacity", 1)
+          .style("left", (d3.event.pageX) + "px")
+          .style("top", (d3.event.pageY-28) + "px");
       })
 
       .on("click", function(d, i) {
