@@ -1,16 +1,16 @@
 class ScrumReportsController < ApplicationController
 require 'csv'
   def show
-    time_ago = 6.months.ago
-    health = Scrum.where(scrums: { category: "health" }).group_by_week(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
-    vacation = Scrum.where(scrums: { category: "vacation" }).group_by_week(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
-    personal = Scrum.where(scrums: { category: "personal" }).group_by_week(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
-    gear_lift = Scrum.where(scrums: { category: "gear lift" }).group_by_week(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
-    snowmass = Scrum.where(scrums: { category: "snowmass" }).group_by_week(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
-    fcfs = Scrum.where(scrums: { category: "fcfs" }).group_by_week(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
-    one_dataset = Scrum.where(scrums: { category: "one dataset" }).group_by_week(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
-    board = Scrum.where(scrums: { category: "board" }).group_by_week(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
-    career_development = Scrum.where(scrums: { category: "career development" }).group_by_week(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
+    time_ago = 3.years.ago
+    health = Scrum.where(scrums: { category: "health" }).group_by_month(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
+    vacation = Scrum.where(scrums: { category: "vacation" }).group_by_month(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
+    personal = Scrum.where(scrums: { category: "personal" }).group_by_month(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
+    gear_lift = Scrum.where(scrums: { category: "gear lift" }).group_by_month(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
+    snowmass = Scrum.where(scrums: { category: "snowmass" }).group_by_month(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
+    fcfs = Scrum.where(scrums: { category: "fcfs" }).group_by_month(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
+    one_dataset = Scrum.where(scrums: { category: "one dataset" }).group_by_month(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
+    board = Scrum.where(scrums: { category: "board" }).group_by_month(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
+    career_development = Scrum.where(scrums: { category: "career development" }).group_by_month(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
 
     csv = "key,value,date\n"
 

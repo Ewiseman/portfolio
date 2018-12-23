@@ -15,14 +15,14 @@ $(document).ready(function() {
       .range([height, 0]);
 
   var z = d3.scale.ordinal()
-      .range(["#8FBC8F", "#ff8c00", "#98abc5", "#7b6888", "#CD5C5C"]);
+      .range(["#8FBC8F", "#ff8c00", "#98abc5", "#7b6888", "#CD5C5C", "#87e5da", "#c7f2e3", "#f7aa00", "#db2d43"]);
 
   var xAxis = d3.svg.axis()
       .scale(x)
       .orient("bottom")
-      .ticks(d3.time.months)
+      .ticks(d3.time.years)
       .tickSize(0)
-      .tickFormat(d3.time.format("%b"));
+      .tickFormat(d3.time.format("%Y"));
 
   var yAxis = d3.svg.axis()
       .scale(y)
