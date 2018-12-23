@@ -1,0 +1,7 @@
+echo "--> Start backup + download of production database"
+
+curl -o eric_portfolio_production.dump `heroku pg:backups public-url --remote "heroku"`
+
+echo "---> Restoring dump to dev db"
+
+pg_restore --verbose --clean --no-acl --no-owner -h localhost -U ewiseman -d portfolio eric_portfolio_production.dump

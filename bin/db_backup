@@ -1,0 +1,7 @@
+echo "--> Start backup of production database"
+
+heroku pg:backups capture --app eric-portfolio
+
+echo "--> Finished backup of production database"
+
+heroku pg:backups --app eric-portfolio
