@@ -126,39 +126,39 @@ $(document).ready(function() {
 
     //////////// *** LEGEND *** ////////////
 
-    z.domain(layers.slice(1));
-    // Legend Positioning //
-    var legendRectSize = 18;
-    var legendSpacing = 4;
-    var legend = svg.selectAll(".legend")
-      .data(layers.slice(-2).reverse())
-      .enter().append("g")
-      .attr('class', 'legend')
-      .attr('transform', function(d, i) {
-        var height = legendRectSize + legendSpacing;
-        var width = legendRectSize + legendSpacing;
-        var widths = $("#area").width()-150;
-        var offset = layers.length / 2;
-        var horz = 2 * legendRectSize;
-        var vert = (i * height)+2 ;
-        var lat = i * width ;
-        return 'translate(' + widths + ',' + vert + ')';
-      });
-
-    // Legend Rectangles //
-    legend.append('rect')
-      .attr('width', legendRectSize)
-      .attr('height', legendRectSize)
-      .style('fill', function(d, i) { return z(i); })
-      .style('stroke', "#2B2D42")
-      .style('stroke-width', .5);
-
-    // Legend Text //
-    legend.append('text')
-      .attr('x', legendRectSize + legendSpacing)
-      .attr('y', legendRectSize - legendSpacing)
-      .text(function(d) { return d.key.toLowerCase().replace(/\b[a-z]/g, function(letter) { return letter.toUpperCase(); });
-      });
+    // z.domain(layers.slice(1));
+    // // Legend Positioning //
+    // var legendRectSize = 18;
+    // var legendSpacing = 4;
+    // var legend = svg.selectAll(".legend")
+    //   .data(layers.slice(-2).reverse())
+    //   .enter().append("g")
+    //   .attr('class', 'legend')
+    //   .attr('transform', function(d, i) {
+    //     var height = legendRectSize + legendSpacing;
+    //     var width = legendRectSize + legendSpacing;
+    //     var widths = $("#area").width()-150;
+    //     var offset = layers.length / 2;
+    //     var horz = 2 * legendRectSize;
+    //     var vert = (i * height)+2 ;
+    //     var lat = i * width ;
+    //     return 'translate(' + widths + ',' + vert + ')';
+    //   });
+    //
+    // // Legend Rectangles //
+    // legend.append('rect')
+    //   .attr('width', legendRectSize)
+    //   .attr('height', legendRectSize)
+    //   .style('fill', function(d, i) { return z(i); })
+    //   .style('stroke', "#2B2D42")
+    //   .style('stroke-width', .5);
+    //
+    // // Legend Text //
+    // legend.append('text')
+    //   .attr('x', legendRectSize + legendSpacing)
+    //   .attr('y', legendRectSize - legendSpacing)
+    //   .text(function(d) { return d.key.toLowerCase().replace(/\b[a-z]/g, function(letter) { return letter.toUpperCase(); });
+    //   });
 
   });
 });
