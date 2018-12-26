@@ -1,12 +1,17 @@
 $(document).ready(function() {
 
+  var loadVisualization = $("#area").length > 0;
+  if (!loadVisualization) {
+    return;
+  }
+
   //////////// *** VARIABLES *** ////////////
 
   var format = d3.time.format("%Y-%m-%d");
 
-  var margin = {top: 10, right: 10, bottom: 20, left: 40},
-      width = $("#area").width()-60,
-      height = 400 - margin.top - margin.bottom;
+  var margin = {top: 10, right: 20, bottom: 20, left: 40},
+      width = $("#area").width()-10,
+      height = ($("#area").width()*.40) - margin.top - margin.bottom;
 
   var x = d3.time.scale()
       .range([0, width]);
@@ -31,7 +36,7 @@ $(document).ready(function() {
       .orient("left");
 
   var stack = d3.layout.stack()
-      .offset("zero")
+      .offset("top")
       .values(function(d) { return d.values; })
       .x(function(d) { return d.date; })
       .y(function(d) { return d.value; });
