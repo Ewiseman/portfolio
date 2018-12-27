@@ -7,10 +7,10 @@ task :import_tasks => :environment do
   CSV.foreach(csv, headers: true) do |row|
     p " '#{row['category']}'"
 
-    date = Sprint.find_by(:sprint_date => "#{row['date']}")
+    sprint = Sprint.find_by!(sprint_date: row['date'])
 
-    if date.present?
-      Task.create!(category: row['category'], task: row['task'], value: row['value'], day: row['day'])
+    if sprint.present?
+      Task.create!(sprint: sprint, category: row['category'], task: row['task'], value: row['value'], day: row['day'])
     end
   end
 

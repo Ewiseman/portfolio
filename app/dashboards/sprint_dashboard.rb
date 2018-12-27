@@ -48,7 +48,13 @@ class SprintDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how sprints are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(sprint)
-  #   "Sprint ##{sprint.id}"
-  # end
+
+  def format_long_date(date)
+    return ' ' if date.nil?
+    date.strftime "%b %-e, %Y"
+  end
+  
+  def display_resource(sprint)
+    format_long_date(sprint.sprint_date)
+  end
 end

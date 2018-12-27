@@ -10,10 +10,16 @@ class TaskDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     sprint: Field::BelongsTo,
     id: Field::Number,
-    category: Field::String,
+    category:  Field::Select.with_options(
+      collection: ["", "health", "personal", "gear lift", "snowmass", "vacation", "fcfs", "one dataset", "board", "career development",  ]
+    ),
     task: Field::String,
-    value: Field::Number,
-    day: Field::String,
+    value: Field::Select.with_options(
+      collection: ["", 1, 3, 5, 8, 10]
+    ),
+    day:  Field::Select.with_options(
+      collection: ["", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+    ),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -57,7 +63,7 @@ class TaskDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how tasks are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(task)
-  #   "Task ##{task.id}"
-  # end
+  def display_resource(sprint)
+    "hello"
+  end
 end
