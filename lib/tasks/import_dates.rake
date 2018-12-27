@@ -1,13 +1,13 @@
 require 'csv'
-desc "Import scrum from master CSV"
-task :import_scrum => :environment do
+desc "Import sprint dates from CSV"
+task :import_dates => :environment do
 
-  csv = 'scrum.csv'
+  csv = 'scrum_dates.csv'
 
   CSV.foreach(csv, headers: true) do |row|
-    p " '#{row['category']}'"
+    p " '#{row['date']}'"
 
-    Scrum.create!(category: row['category'], task: row['task'], value: row['value'], date: row['date'], day: row['day'])
+    Sprint.create!(sprint_date: row['date'])
   end
 
 end
