@@ -124,7 +124,7 @@ GEM
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
     ionicons-rails (2.0.0)
-    jbuilder (2.7.0)
+    jbuilder (2.8.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
     jquery-rails (4.3.3)
@@ -295,7 +295,7 @@ DEPENDENCIES
   font-awesome-sass
   groupdate
   ionicons-rails
-  jbuilder (~> 2.5)
+  jbuilder (~> 2.8)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
   pg
