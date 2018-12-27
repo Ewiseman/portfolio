@@ -1,16 +1,18 @@
 class ScrumReportsController < ApplicationController
 require 'csv'
   def show
+
     time_ago = 3.years.ago
-    health = Scrum.where(scrums: { category: "health" }).group_by_month(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
-    vacation = Scrum.where(scrums: { category: "vacation" }).group_by_month(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
-    personal = Scrum.where(scrums: { category: "personal" }).group_by_month(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
-    gear_lift = Scrum.where(scrums: { category: "gear lift" }).group_by_month(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
-    snowmass = Scrum.where(scrums: { category: "snowmass" }).group_by_month(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
-    fcfs = Scrum.where(scrums: { category: "fcfs" }).group_by_month(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
-    one_dataset = Scrum.where(scrums: { category: "one dataset" }).group_by_month(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
-    board = Scrum.where(scrums: { category: "board" }).group_by_month(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
-    career_development = Scrum.where(scrums: { category: "career development" }).group_by_month(:date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
+   # health = Sprint.joins(:tasks).where(tasks: { category: "health" }).group_by_month(:sprint_date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
+   health = Sprint.joins(:tasks).where(tasks: { category: "health" }).group_by_month(:sprint_date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
+   vacation = Sprint.joins(:tasks).where(tasks: { category: "vacation" }).group_by_month(:sprint_date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
+   personal = Sprint.joins(:tasks).where(tasks: { category: "personal" }).group_by_month(:sprint_date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
+   gear_lift = Sprint.joins(:tasks).where(tasks: { category: "gear lift" }).group_by_month(:sprint_date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
+   snowmass = Sprint.joins(:tasks).where(tasks: { category: "snowmass" }).group_by_month(:sprint_date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
+   fcfs = Sprint.joins(:tasks).where(tasks: { category: "fcfs" }).group_by_month(:sprint_date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
+   one_dataset = Sprint.joins(:tasks).where(tasks: { category: "one dataset" }).group_by_month(:sprint_date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
+   board = Sprint.joins(:tasks).where(tasks: { category: "board" }).group_by_month(:sprint_date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
+   career_development = Sprint.joins(:tasks).where(tasks: { category: "career development" }).group_by_month(:sprint_date, range: (time_ago)..Time.now).unscope(:order).sum(:value)
 
     csv = "key,value,date\n"
 
@@ -49,10 +51,6 @@ require 'csv'
     career_development.each do |row|
       csv << "career_development,#{row[1]},#{row[0]}\n"
     end
-
-
-
-
 
     respond_to do |format|
       format.csv  { render plain: csv }
