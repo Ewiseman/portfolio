@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   namespace :admin do
       resources :scrums
+      resources :sprints
+      resources :tasks
 
       root to: "scrums#index"
     end

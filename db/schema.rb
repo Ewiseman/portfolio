@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_13_230621) do
+ActiveRecord::Schema.define(version: 2018_12_27_163928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "scrum_dates", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "sprint_date"
+  end
 
   create_table "scrums", force: :cascade do |t|
     t.string "category"
@@ -25,4 +31,22 @@ ActiveRecord::Schema.define(version: 2018_12_13_230621) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "sprints", force: :cascade do |t|
+    t.date "sprint_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "category"
+    t.string "task"
+    t.integer "value"
+    t.string "day"
+    t.bigint "sprint_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sprint_id"], name: "index_tasks_on_sprint_id"
+  end
+
+  add_foreign_key "tasks", "sprints"
 end
