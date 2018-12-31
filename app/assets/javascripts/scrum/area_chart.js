@@ -84,6 +84,7 @@ $(document).ready(function() {
     });
 
     var layers = stack(nest.entries(data));
+    console.log(layers)
 
     x.domain(d3.extent(data, function(d) { return d.date; }));
     y.domain([0, d3.max(data, function(d) { return d.y0 + d.y + 4; })]);

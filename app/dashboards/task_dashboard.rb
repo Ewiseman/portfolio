@@ -63,7 +63,7 @@ class TaskDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how tasks are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(sprint)
-    "hello"
-  end
+  # def display_resource(sprint)
+  #   "hello"
+  # end
 end
