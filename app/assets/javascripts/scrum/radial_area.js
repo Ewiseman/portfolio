@@ -32,18 +32,18 @@ $(document).ready(function() {
       .key(function(d) { return d.key; });
 
   var line = d3.svg.line.radial()
-      .interpolate("basis-closed")
+      .interpolate("cardinal-closed")
       .angle(function(d) { return angle(d.date); })
       .radius(function(d) { return radius(d.y0 + d.y); });
 
   var area = d3.svg.area.radial()
-      .interpolate("basis-closed")
+      .interpolate("cardinal-closed")
       .angle(function(d) { return angle(d.date); })
       .innerRadius(function(d) { return radius(d.y0); })
       .outerRadius(function(d) { return radius(d.y0 + d.y); });
 
   var area_two = d3.svg.area.radial()
-      .interpolate("basis-closed")
+      .interpolate("cardinal-closed")
       .angle(function(d) { return angle(d.date); })
       .innerRadius(innerRadius)
       .outerRadius(function(d) { return radius(d.y); });
