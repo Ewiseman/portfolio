@@ -15,7 +15,7 @@ class TaskDashboard < Administrate::BaseDashboard
     ),
     task: Field::String,
     value: Field::Select.with_options(
-      collection: ["", 1, 3, 5, 8, 10]
+      collection: ["", 1, 2, 3, 5, 8, 10]
     ),
     day:  Field::Select.with_options(
       collection: ["", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
