@@ -3,7 +3,7 @@ require 'csv'
   def show
 
    time_ago = Date.parse("2016-1-1")
-   time_here = Date.parse("2018-11-1")
+   time_here = Date.parse("2019-1-1")
    # time_ago = 3.years.ago + 1.month
    health = Sprint.joins(:tasks).where(tasks: { category: "health" }).group_by_month(:sprint_date, range: (time_ago)..Date.today).unscope(:order).sum(:value)
    vacation = Sprint.joins(:tasks).where(tasks: { category: "vacation" }).group_by_month(:sprint_date, range: (time_ago)..Date.today).unscope(:order).sum(:value)
