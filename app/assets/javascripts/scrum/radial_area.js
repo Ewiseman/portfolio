@@ -71,7 +71,6 @@ $(document).ready(function() {
         .style("fill", function(d, i) { return z(i); })
         .style("stroke", "#2B2D42")
         .style("opacity", 0.7)
-
         .on("mouseover", function(d, i) {
           svg.selectAll(".layer")
           .style("cursor", "pointer")
@@ -80,7 +79,6 @@ $(document).ready(function() {
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY-28) + "px");
         })
-
         .on("click", function(d, i) {
           svg.selectAll(".layer")
           .transition()
@@ -88,11 +86,10 @@ $(document).ready(function() {
           .attr("d", function(d) { return area_two(d.values); })
         });
 
-        svg.selectAll(".layer")
-          .transition()
-          .duration(1500)
-          .attr("d", function(d) { return area(d.values); })
-
+    svg.selectAll(".layer")
+      .transition()
+      .duration(1500)
+      .attr("d", function(d) { return area(d.values); })
 
     svg.selectAll(".axis")
         .data(d3.range(angle.domain()[1]))

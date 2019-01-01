@@ -2,18 +2,22 @@ class ScrumMapsController < ApplicationController
 require 'csv'
   def show
 
-   time_ago = Date.parse("2016-1-1")
-   time_here = Date.parse("2019-1-1")
-   # time_ago = 3.years.ago + 1.month
-   health = Sprint.joins(:tasks).where(tasks: { category: "health" }).group_by_month(:sprint_date, range: (time_ago)..Date.today).unscope(:order).sum(:value)
-   vacation = Sprint.joins(:tasks).where(tasks: { category: "vacation" }).group_by_month(:sprint_date, range: (time_ago)..Date.today).unscope(:order).sum(:value)
-   personal = Sprint.joins(:tasks).where(tasks: { category: "personal" }).group_by_month(:sprint_date, range: (time_ago)..Date.today).unscope(:order).sum(:value)
-   gear_lift = Sprint.joins(:tasks).where(tasks: { category: "gear lift" }).group_by_month(:sprint_date, range: (time_ago)..Date.today).unscope(:order).sum(:value)
-   snowmass = Sprint.joins(:tasks).where(tasks: { category: "snowmass" }).group_by_month(:sprint_date, range: (time_ago)..Date.today).unscope(:order).sum(:value)
-   fcfs = Sprint.joins(:tasks).where(tasks: { category: "fcfs" }).group_by_month(:sprint_date, range: (time_ago)..Date.today).unscope(:order).sum(:value)
-   one_dataset = Sprint.joins(:tasks).where(tasks: { category: "one dataset" }).group_by_month(:sprint_date, range: (time_ago)..Date.today).unscope(:order).sum(:value)
-   board = Sprint.joins(:tasks).where(tasks: { category: "board" }).group_by_month(:sprint_date, range: (time_ago)..Date.today).unscope(:order).sum(:value)
-   career_development = Sprint.joins(:tasks).where(tasks: { category: "career development" }).group_by_month(:sprint_date, range: (time_ago)..Date.today).unscope(:order).sum(:value)
+   # time_ago = Date.parse("2016-1-1")
+   # time_here = Date.parse("2019-1-1")
+
+   time_ago = Sprint.all.last.sprint_date + 1.month
+   time_here = Sprint.all.first.sprint_date
+
+
+   health = Sprint.joins(:tasks).where(tasks: { category: "health" }).group_by_month(:sprint_date, range: (time_ago)..(time_here)).unscope(:order).sum(:value)
+   vacation = Sprint.joins(:tasks).where(tasks: { category: "vacation" }).group_by_month(:sprint_date, range: (time_ago)..(time_here)).unscope(:order).sum(:value)
+   personal = Sprint.joins(:tasks).where(tasks: { category: "personal" }).group_by_month(:sprint_date, range: (time_ago)..(time_here)).unscope(:order).sum(:value)
+   gear_lift = Sprint.joins(:tasks).where(tasks: { category: "gear lift" }).group_by_month(:sprint_date, range: (time_ago)..(time_here)).unscope(:order).sum(:value)
+   snowmass = Sprint.joins(:tasks).where(tasks: { category: "snowmass" }).group_by_month(:sprint_date, range: (time_ago)..(time_here)).unscope(:order).sum(:value)
+   fcfs = Sprint.joins(:tasks).where(tasks: { category: "fcfs" }).group_by_month(:sprint_date, range: (time_ago)..(time_here)).unscope(:order).sum(:value)
+   one_dataset = Sprint.joins(:tasks).where(tasks: { category: "one dataset" }).group_by_month(:sprint_date, range: (time_ago)..(time_here)).unscope(:order).sum(:value)
+   board = Sprint.joins(:tasks).where(tasks: { category: "board" }).group_by_month(:sprint_date, range: (time_ago)..(time_here)).unscope(:order).sum(:value)
+   career_development = Sprint.joins(:tasks).where(tasks: { category: "career development" }).group_by_month(:sprint_date, range: (time_ago)..(time_here)).unscope(:order).sum(:value)
 
     csv = "key,value,date,date_real\n"
     vacation_list = ""
