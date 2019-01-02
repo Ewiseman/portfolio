@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  health_category: MyString
+  cookbook: MyString
+  cookbook_page: 1
+  instructions: MyString
+  cusine_region: MyString
+  type_of_food: MyString
+
+two:
+  name: MyString
+  health_category: MyString
+  cookbook: MyString
+  cookbook_page: 1
+  instructions: MyString
+  cusine_region: MyString
+  type_of_food: MyString

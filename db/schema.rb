@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_02_032814) do
+ActiveRecord::Schema.define(version: 2019_01_02_035437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string "name"
+    t.string "category"
+    t.string "measurement"
+    t.bigint "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_ingredients_on_recipe_id"
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string "name"
+    t.string "health_category"
+    t.string "cookbook"
+    t.integer "cookbook_page"
+    t.string "instructions"
+    t.string "cusine_region"
+    t.string "type_of_food"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "scrum_dates", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -38,5 +60,6 @@ ActiveRecord::Schema.define(version: 2019_01_02_032814) do
     t.index ["sprint_id"], name: "index_tasks_on_sprint_id"
   end
 
+  add_foreign_key "ingredients", "recipes"
   add_foreign_key "tasks", "sprints"
 end
