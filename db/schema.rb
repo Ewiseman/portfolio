@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_02_035437) do
+ActiveRecord::Schema.define(version: 2019_01_02_045556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,11 +18,19 @@ ActiveRecord::Schema.define(version: 2019_01_02_035437) do
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.string "category"
-    t.string "measurement"
     t.bigint "recipe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["recipe_id"], name: "index_ingredients_on_recipe_id"
+  end
+
+  create_table "measurements", force: :cascade do |t|
+    t.integer "unit"
+    t.string "measurement"
+    t.bigint "ingredient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ingredient_id"], name: "index_measurements_on_ingredient_id"
   end
 
   create_table "recipes", force: :cascade do |t|
@@ -30,11 +38,15 @@ ActiveRecord::Schema.define(version: 2019_01_02_035437) do
     t.string "health_category"
     t.string "cookbook"
     t.integer "cookbook_page"
-    t.string "instructions"
     t.string "cusine_region"
     t.string "type_of_food"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "directions"
+    t.boolean "on_the_menu", default: false
+    t.boolean "vegetarian", default: false
+    t.boolean "vegan", default: false
+    t.boolean "dairy_free", default: false
   end
 
   create_table "scrum_dates", force: :cascade do |t|
@@ -61,5 +73,6 @@ ActiveRecord::Schema.define(version: 2019_01_02_035437) do
   end
 
   add_foreign_key "ingredients", "recipes"
+  add_foreign_key "measurements", "ingredients"
   add_foreign_key "tasks", "sprints"
 end
