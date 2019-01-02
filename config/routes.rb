@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   namespace :admin do
-      resources :scrums
-      resources :sprints
-      resources :tasks
+    resources :sprints
+    resources :tasks
 
-      root to: "scrums#index"
-    end
+    root to: "tasks#index"
+  end
+  
   resource :scrum_reports, only: :show, :defaults => { :format => 'csv' }
   resource :scrum_maps, only: :show, :defaults => { :format => 'csv' }
   root to: 'welcome#home'

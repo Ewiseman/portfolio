@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_27_163928) do
+ActiveRecord::Schema.define(version: 2019_01_02_032814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,16 +19,6 @@ ActiveRecord::Schema.define(version: 2018_12_27_163928) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "sprint_date"
-  end
-
-  create_table "scrums", force: :cascade do |t|
-    t.string "category"
-    t.string "task"
-    t.integer "value"
-    t.date "date"
-    t.string "day"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "sprints", force: :cascade do |t|
