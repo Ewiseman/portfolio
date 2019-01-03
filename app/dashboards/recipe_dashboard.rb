@@ -12,13 +12,20 @@ class RecipeDashboard < Administrate::BaseDashboard
     ingredients: Field::HasMany,
     measurements: Field::HasMany,
     name: Field::String,
-    protein: Field::String,
-    health_category: Field::String,
-    cookbook: Field::String,
+    protein: Field::Select.with_options(
+      collection: ["", "Bison", "Chicken", "Ground Beef", "Salmon", "Steak"]
+    ),
+    cookbook: Field::Select.with_options(
+      collection: ["", "True Food", "Straight From the Earth"]
+    ),
     cookbook_page: Field::Number,
     directions: Field::Text,
-    cusine_region: Field::String,
-    type_of_food: Field::String,
+    cusine_region: Field::Select.with_options(
+      collection: ["", "Asian", "Mexian", "Southwest", "Mediterranean"]
+    ),
+    type_of_food: Field::Select.with_options(
+      collection: ["", "Baked Good", "Breakfast", "Burger", "Desert", "Dressing", "Drink", "Salad", "Sauce", "Seafood", "Side Dish", "Soup", "Noodles", "Stir Fry", "Pizza"]
+    ),
     on_the_menu: Field::Boolean,
     vegetarian: Field::Boolean,
     vegan: Field::Boolean,
@@ -26,6 +33,10 @@ class RecipeDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
+
+
+
+
 
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
@@ -47,7 +58,6 @@ class RecipeDashboard < Administrate::BaseDashboard
     # :id,
     :name,
     :protein,
-    :health_category,
     :cookbook,
     :cookbook_page,
     :cusine_region,
@@ -67,14 +77,13 @@ class RecipeDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :on_the_menu,
     :name,
     :protein,
-    :health_category,
     :cookbook,
     :cookbook_page,
     :cusine_region,
     :type_of_food,
-    :on_the_menu,
     :vegetarian,
     :vegan,
     :dairy_free,
