@@ -9,10 +9,12 @@ class IngredientDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     recipe: Field::BelongsTo,
-    measurement: Field::HasOne,
+    measurements: Field::HasMany,
     id: Field::Number,
     name: Field::String,
-    category: Field::String,
+    category: Field::Select.with_options(
+      collection: ["", "Cooking Oil", "Spice", "Produce", "Seafood", "Meat", "Dry Good"]
+    ),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -27,7 +29,7 @@ class IngredientDashboard < Administrate::BaseDashboard
     # :id,
     :name,
     # :category,
-    :measurement,
+    :measurements,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -36,7 +38,7 @@ class IngredientDashboard < Administrate::BaseDashboard
     :recipe,
     :name,
     :category,
-    :measurement,
+    :measurements,
     # :id,
     # :created_at,
     # :updated_at,
@@ -49,7 +51,7 @@ class IngredientDashboard < Administrate::BaseDashboard
     :recipe,
     :name,
     :category,
-    :measurement,
+    :measurements,
   ].freeze
 
   # Overwrite this method to customize how ingredients are displayed

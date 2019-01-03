@@ -1,26 +1,70 @@
-# README
+```ruby
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# class Physician < ApplicationRecord
+#   has_many :appointments
+#   has_many :patients, through: :appointments
+# end
+#
+# class Appointment < ApplicationRecord
+#   belongs_to :physician
+#   belongs_to :patient
+# end
+#
+# class Patient < ApplicationRecord
+#   has_many :appointments
+#   has_many :physicians, through: :appointments
+# end
 
-Things you may want to cover:
 
-* Ruby version
 
-* System dependencies
+class Recipe < ApplicationRecord
+  has_many :measurements
+  has_many :ingredients, through: :measurements
+end
 
-* Configuration
+class Measurement < ApplicationRecord
+  belongs_to :recipe
+  belongs_to :ingredient
+end
 
-* Database creation
+class Ingredient < ApplicationRecord
+  has_many :measurements
+  has_many :recipes, through: :measurements
+end
 
-* Database initialization
 
-* How to run the test suite
+class CreateAppointments < ActiveRecord::Migration[5.0]
+  def change
+    create_table :recipes do |t|
+      t.string :name
+      t.timestamps
+    end
 
-* Services (job queues, cache servers, search engines, etc.)
+    create_table :ingredients do |t|
+      t.string :name
+      t.timestamps
+    end
 
-* Deployment instructions
+    create_table :measurements do |t|
+      t.belongs_to :recipe, index: true
+      t.belongs_to :ingredient, index: true
+      t.timestamps
+    end
+  end
+end
 
-* ...
 
-For when bin doesn't work: chmod +x bin/*
+# class Recipe < ApplicationRecord
+#   has_many :ingredients
+#   has_many :measurements, through: :ingredients
+# end
+#
+# class Ingredient < ApplicationRecord
+#   belongs_to :recipe
+#   belongs_to :measurement
+# end
+#
+# class Measurement < ApplicationRecord
+#   has_many :ingredients
+#   has_many :recipes, through: :ingredients
+# end

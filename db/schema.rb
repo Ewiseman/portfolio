@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_02_045556) do
+ActiveRecord::Schema.define(version: 2019_01_02_054641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,11 +25,12 @@ ActiveRecord::Schema.define(version: 2019_01_02_045556) do
   end
 
   create_table "measurements", force: :cascade do |t|
-    t.integer "unit"
+    t.float "unit"
     t.string "measurement"
     t.bigint "ingredient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "description"
     t.index ["ingredient_id"], name: "index_measurements_on_ingredient_id"
   end
 
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(version: 2019_01_02_045556) do
     t.boolean "vegetarian", default: false
     t.boolean "vegan", default: false
     t.boolean "dairy_free", default: false
+    t.string "protein"
   end
 
   create_table "scrum_dates", force: :cascade do |t|

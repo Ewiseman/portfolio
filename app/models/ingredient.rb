@@ -1,4 +1,4 @@
 class Ingredient < ApplicationRecord
-  belongs_to :recipe
-  has_one :measurement, dependent: :destroy
+  belongs_to :recipe, inverse_of: :ingredients
+  has_many :measurements, dependent: :destroy
 end

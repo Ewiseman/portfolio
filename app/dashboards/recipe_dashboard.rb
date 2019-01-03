@@ -13,13 +13,25 @@ class RecipeDashboard < Administrate::BaseDashboard
     name: Field::String,
     on_the_menu: Field::Boolean,
     vegetarian: Field::Boolean,
+    dairy_free: Field::Boolean,
     vegan: Field::Boolean,
-    health_category: Field::String,
-    cookbook: Field::String,
+    health_category: Field::Select.with_options(
+      collection: ["", "Paleo", "Autoimmune", "Anti-candida"]
+    ),
+    cookbook: Field::Select.with_options(
+      collection: ["", "True Food", "Straight From the Earth"]
+    ),
     cookbook_page: Field::Number,
     directions: Field::Text,
-    cusine_region: Field::String,
-    type_of_food: Field::String,
+    cusine_region: Field::Select.with_options(
+      collection: ["", "Asian", "Mexian", "Southwest", "Mediterranean"]
+    ),
+    protein: Field::Select.with_options(
+      collection: ["", "Chicken", "Fish", "Bison", "Ground Beef", "Steak" ]
+    ),
+    type_of_food: Field::Select.with_options(
+      collection: ["", "Sauce", "Dressing", "Drink", "Desert", "Side Dish", "Noodles", "Seafood", "Soup", "Salad", "Stir Fry", "Pizza", "Burger"]
+    ),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -33,6 +45,7 @@ class RecipeDashboard < Administrate::BaseDashboard
     # :id,
     :on_the_menu,
     :name,
+    :protein,
     :health_category,
     :cookbook,
     :vegetarian,
@@ -45,10 +58,12 @@ class RecipeDashboard < Administrate::BaseDashboard
     # :id,
     :on_the_menu,
     :name,
+    :protein,
     :health_category,
     :cusine_region,
     :type_of_food,
     :vegetarian,
+    :dairy_free,
     :vegan,
     :cookbook,
     :cookbook_page,
@@ -64,10 +79,12 @@ class RecipeDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :on_the_menu,
     :name,
-    :health_category,
+    :protein,
     :cusine_region,
     :type_of_food,
+    :health_category,
     :vegetarian,
+    :dairy_free,
     :vegan,
     :cookbook,
     :cookbook_page,

@@ -10,7 +10,7 @@ class TaskDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     sprint: Field::BelongsTo,
     id: Field::Number,
-    category:  Field::Select.with_options(
+    category: Field::Select.with_options(
       collection: ["", "health", "personal", "gear lift", "snowmass", "vacation", "fcfs", "one dataset", "board", "career development",  ]
     ),
     task: Field::String,
