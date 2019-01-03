@@ -21,7 +21,7 @@ class RecipeDashboard < Administrate::BaseDashboard
     cookbook_page: Field::Number,
     directions: Field::Text,
     cusine_region: Field::Select.with_options(
-      collection: ["", "Asian", "Mexian", "Southwest", "Mediterranean"]
+      collection: ["", "American", "Asian", "Mexian", "Southwest", "Mediterranean"]
     ),
     type_of_food: Field::Select.with_options(
       collection: ["", "Baked Good", "Breakfast", "Burger", "Desert", "Dressing", "Drink", "Salad", "Sauce", "Seafood", "Side Dish", "Soup", "Noodles", "Stir Fry", "Pizza"]

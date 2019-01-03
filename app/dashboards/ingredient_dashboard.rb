@@ -12,7 +12,9 @@ class IngredientDashboard < Administrate::BaseDashboard
     recipes: Field::HasMany,
     id: Field::Number,
     name: Field::String,
-    category: Field::String,
+    category: Field::Select.with_options(
+      collection: ["", "Produce", "Meat", "Seafood", "Dry Good", "Dairy", "Canned Good", "Cooking Oil", "Spice"]
+    ),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -33,23 +35,23 @@ class IngredientDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :measurements,
-    :recipes,
-    :id,
+    # :id,
     :name,
     :category,
-    :created_at,
-    :updated_at,
+    :recipes,
+     :measurements,
+    # :created_at,
+    # :updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :measurements,
-    :recipes,
     :name,
     :category,
+    :measurements,
+    :recipes,
   ].freeze
 
   # Overwrite this method to customize how ingredients are displayed

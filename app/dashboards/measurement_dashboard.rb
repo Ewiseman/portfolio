@@ -12,7 +12,9 @@ class MeasurementDashboard < Administrate::BaseDashboard
     ingredient: Field::BelongsTo,
     id: Field::Number,
     unit: Field::Number.with_options(decimals: 2),
-    type_of_measurement: Field::String,
+    type_of_measurement: Field::Select.with_options(
+      collection: ["", "Pinch", "Teaspoon", "Tablespoon", "Cup", "Grams", "Oz", "Cloves", "15oz Can", "28oz Can", "Whole", "Square" ]
+    ),
     description: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
