@@ -13,7 +13,7 @@ class RecipeDashboard < Administrate::BaseDashboard
     measurements: Field::HasMany,
     name: Field::String,
     protein: Field::Select.with_options(
-      collection: ["", "Bison", "Chicken", "Ground Beef", "Salmon", "Steak"]
+      collection: ["", "Bison", "Chicken", "Ground Beef", "Salmon", "Cod", "Halibut", "Steak"]
     ),
     cookbook: Field::Select.with_options(
       collection: ["", "True Food", "Straight From the Earth"]
@@ -24,9 +24,12 @@ class RecipeDashboard < Administrate::BaseDashboard
       collection: ["", "American", "Asian", "Mexian", "Southwest", "Mediterranean"]
     ),
     type_of_food: Field::Select.with_options(
-      collection: ["", "Baked Good", "Breakfast", "Burger", "Desert", "Dressing", "Drink", "Salad", "Sauce", "Seafood", "Side Dish", "Soup", "Noodles", "Stir Fry", "Pizza"]
+      collection: ["", "Baked Good", "Breakfast", "Burger", "Desert", "Dressing", "Drink", "Juice", "Salad", "Sauce", "Seafood", "Side Dish", "Soup", "Noodles", "Stir Fry", "Pizza"]
     ),
     on_the_menu: Field::Boolean,
+    multiplier: Field::Select.with_options(
+      collection: [1, 2, 3, 4, ]
+    ),
     vegetarian: Field::Boolean,
     vegan: Field::Boolean,
     dairy_free: Field::Boolean,
@@ -78,6 +81,7 @@ class RecipeDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :on_the_menu,
+    :multiplier,
     :name,
     :protein,
     :cookbook,

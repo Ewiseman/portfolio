@@ -11,8 +11,11 @@ Rails.application.routes.draw do
 
   resource :scrum_reports, only: :show, :defaults => { :format => 'csv' }
   resource :scrum_maps, only: :show, :defaults => { :format => 'csv' }
+
   resources :recipes, only: [:index]
-  resource :grocery_lists, only: :show, :defaults => { :format => 'csv' }
+
+
+
 
   root to: 'welcome#home'
   #Scrum
@@ -23,5 +26,5 @@ Rails.application.routes.draw do
   get '/gdp/area_tool' => 'gdp#area_tool'
   get '/gdp/radial_bubble' => 'gdp#radial_bubble'
 
-
+resource :grocery_lists, only: :show, :defaults => { :format => 'csv' }
 end
