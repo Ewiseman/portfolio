@@ -60,12 +60,13 @@ class RecipeDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     # :id,
     :name,
+    :on_the_menu,
+    :multiplier,
     :protein,
     :cookbook,
     :cookbook_page,
     :cusine_region,
     :type_of_food,
-    :on_the_menu,
     :vegetarian,
     :vegan,
     :dairy_free,
@@ -80,9 +81,9 @@ class RecipeDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :name,
     :on_the_menu,
     :multiplier,
-    :name,
     :protein,
     :cookbook,
     :cookbook_page,

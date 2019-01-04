@@ -39,7 +39,7 @@ class IngredientDashboard < Administrate::BaseDashboard
     :name,
     :category,
     :recipes,
-     :measurements,
+    :measurements,
     # :created_at,
     # :updated_at,
   ].freeze
@@ -50,7 +50,7 @@ class IngredientDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :category,
-    :measurements,
+    # :measurements,
     :recipes,
   ].freeze
 
