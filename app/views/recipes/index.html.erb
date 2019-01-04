@@ -1,6 +1,18 @@
+<div class="container avoid-menu">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="card col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    <% @recipes.each do |recipe| %>
+      <h3><%= recipe.name %></h3>
+      <p><%= recipe.cookbook %></p>
+    <% end %>
+  </div>
 
-
-<% @recipes.each do |recipe| %>
-  <%= recipe.name %>
-
-<% end %>
+    <%= link_to "Grocery List", grocery_lists_path(format: 'csv'), class: "btn" %>
+</div>
