@@ -13,7 +13,7 @@ class MeasurementDashboard < Administrate::BaseDashboard
     id: Field::Number,
     unit: Field::Number.with_options(decimals: 2),
     type_of_measurement: Field::Select.with_options(
-      collection: ["", "Pinch", "Teaspoon", "Tablespoon", "Cup", "Grams", "Oz", "Cloves", "15oz Can", "28oz Can", "Whole", "Square", "Bunch", "1 Inch" ]
+      collection: ["", "Pinch", "Teaspoon", "Tablespoon", "Cup", "Grams", "Oz", "Cloves", "15oz Can", "28oz Can", "Whole", "Square", "Bunch", "1 Inch", "Slice" ]
     ),
     description: Field::String,
     created_at: Field::DateTime,

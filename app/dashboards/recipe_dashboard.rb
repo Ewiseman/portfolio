@@ -16,12 +16,12 @@ class RecipeDashboard < Administrate::BaseDashboard
       collection: ["", "Bison", "Chicken", "Eggs", "Ground Beef", "Salmon", "Cod", "Halibut", "Steak"]
     ),
     cookbook: Field::Select.with_options(
-      collection: ["", "True Food", "Straight From the Earth"]
+      collection: ["", "My Recipe", "True Food", "Straight From the Earth"]
     ),
     cookbook_page: Field::Number,
     directions: Field::Text,
     cusine_region: Field::Select.with_options(
-      collection: ["", "American", "Asian", "Mexian", "Southwest", "Mediterranean"]
+      collection: ["", "No Region", "American", "Asian", "Mexican", "Southwest", "Mediterranean"]
     ),
     type_of_food: Field::Select.with_options(
       collection: ["", "Baked Good", "Breakfast", "Burger", "Desert", "Dressing", "Drink", "Juice", "Salad", "Sauce", "Seafood", "Side Dish", "Soup", "Noodles", "Stir Fry", "Pizza"]
