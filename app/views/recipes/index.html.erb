@@ -7,12 +7,14 @@
   <br>
   <br>
   <br>
-  <div class="card col-lg-4 col-md-4 col-sm-6 col-xs-12">
+  <div class="col-lg-12 col-md-12">
     <% @recipes.each do |recipe| %>
-      <h3><%= recipe.name %></h3>
-      <p><%= recipe.cookbook %></p>
+      <h5><%= recipe.name %><%= recipe.multiplier_view %></h5>
     <% end %>
   </div>
 
-    <%= link_to "Grocery List", grocery_lists_path(format: 'csv'), class: "btn" %>
+  <div class="col-lg-12 col-md-12">
+      <br>
+    <%= link_to "Grocery List", grocery_lists_path(format: 'csv'), class: "btn btn-lg btn-gray" %>
+  </div>
 </div>
