@@ -2,9 +2,9 @@ class GroceryListsController < ApplicationController
   require 'csv'
   def show
 
-    grocery = Measurement.all
+    grocery = Measurement.all.reorder('ingredient_id')
 
-    csv = "\n"
+    csv = ""
 
     ["Produce", "Meat", "Seafood", "Dry Good", "Dairy", "Canned Good", "Cooking Oil", "Spice"]
 
