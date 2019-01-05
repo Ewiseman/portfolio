@@ -15,7 +15,7 @@ class GroceryListsController < ApplicationController
        csv << "#{row.ingredient.name},#{more},#{row.type_of_measurement},#{row.recipe.name}, #{row.recipe.on_the_menu}\n"
      end
     end
-    csv << "Bananas\n"
+    csv << "Bananas, 1, Bunch\n"
     csv << "\n"
 
     csv << "Meat\n"
