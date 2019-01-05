@@ -21,10 +21,10 @@ class RecipeDashboard < Administrate::BaseDashboard
     cookbook_page: Field::Number,
     directions: Field::Text,
     cusine_region: Field::Select.with_options(
-      collection: ["", "No Region", "American", "Asian", "Mexican", "Southwest", "Mediterranean"]
+      collection: ["", "No Region", "American", "Asian", "Mexican", "Italian", "Southwest", "Mediterranean"]
     ),
     type_of_food: Field::Select.with_options(
-      collection: ["", "Baked Good", "Breakfast", "Burger", "Desert", "Dressing", "Drink", "Juice", "Salad", "Sauce", "Seafood", "Side Dish", "Soup", "Noodles", "Stir Fry", "Pizza", "Tacos", "Nachos"]
+      collection: ["", "Baked Good", "Breakfast", "One Pot Meals", "Burger", "Desert", "Dressing", "Drink", "Juice", "Salad", "Sauce", "Seafood", "Side Dish", "Soup", "Noodles", "Stir Fry", "Pizza", "Tacos", "Nachos"]
     ),
     on_the_menu: Field::Boolean,
     multiplier: Field::Select.with_options(
