@@ -24,7 +24,7 @@ class RecipeDashboard < Administrate::BaseDashboard
       collection: ["", "No Region", "American", "Asian", "Mexican", "Southwest", "Mediterranean"]
     ),
     type_of_food: Field::Select.with_options(
-      collection: ["", "Baked Good", "Breakfast", "Burger", "Desert", "Dressing", "Drink", "Juice", "Salad", "Sauce", "Seafood", "Side Dish", "Soup", "Noodles", "Stir Fry", "Pizza"]
+      collection: ["", "Baked Good", "Breakfast", "Burger", "Desert", "Dressing", "Drink", "Juice", "Salad", "Sauce", "Seafood", "Side Dish", "Soup", "Noodles", "Stir Fry", "Pizza", "Tacos"]
     ),
     on_the_menu: Field::Boolean,
     multiplier: Field::Select.with_options(
