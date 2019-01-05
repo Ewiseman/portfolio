@@ -15,6 +15,7 @@ class GroceryListsController < ApplicationController
        csv << "#{row.ingredient.name},#{more},#{row.type_of_measurement},#{row.recipe.name}, #{row.recipe.on_the_menu}\n"
      end
     end
+    csv << "Bananas\n"
     csv << "\n"
 
     csv << "Meat\n"
@@ -24,6 +25,7 @@ class GroceryListsController < ApplicationController
         csv << "#{row.ingredient.name},#{more},#{row.type_of_measurement},#{row.recipe.name}, #{row.recipe.on_the_menu}\n"
       end
     end
+    csv << "Lunch Meat?\n"
     csv << "\n"
 
     csv << "Seafood\n"
@@ -42,6 +44,9 @@ class GroceryListsController < ApplicationController
         csv << "#{row.ingredient.name},#{more},#{row.type_of_measurement},#{row.recipe.name}, #{row.recipe.on_the_menu}\n"
       end
     end
+    csv << "Milk?\n"
+    csv << "Almond Milk?\n"
+    csv << "Yogurt?\n"
     csv << "\n"
 
     csv << "Dry Good\n"
@@ -51,6 +56,7 @@ class GroceryListsController < ApplicationController
         csv << "#{row.ingredient.name},#{more},#{row.type_of_measurement},#{row.recipe.name}, #{row.recipe.on_the_menu}\n"
       end
     end
+    csv << "Seb Snacks?\n"
     csv << "\n"
 
     csv << "Canned Good\n"
