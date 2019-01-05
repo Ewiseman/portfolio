@@ -16,7 +16,7 @@ class RecipeDashboard < Administrate::BaseDashboard
       collection: ["", "Bison", "Chicken", "Eggs", "Ground Beef", "Salmon", "Cod", "Halibut", "Steak"]
     ),
     cookbook: Field::Select.with_options(
-      collection: ["", "My Recipe", "True Food", "Straight From the Earth", "Salsas & Moles"]
+      collection: ["", "My Recipe", "True Food", "Straight From the Earth", "Salsas & Moles", "Whole 30 #1"]
     ),
     cookbook_page: Field::Number,
     directions: Field::Text,
