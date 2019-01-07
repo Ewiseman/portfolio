@@ -9,11 +9,10 @@ $(document).ready(function() {
 
   var format = d3.time.format("%Y-%m-%d");
 
-  var
-      width = $("#scrum-area").width()-10,
+  var width = $("#scrum-area").width()-10,
       height = ($("#scrum-area").width()*.40);
 
-  var wrapper = d3.select("#scrum-area")
+  var svg = d3.select("#scrum-area")
       .attr("style", "padding-bottom: " + Math.ceil(height * 100 / width) + "%")
       .append("svg")
       .attr("viewBox", "-20 40 " + width + " " + height)
@@ -90,17 +89,17 @@ $(document).ready(function() {
     x.domain(d3.extent(data, function(d) { return d.date; }));
     y.domain([0, d3.max(data, function(d) { return d.y0 + d.y + 4; })]);
 
-    wrapper.append("g")
+    svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis);
 
-    wrapper.append("g")
+    svg.append("g")
       .attr("class", "y axis")
       .call(yAxis);
 
     // Area Chart Layers //
-    wrapper.selectAll(".layer")
+    svg.selectAll(".layer")
       .data(layers)
       .enter().append("path")
       .attr("class", "layer")
@@ -110,7 +109,7 @@ $(document).ready(function() {
       .style("opacity", 0.7)
 
       .on("mouseover", function(d, i) {
-        wrapper.selectAll(".layer")
+        svg.selectAll(".layer")
         .style("cursor", "pointer")
           tooltip.html("<b>"+d.key+"</b>" + "<br/>")
           .style("opacity", 1)
@@ -119,13 +118,13 @@ $(document).ready(function() {
       })
 
       .on("click", function(d, i) {
-        wrapper.selectAll(".layer")
+        svg.selectAll(".layer")
         .transition()
         .duration(2000)
         .attr("d", function(d) { return area_two(d.values); })
       });
 
-      wrapper.selectAll(".layer")
+      svg.selectAll(".layer")
         .transition()
         .duration(1500)
         .attr("d", function(d) { return area(d.values); })

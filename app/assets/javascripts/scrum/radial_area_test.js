@@ -51,9 +51,10 @@ $(document).ready(function() {
       .innerRadius(innerRadius)
       .outerRadius(function(d) { return radius(d.y); });
 
-  var svg = d3.select("#radial-area-test").append("svg")
-      .attr("width", width)
-      .attr("height", height)
+  var svg = d3.select("#radial-area-test")
+      .attr("style", "padding-bottom: " + Math.ceil(height * 100 / width) + "%")
+      .append("svg")
+      .attr("viewBox", "0 0 " + width + " " + height)
       .append("g")
       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 

@@ -9,9 +9,16 @@ $(document).ready(function() {
       formatDay = function(d) { return formatDate(new Date(2007, d, 0)); };
 
   var width = $("#radial-area").width()-10,
-      height = $("#radial-area").width()*.7,
+      height = $("#radial-area").width()*.6,
       outerRadius = height / 2 - 10,
       innerRadius = $("#radial-area").width()*.20;
+
+  var svg = d3.select("#radial-area")
+      .attr("style", "padding-bottom: " + Math.ceil(height * 100 / width) + "%")
+      .append("svg")
+      .attr("viewBox", "0 0 " + width + " " + height)
+      .append("g")
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
   var angle = d3.time.scale()
       .range([0, 2 * Math.PI]);
@@ -48,11 +55,11 @@ $(document).ready(function() {
       .innerRadius(innerRadius)
       .outerRadius(function(d) { return radius(d.y); });
 
-  var svg = d3.select("#radial-area").append("svg")
-      .attr("width", width)
-      .attr("height", height)
-      .append("g")
-      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+  // var svg = d3.select("#radial-area").append("svg")
+  //     .attr("width", width)
+  //     .attr("height", height)
+  //     .append("g")
+  //     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
   d3.csv("/scrum_maps.csv", type, function(error, data) {
     if (error) throw error;
