@@ -48,8 +48,13 @@ $(document).ready(function() {
   var area_two = d3.svg.area.radial()
       .interpolate("cardinal-closed")
       .angle(function(d) { return angle(d.date); })
-      .innerRadius(innerRadius)
-      .outerRadius(function(d) { return radius(d.y); });
+      .innerRadius(function(d, i) { return radius(d.y); })
+      // .outerRadius(function(d, i) { return radius(d.y) + 15; })
+      .outerRadius(function(d) {
+          if (d.value < 100) {return radius(d.y) }
+          else  { return radius(d.y) + d.value/15 }
+      ;});
+
 
   var svg = d3.select("#radial-area-test")
       .attr("style", "padding-bottom: " + Math.ceil(height * 100 / width) + "%")
@@ -65,17 +70,17 @@ $(document).ready(function() {
 
     // Extend the domain slightly to match the range of [0, 2π].
     angle.domain([0, d3.max(data, function(d) { return d.date; })]);
-    radius.domain([0, d3.max(data, function(d) { return d.y0 + d.y; })]);
+    radius.domain([0, d3.max(data, function(d) { return d.y; })]);
 
-    svg.selectAll(".layer")
-        .data(layers)
-      .enter().append("path")
-        .attr("class", "layer")
-        .attr("d", function(d) { return area(d.values); })
-        .style("fill", function(d, i) { return z(i); })
-          .style("opacity", 0.5)
-        .style("stroke", "#8FBC8F")
-        .attr("stroke-opacity", 0.5)
+    // svg.selectAll(".layer")
+    //     .data(layers)
+    //   .enter().append("path")
+    //     .attr("class", "layer")
+    //     .attr("d", function(d) { return area(d.values); })
+    //     .style("fill", function(d, i) { return z(i); })
+    //       .style("opacity", 0.5)
+    //     .style("stroke", "#8FBC8F")
+    //     .attr("stroke-opacity", 0.5)
 
 
     svg.selectAll(".layer-two")
@@ -83,10 +88,9 @@ $(document).ready(function() {
       .enter().append("path")
         .attr("class", "layer-two")
         .attr("d", function(d) { return area_two(d.values); })
+        .style("fill", function(d, i) { return zLine(i); })
         .style("stroke", function(d, i) { return zLine(i); })
-        .style("stroke-width", 2)
-        .style("fill", 'none')
-        .style("opacity", 1)
+        .style("opacity", 0.7)
 
 
     svg.selectAll(".axis")

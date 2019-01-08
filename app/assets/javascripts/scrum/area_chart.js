@@ -59,8 +59,11 @@ $(document).ready(function() {
   var area_two = d3.svg.area()
       .interpolate("basis")
       .x(function(d) { return x(d.date); })
-      .y0(height)
-      .y1(function(d) { return y(d.y); })
+      .y0(function(d, i) { return y(d.y); })
+      .y1(function(d) {
+          if (d.value < 100) {return y(d.y) }
+          else  { return y(d.y) + d.value/15 }
+      ;});
 
   var area_zero = d3.svg.area()
       .interpolate("basis")
