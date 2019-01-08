@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get '/scrum/area_chart' => 'scrum#area_chart'
   get '/scrum/radial_column' => 'scrum#radial_column'
   get '/scrum/radial_area' => 'scrum#radial_area'
+  get '/scrum/scrolly_telling' => 'scrum#scrolly_telling'
   #GDP
   get '/gdp/area_tool' => 'gdp#area_tool'
   get '/gdp/radial_bubble' => 'gdp#radial_bubble'

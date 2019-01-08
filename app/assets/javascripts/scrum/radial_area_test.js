@@ -46,7 +46,7 @@ $(document).ready(function() {
       .outerRadius(function(d) { return radius(d.y0 + d.y); });
 
   var area_two = d3.svg.area.radial()
-      .interpolate("cardinal-closed")
+      .interpolate("basis-closed")
       .angle(function(d) { return angle(d.date); })
       .innerRadius(function(d, i) { return radius(d.y); })
       // .outerRadius(function(d, i) { return radius(d.y) + 15; })
