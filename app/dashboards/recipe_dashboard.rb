@@ -13,7 +13,7 @@ class RecipeDashboard < Administrate::BaseDashboard
     measurements: Field::HasMany,
     name: Field::String,
     protein: Field::Select.with_options(
-      collection: ["", "Bison", "Chicken", "Eggs", "Ground Beef", "Salmon", "Cod", "Halibut", "Steak"]
+      collection: ["", "Bison", "Chicken", "Pork", "Turkey", "Eggs", "Ground Beef", "Salmon", "Cod", "Halibut", "Steak"]
     ),
     cookbook: Field::Select.with_options(
       collection: ["", "My Recipe", "True Food", "Straight From the Earth", "Salsas & Moles", "Whole 30 #1", "Whole 30 Slow Cooker", "Candida Cure"]
