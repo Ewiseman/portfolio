@@ -10,7 +10,7 @@ $(document).ready(function() {
   var format = d3.time.format("%Y-%m-%d");
 
   var width = $("#scrum-area").width()-10,
-      height = ($("#scrum-area").width()*.40 +90);
+      height = ($("#scrum-area").width()*.30 +90);
 
   var svg = d3.select("#scrum-area")
       .attr("style", "padding-bottom: " + Math.ceil(height * 10 / width) + "%")
