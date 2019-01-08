@@ -10,12 +10,12 @@ $(document).ready(function() {
   var format = d3.time.format("%Y-%m-%d");
 
   var width = $("#scrum-area").width()-10,
-      height = ($("#scrum-area").width()*.40);
+      height = ($("#scrum-area").width()*.40 +90);
 
   var svg = d3.select("#scrum-area")
-      .attr("style", "padding-bottom: " + Math.ceil(height * 100 / width) + "%")
+      .attr("style", "padding-bottom: " + Math.ceil(height * 10 / width) + "%")
       .append("svg")
-      .attr("viewBox", "-20 40 " + width + " " + height)
+      .attr("viewBox", "-20 20 " + width + " " + (height))
       .append("g")
       // .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 

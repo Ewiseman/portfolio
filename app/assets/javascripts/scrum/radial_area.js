@@ -9,7 +9,7 @@ $(document).ready(function() {
       formatDay = function(d) { return formatDate(new Date(2007, d, 0)); };
 
   var width = $("#radial-area").width()-10,
-      height = $("#radial-area").width()*.6,
+      height = $("#radial-area").width()*.7,
       outerRadius = height / 2 - 10,
       innerRadius = $("#radial-area").width()*.20;
 
