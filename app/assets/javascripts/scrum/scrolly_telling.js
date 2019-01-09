@@ -1,187 +1,186 @@
-$(document).ready(function() {
-
-  var loadVisualization = $("#graph").length > 0;
-  if (!loadVisualization) {
-    return;
-  }
-
-  //////////// *** VARIABLES *** ////////////
-
-  var format = d3.time.format("%Y-%m-%d");
-
-  var width = $("#graph").width()-10,
-      height = ($("#graph").width()*.30 +90);
-
-  var svg = d3.select("#graph")
-      .attr("style", "padding-bottom: " + Math.ceil(height * 10 / width) + "%")
-      .append("svg")
-      .attr("viewBox", "-20 20 " + width + " " + (height))
-      .append("g")
-      // .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-  var x = d3.time.scale()
-      .range([0, width]);
-
-  var y = d3.scale.linear()
-      .range([height, 0]);
-
-  var z = d3.scale.ordinal()
-      .range(["#8FBC8F", "#ff8c00", "#98abc5", "#7b6888", "#CD5C5C", "#87e5da", "#c7f2e3", "#f7aa00", "#db2d43"]);
-
-  var xAxis = d3.svg.axis()
-      .scale(x)
-      .orient("bottom")
-      .ticks(d3.time.years)
-      .tickSize(0)
-      .tickFormat(d3.time.format("%Y"));
-
-  var yAxis = d3.svg.axis()
-      .scale(y)
-      .tickSize(0)
-      .ticks(5)
-      .orient("left");
-
-  var stack = d3.layout.stack()
-      .offset("top")
-      .values(function(d) { return d.values; })
-      .x(function(d) { return d.date; })
-      .y(function(d) { return d.value; });
-
-  var nest = d3.nest()
-      .key(function(d) { return d.key; });
-
-  var area = d3.svg.area()
-      .interpolate("basis")
-      .x(function(d) { return x(d.date); })
-      .y0(function(d) { return y(d.y0); })
-      .y1(function(d) { return y(d.y0 + d.y); })
-
-  var area_two = d3.svg.area()
-      .interpolate("basis")
-      .x(function(d) { return x(d.date); })
-      .y0(function(d, i) { return y(d.y); })
-      .y1(function(d) {
-          if (d.value < 100) {return y(d.y) }
-          else  { return y(d.y) + d.value/15 }
-      ;});
-
-  var area_zero = d3.svg.area()
-      .interpolate("basis")
-      .x(function(d) { return x(d.date); })
-      .y0(height)
-      .y1(height)
-
-  var tooltip = d3.select("body").append("div")
-      .attr("class", "tooltip")
-      .style("opacity", 0);
-
-      d3.graphScroll()
-      .sections(d3.selectAll('#sections > div'))
-      .on('active', function(i){
-        console.log(i + 'th section active') })
-
-      d3.graphScroll()
-        .graph(d3.selectAll('#graph'))
-        .container(d3.select('#container'))
-        .sections(d3.selectAll('#sections > div'))
-        .on('active', function(i){ console.log(i + 'th section active') })
- //////////// *** DATA INTEGRATION *** ////////////
-
-  d3.csv("/scrum_reports.csv", function(error, data) {
-    if (error) throw error;
-
-    data.forEach(function(d) {
-      d.date = format.parse(d.date);
-      d.value = +d.value;
-    });
-
-    var layers = stack(nest.entries(data));
-    console.log(layers)
-
-    x.domain(d3.extent(data, function(d) { return d.date; }));
-    y.domain([0, d3.max(data, function(d) { return d.y0 + d.y + 4; })]);
-
-    svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
-
-    svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis);
-
-    // Area Chart Layers //
-    svg.selectAll(".layer")
-      .data(layers)
-      .enter().append("path")
-      .attr("class", "layer")
-      .attr("d", function(d) { return area_zero(d.values); })
-      .style("fill", function(d, i) { return z(i); })
-      .style("stroke", "#2B2D42")
-      .style("opacity", 0.7)
-
-      .on("mouseover", function(d, i) {
-        svg.selectAll(".layer")
-        .style("cursor", "pointer")
-          tooltip.html("<b>"+d.key+"</b>" + "<br/>")
-          .style("opacity", 1)
-          .style("left", (d3.event.pageX) + "px")
-          .style("top", (d3.event.pageY-28) + "px");
-      })
-
-      .on("click", function(d, i) {
-        svg.selectAll(".layer")
-        .transition()
-        .duration(2000)
-        .attr("d", function(d) { return area_two(d.values); })
-      });
-
-      svg.selectAll(".layer")
-        .transition()
-        .duration(1500)
-        .attr("d", function(d) { return area(d.values); })
-
-
-
-
-    //////////// *** LEGEND *** ////////////
-
-    // z.domain(layers.slice(1));
-    // // Legend Positioning //
-    // var legendRectSize = 18;
-    // var legendSpacing = 4;
-    // var legend = svg.selectAll(".legend")
-    //   .data(layers.slice(-2).reverse())
-    //   .enter().append("g")
-    //   .attr('class', 'legend')
-    //   .attr('transform', function(d, i) {
-    //     var height = legendRectSize + legendSpacing;
-    //     var width = legendRectSize + legendSpacing;
-    //     var widths = $("#area").width()-150;
-    //     var offset = layers.length / 2;
-    //     var horz = 2 * legendRectSize;
-    //     var vert = (i * height)+2 ;
-    //     var lat = i * width ;
-    //     return 'translate(' + widths + ',' + vert + ')';
-    //   });
-    //
-    // // Legend Rectangles //
-    // legend.append('rect')
-    //   .attr('width', legendRectSize)
-    //   .attr('height', legendRectSize)
-    //   .style('fill', function(d, i) { return z(i); })
-    //   .style('stroke', "#2B2D42")
-    //   .style('stroke-width', .5);
-    //
-    // // Legend Text //
-    // legend.append('text')
-    //   .attr('x', legendRectSize + legendSpacing)
-    //   .attr('y', legendRectSize - legendSpacing)
-    //   .text(function(d) { return d.key.toLowerCase().replace(/\b[a-z]/g, function(letter) { return letter.toUpperCase(); });
-    //   });
-
-  });
-
-
-
-});
+// $(document).ready(function() {
+//
+//   //svg
+//   svg = d3.select("#viz");
+//
+//   //svg width and height
+//   svg.attr('width',500)
+//       .attr('height',500)
+//
+//   //set up grid spacing
+//   spacing = 40;
+//   rows = 10;
+//   column = 10;
+//   randnum = (min,max) => Math.round( Math.random() * (max-min) + min );
+//
+//   //Create an array of objects
+//   our_data = d3.range(20).map(i =>
+//   ({ 'device': i < 5 ? 'ios' : 'android',
+//       'city': i < 3 ? 'San Diegan' : 'Out of towners',
+//       'age': randnum(25, 65)
+//   }));
+//
+//   //create group and join our data to that group
+//   group = svg.selectAll('g')
+//     .data(our_data)
+//     .enter()
+//     .append("g")
+//
+//   //create rectangles
+//   rects = group.append("rect")
+//
+//   //city data
+//   d3.selectAll('g')
+//     .append("text")
+//     .text( (d) => d["city"])
+//     .attr("fill", "gray")
+//     .attr("class", "city")
+//     .attr("dx", -500)
+//
+//   //age data
+//   d3.selectAll('g')
+//     .append("text")
+//     .text( (d) => d["age"] )
+//     .attr("fill", "#fff")
+//     .attr("class", "age")
+//     .attr("dx", -500)
+//
+//   // square grid
+//   grid = () =>{
+//     rects
+//       .transition()
+//       .delay((d, i) => 10 * i)
+//       .duration(600)
+//       .ease("elastic")
+//       .attr("width", 20)
+//       .attr("height", 20)
+//       .attr("rx", 5)
+//       .attr("ry", 5)
+//       .attr("x", (d, i) => i % column * spacing)
+//       .attr("y", (d, i) => Math.floor(i / 10) % rows * spacing)
+//       .attr("fill", (d, i) => (i < 40 ? "#394147" : "#99c125"))
+//       .attr("opacity", "1")
+//   }
+//
+//   //circle grid
+//   grid2 = () =>{
+//     rects
+//       .transition()
+//       .delay((d, i) => 10 * i)
+//       .duration(600)
+//       .ease("elastic")
+//       .attr("width", 20)
+//       .attr("height", 20)
+//       .attr("rx", "50%")
+//       .attr("ry", "50%")
+//       .attr("x", (d, i) => i % column * spacing)
+//       .attr("y", (d, i) => Math.floor(i / 10) % rows * spacing)
+//       .attr("fill", (d, i) => (i < 8 ? "none" : "#99c125"))
+//   }
+//
+//   //divide
+//   divide = () =>{
+//     rects
+//       .transition()
+//       .delay((d, i) => 10 * i)
+//       .duration(6000)
+//       .ease("elastic")
+//       .attr("width", 10)
+//       .attr("height", 10)
+//       .attr("rx", 0)
+//       .attr("ry", 0)
+//       .attr("x", (d, i) => d['device'] == "ios" ? randnum(100, 150) :  randnum(300, 350))
+//       .attr("y", (d, i) => i * 20)
+//       .attr("fill", (d, i) => d['device'] == "ios" ? "#394147": "#99c125")
+//       .attr("opacity", (d,i)=> i < 12 ? 1 : 0 )//only show 12 people
+//
+//       //age
+//       d3.selectAll('text.age')
+//         .transition()
+//         .delay( (d,i) => 40*i )
+//         .duration(900)
+//         .ease('elastic')
+//         .attr("dx", -500)
+//
+//
+//       //city
+//       d3.selectAll('text.city')
+//         .transition()
+//         .delay( (d,i) => 40*i )
+//         .duration(900)
+//         .ease('elastic')
+//         .attr("dx", -500)
+//   }
+//
+//   //bar cart
+//   barChart = () => {
+//     rects
+//       .attr("rx", 0 )
+//       .attr("ry", 0 )
+//       .transition()
+//       .delay( (d,i) => 20*i )
+//       .duration(900)
+//       .ease('elastic')//linear, quad, cubic, sin, exp, circle, elastic, back, bounce
+//       .attr("x", (d,i) => 150 )
+//       .attr("y", (d,i) => i * 17 )
+//       .attr("width", (d,i) => d["age"])
+//       .attr("height", (d,i) => 15)
+//       .attr("fill", (d, i) => (i < 3 ? "#99c125" : "#394147"))
+//       .attr("opacity", 1)
+//       .attr("transform", "translate(0,0) rotate(0)")
+//       .attr("opacity", (d,i)=> i < 12 ? 1 : 0 )//only show 12 people
+//
+//
+//     //age text
+//     d3.selectAll('text.age')
+//       .transition()
+//       .delay( (d,i) => 20*i )
+//       .duration(900)
+//       .ease('elastic')
+//       //align text right
+//       .attr("text-anchor", "start")
+//       .attr("dx", 160)
+//       .attr("dy", (d,i)=> (i * 17) + 12)
+//       .attr("opacity", (d,i)=> i < 12 ? 1 : 0 )//nly show 12 people
+//
+//
+//
+//     //city text
+//     d3.selectAll('text.city')
+//       .transition()
+//       .delay( (d,i) => 20*i )
+//       .duration(900)
+//       .ease('elastic')
+//       //align text left
+//       .attr("text-anchor", "end")
+//       .attr("dx", 140)
+//       .attr("dy", (d,i)=> (i * 17) + 12)
+//       .attr("opacity", (d,i)=> i < 12 ? 1 : 0 )//only show 12 people
+//
+//   }
+//
+//   //waypoints scroll constructor
+//   function scroll(n, offset, func1, func2){
+//     return new Waypoint({
+//       element: document.getElementById(n),
+//       handler: function(direction) {
+//          direction == 'down' ? func1() : func2();
+//       },
+//       //start 75% from the top of the div
+//       offset: offset
+//     });
+//   };
+//
+//
+//
+//   //triger these functions on page scroll
+//   new scroll('div2', '75%', grid2, grid);
+//   new scroll('div4', '75%', divide, grid);
+//   new scroll('div6', '75%', barChart, divide);
+//
+//
+//
+//   //start grid on page load
+//   grid();
+//
+// });

@@ -91,6 +91,7 @@ $(document).ready(function() {
 
     x.domain(d3.extent(data, function(d) { return d.date; }));
     y.domain([0, d3.max(data, function(d) { return d.y0 + d.y + 4; })]);
+    
 
     svg.append("g")
       .attr("class", "x axis")
@@ -123,7 +124,9 @@ $(document).ready(function() {
       .on("click", function(d, i) {
         svg.selectAll(".layer")
         .transition()
-        .duration(2000)
+        .duration(4000)
+        .delay((d, i) => 500 * i)
+        .ease("elastic")
         .attr("d", function(d) { return area_two(d.values); })
       });
 

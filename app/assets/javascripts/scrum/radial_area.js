@@ -90,6 +90,9 @@ $(document).ready(function() {
           svg.selectAll(".layer")
           .transition()
           .duration(2000)
+          .transition()
+          .delay((d, i) => 500 * i)
+          .ease("elastic")
           .attr("d", function(d) { return area_two(d.values); })
         });
 

@@ -1,23 +1,45 @@
-#sections {
-  position: relative;
-  display: inline-block;
-  width: 250px;
-  top: 0px;
-  z-index: 90;
-}
 
-.step {
-  margin-bottom: 200px;
+h2{
+  line-height: 1.25;
+  padding-top: 45px;
+  font-weight: 300;
 }
-
-#vis {
-  display: inline-block;
+svg{
+  padding: 20px;
+}
+text{
+  font-size: 10px;
+}
+strong{
+  font-weight: 600;
+}
+#graphic {
+  max-width:  1440px;
+  width: 100%;
+  position:   relative;
+  height:  100%;
+  position:  relative;
+  margin:auto;
+}
+.container-for-me {
+  height: 100%;
+  max-width: 440px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  height: 100%;
+  line-height: 1.5;
+  left: 500px;
+}
+.container-for-me div {
+  height: 100%;
+  display: block;
+  padding: 0 45px;
+}
+.fixed {
   position: fixed;
-  top: 60px;
-  z-index: 1;
-  margin-left: 0;
-
-  height: 600px;
-  width: 600px;
-  background-color: #ddd;
+  max-width: 500px;
+  height: 500px;
+  top: 50px;
 }
