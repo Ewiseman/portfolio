@@ -36,7 +36,7 @@ var yAxis = d3.svg.axis()
     .orient("left");
 
 var stack = d3.layout.stack()
-    .offset("top")
+    .offset("silhoutette")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
     .y(function(d) { return d.value; });
@@ -50,7 +50,13 @@ var area = d3.svg.area()
     .y0(function(d) { return y(d.y0); })
     .y1(function(d) { return y(d.y0 + d.y); })
 
-var area_two = d3.svg.area()
+var lineArea = d3.svg.area()
+    .interpolate("basis")
+    .x(function(d) { return x(d.date); })
+    .y0(function(d, i) { return y(d.y); })
+    .y1(function(d, i) { return y(d.y)+2; });
+
+var dynamicArea = d3.svg.area()
     .interpolate("basis")
     .x(function(d) { return x(d.date); })
     .y0(function(d, i) { return y(d.y); })
@@ -74,6 +80,10 @@ var tooltip = d3.select("body").append("div")
 
 d3.csv("/scrum_reports.csv", function(error, data) {
   if (error) throw error;
+  // data = jQuery.grep(data, function(d, index) {
+  //       var is_viewable = (d.key <= "hea");
+  //       return is_viewable;
+  //     });
 
   data.forEach(function(d) {
     d.date = format.parse(d.date);
@@ -106,12 +116,15 @@ d3.csv("/scrum_reports.csv", function(error, data) {
 
   // Area Chart Layers //
   grid = () =>{
+    x.domain(d3.extent(data, function(d) { return d.date; }));
+    y.domain([0, d3.max(data, function(d) { return d.y0 + d.y + 4; })]);
+
     rects
       .attr("class", "layer")
       .style("fill", function(d, i) { return z(i); })
       .style("stroke", "#2B2D42")
       .style("opacity", 0.7)
-      .attr("d", function(d) { return area_two(d.values); })
+      .attr("d", function(d) { return lineArea(d.values); })
       .style("fill", function(d, i) { return z(i); })
       .style("stroke", "#2B2D42")
       .style("opacity", 0.7)
@@ -123,6 +136,9 @@ d3.csv("/scrum_reports.csv", function(error, data) {
     }
 
   grid2 = () =>{
+    x.domain(d3.extent(data, function(d) { return d.date; }));
+    y.domain([0, d3.max(data, function(d) { return d.y0 + d.y + 4; })]);
+
     rects
       .attr("class", "layer")
       .style("fill", function(d, i) { return z(i); })
@@ -130,7 +146,22 @@ d3.csv("/scrum_reports.csv", function(error, data) {
       .style("opacity", 0.7)
       .transition()
       .duration(1500)
-      .attr("d", function(d) { return area_two(d.values); })
+      .attr("d", function(d) { return lineArea(d.values); })
+    }
+
+  grid3 = () =>{
+
+    x.domain(d3.extent(data, function(d) { return d.date; }));
+    y.domain([0, d3.max(data, function(d) { return d.y + 4; })]);
+
+    rects
+      .attr("class", "layer")
+      .style("fill", function(d, i) { return z(i); })
+      .style("stroke", "#2B2D42")
+      .style("opacity", 0.7)
+      .transition()
+      .duration(1500)
+      .attr("d", function(d) { return dynamicArea(d.values); })
     }
 
 
@@ -191,7 +222,7 @@ d3.csv("/scrum_reports.csv", function(error, data) {
 
   //triger these functions on page scroll
   new scroll('div2', '75%', grid2, grid);
-  // new scroll('div4', '75%', divide, grid);
+  new scroll('div4', '75%', grid3, grid2);
   // new scroll('div6', '75%', barChart, divide);
 
 

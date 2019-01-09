@@ -42,7 +42,7 @@ $(document).ready(function() {
       .orient("left");
 
   var stack = d3.layout.stack()
-      .offset("top")
+      .offset("silhouette")
       .values(function(d) { return d.values; })
       .x(function(d) { return d.date; })
       .y(function(d) { return d.value; });
@@ -91,7 +91,7 @@ $(document).ready(function() {
 
     x.domain(d3.extent(data, function(d) { return d.date; }));
     y.domain([0, d3.max(data, function(d) { return d.y0 + d.y + 4; })]);
-    
+
 
     svg.append("g")
       .attr("class", "x axis")
