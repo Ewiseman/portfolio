@@ -104,7 +104,6 @@ d3.csv("/scrum_reports.csv", function(error, data) {
   //create rectangles
   rects = group.append("path")
 
-
   // Area Chart Layers //
   grid = () =>{
     rects
@@ -119,7 +118,7 @@ d3.csv("/scrum_reports.csv", function(error, data) {
 
     rects
       .transition()
-      .duration(1500)
+      .duration(1000)
       .attr("d", function(d) { return area(d.values); })
     }
 
@@ -130,12 +129,9 @@ d3.csv("/scrum_reports.csv", function(error, data) {
       .style("stroke", "#2B2D42")
       .style("opacity", 0.7)
       .transition()
-      .duration(1000)
-      .delay((d, i) => 500 * i)
+      .duration(1500)
       .attr("d", function(d) { return area_two(d.values); })
     }
-
-    console.log(grid)
 
 
 
