@@ -13,7 +13,7 @@ class IngredientDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     category: Field::Select.with_options(
-      collection: ["", "Produce", "Meat", "Eggs", "Seafood", "Frozen","Dry Good", "Dairy", "Canned Good", "Cooking Oil", "Spice"]
+      collection: ["", "Produce", "Meat", "Eggs", "Seafood", "Frozen", "Dry Good", "Dairy", "Canned Good", "Cooking Oil", "Spice"]
     ),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
