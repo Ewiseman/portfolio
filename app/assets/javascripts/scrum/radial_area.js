@@ -91,7 +91,7 @@ $(document).ready(function() {
           .transition()
           .duration(2000)
           .transition()
-          .delay((d, i) => 500 * i)
+          .delay(function(){return 500 * i} )
           .ease("elastic")
           .attr("d", function(d) { return area_two(d.values); })
         });
