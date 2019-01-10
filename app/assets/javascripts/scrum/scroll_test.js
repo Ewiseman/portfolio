@@ -115,7 +115,7 @@ d3.csv("/scrum_reports.csv", function(error, data) {
   rects = group.append("path")
 
   // Area Chart Layers //
-  grid = () =>{
+  grid = function() {
     x.domain(d3.extent(data, function(d) { return d.date; }));
     y.domain([0, d3.max(data, function(d) { return d.y0 + d.y + 4; })]);
 
@@ -135,7 +135,7 @@ d3.csv("/scrum_reports.csv", function(error, data) {
       .attr("d", function(d) { return area(d.values); })
     }
 
-  grid2 = () =>{
+  grid2 = function() {
     x.domain(d3.extent(data, function(d) { return d.date; }));
     y.domain([0, d3.max(data, function(d) { return d.y0 + d.y + 4; })]);
 
@@ -149,7 +149,7 @@ d3.csv("/scrum_reports.csv", function(error, data) {
       .attr("d", function(d) { return lineArea(d.values); })
     }
 
-  grid3 = () =>{
+  grid3 = function() {
 
     x.domain(d3.extent(data, function(d) { return d.date; }));
     y.domain([0, d3.max(data, function(d) { return d.y + 4; })]);

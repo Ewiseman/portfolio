@@ -42,7 +42,7 @@ $(document).ready(function() {
       .orient("left");
 
   var stack = d3.layout.stack()
-      .offset("silhouette")
+      .offset("zero")
       .values(function(d) { return d.values; })
       .x(function(d) { return d.date; })
       .y(function(d) { return d.value; });
@@ -125,7 +125,7 @@ $(document).ready(function() {
         svg.selectAll(".layer")
         .transition()
         .duration(4000)
-        .delay((d, i) => 500 * i)
+        .delay(function(){return 500 * i} )
         .ease("elastic")
         .attr("d", function(d) { return area_two(d.values); })
       });
