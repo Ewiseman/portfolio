@@ -32,13 +32,13 @@
 		 * Mobile detect
 		/* ---------------------------------------------- */
 
-		var mobileTest;
-
-		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-			mobileTest = true;
-		} else {
-			mobileTest = false;
-		}
+		// var mobileTest;
+		//
+		// if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+		// 	mobileTest = true;
+		// } else {
+		// 	mobileTest = false;
+		// }
 
 		/* ---------------------------------------------- /*
 		 * Header animation

@@ -52,8 +52,17 @@ $(document).ready(function() {
   var area_two = d3.svg.area.radial()
       .interpolate("cardinal-closed")
       .angle(function(d) { return angle(d.date); })
-      .innerRadius(innerRadius)
-      .outerRadius(function(d) { return radius(d.y); });
+      .innerRadius(function(d, i) { return radius(d.y); })
+      // .outerRadius(function(d, i) { return radius(d.y) + 15; })
+      .outerRadius(function(d) {
+          if (d.value < 100) {return radius(d.y) }
+          else  { return radius(d.y) + d.value/20 }
+      ;});
+
+  var tooltip = d3.select("body").append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 0);
+
 
   // var svg = d3.select("#radial-area").append("svg")
   //     .attr("width", width)
@@ -80,26 +89,30 @@ $(document).ready(function() {
         .style("opacity", 0.7)
         .on("mouseover", function(d, i) {
           svg.selectAll(".layer")
-          .style("cursor", "pointer")
+            .style("cursor", "pointer")
             tooltip.html("<b>"+d.key+"</b>" + "<br/>")
             .style("opacity", 1)
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY-28) + "px");
         })
-        .on("click", function(d, i) {
-          svg.selectAll(".layer")
-          .transition()
-          .duration(2000)
-          .transition()
-          .delay(function(){return 500 * i} )
-          .ease("elastic")
-          .attr("d", function(d) { return area_two(d.values); })
-        });
 
-    svg.selectAll(".layer")
-      .transition()
-      .duration(1500)
-      .attr("d", function(d) { return area(d.values); })
+
+        .on("click", function(d, i) {
+          angle.domain([0, d3.max(data, function(d) { return d.date; })]);
+          radius.domain([0, d3.max(data, function(d) { return d.y; })]);
+
+          svg.selectAll(".axis")
+            .transition()
+            .duration(2000)
+            .ease("elastic")
+
+
+          svg.selectAll(".layer")
+              .transition()
+              .duration(2000)
+              .ease("elastic")
+              .attr("d", function(d) { return area_two(d.values); })
+        });
 
     svg.selectAll(".axis")
         .data(d3.range(angle.domain()[1]))
