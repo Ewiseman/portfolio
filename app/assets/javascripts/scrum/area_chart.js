@@ -84,6 +84,7 @@ $(document).ready(function() {
     data.forEach(function(d) {
       d.date = format.parse(d.date);
       d.value = +d.value;
+      console.log(d.date)
     });
 
     var layers = stack(nest.entries(data));
