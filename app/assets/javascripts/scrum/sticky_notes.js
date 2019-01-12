@@ -125,10 +125,10 @@ $(document).ready(function() {
       .style("stroke", "#2B2D42")
       .style("stroke-width", .5);
 
-    grid = () =>{
+    grid = function() {
         rects
           .transition()
-          .delay((d, i) => .5 * i)
+          .delay(function(d, i) { return .5 * i})
           .attr("fill", "#FFFF88")
           .duration(600)
           .attr("width", 5)
@@ -136,18 +136,18 @@ $(document).ready(function() {
           .attr("rx", 0)
           .attr("ry", 0)
           .style("stroke-width", .5)
-          .attr("x", function(d, i) { x_coord = Math.random() * width;
+          .attr("x", function(d, i) { x_coord = Math.random() * width-20;
             return xScale(x_coord); })
-          .attr("y", function(d, i) { y_coord = Math.random() * height*1.5;
+          .attr("y", function(d, i) { y_coord = Math.random() * height*2;
             return yScale(y_coord); })
           .attr("opacity", "1")
       }
 
       //circle grid
-      grid2 = () =>{
+      grid2 = function() {
         rects
           .transition()
-          .delay((d, i) => .4 * i)
+          .delay(function(d, i) { return .5 * i})
           .duration(600)
           .attr("width", 5)
           .attr("height", 5)
@@ -159,11 +159,10 @@ $(document).ready(function() {
           .attr("fill", "#FFFF88")
       }
 
-      grid3 = () =>{
+      grid3 = function() {
         rects
           .transition()
           .duration(2000)
-          .delay((d, i) => .2 * i)
           .attr("width", 5)
           .attr("height", 5)
           .style("stroke-width", .1)
@@ -176,11 +175,10 @@ $(document).ready(function() {
           //   else  { return 0 }   ;});
       }
 
-      grid4 = () =>{
+      grid4 = function() {
         rects
           .transition()
-          .duration(600)
-          .delay((d, i) => .2 * i)
+          .duration(100)
           .attr("width", 5)
           .attr("height", 5)
           .style("stroke-width", 0)
@@ -192,11 +190,10 @@ $(document).ready(function() {
             else  { return 0 }   ;});
       }
 
-      grid5 = () =>{
+      grid5 = function() {
         rects
           .transition()
-          .duration(600)
-          .delay((d, i) => .2 * i)
+          .duration(100)
           .attr("width", 5)
           .attr("height", 5)
           .style("stroke-width", 0)
@@ -208,11 +205,11 @@ $(document).ready(function() {
             else  { return 0 }   ;});
       }
 
-      grid6 = () =>{
+      grid6 = function() {
         rects
           .transition()
-          .duration(600)
-          .delay((d, i) => .2 * i)
+          .duration(100)
+          .duration(100)
           .attr("width", 5)
           .attr("height", 5)
           .style("stroke-width", 0)
