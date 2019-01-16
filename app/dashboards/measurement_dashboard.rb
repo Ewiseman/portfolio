@@ -8,7 +8,7 @@ class MeasurementDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    order: Field::Select.with_options(
+    ingredient_order: Field::Select.with_options(
       collection: ["", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
     ),
     recipe: Field::BelongsTo,
@@ -30,7 +30,7 @@ class MeasurementDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     # :recipe,
-    :order,
+    :ingredient_order,
     :ingredient,
     # :id,
     :unit,
@@ -42,7 +42,7 @@ class MeasurementDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :recipe,
-    :order,
+    :ingredient_order,
     :ingredient,
     :id,
     :unit,
@@ -57,7 +57,7 @@ class MeasurementDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :recipe,
-    :order,
+    :ingredient_order,
     :ingredient,
     :unit,
     :type_of_measurement,
