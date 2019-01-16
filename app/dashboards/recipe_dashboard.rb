@@ -35,6 +35,9 @@ class RecipeDashboard < Administrate::BaseDashboard
     dairy_free: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    rank: Field::Select.with_options(
+      collection: ["", 1, 2, 3, 4, 5]
+    ),
   }.freeze
 
 
@@ -53,6 +56,7 @@ class RecipeDashboard < Administrate::BaseDashboard
     :protein,
     :cusine_region,
     :type_of_food,
+    :rank,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -60,6 +64,7 @@ class RecipeDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     # :id,
     :name,
+    :rank,
     :on_the_menu,
     :multiplier,
     :protein,
@@ -82,6 +87,7 @@ class RecipeDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :rank,
     :on_the_menu,
     :multiplier,
     :protein,
