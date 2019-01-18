@@ -1,9 +1,8 @@
 class MeasurementsController < ApplicationController
 
   def show
-    @measurement = Measurement.find(params[:id])
-    @recipe_ingredients = @measurement.recipe.ingredients
-    @measurement_ingredients = @measurement.recipe.measurements
+    @recipe = Recipe.find(params[:id])
+    @measurement_ingredients = @recipe.measurements
     render layout: 'no_navbar'
   end
 

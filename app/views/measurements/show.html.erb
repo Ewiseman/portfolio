@@ -1,11 +1,11 @@
 <div class="container avoid-menu">
-  <h2><%= @measurement.recipe.name %></h2>
+  <h2><%= @recipe.name %></h2>
   <div class="col-lg-6 col-md-6">
-    <p class="recipe-directions"><%= @measurement.recipe.directions %></p>
+    <p class="recipe-directions"><%= @recipe.directions %></p>
   </div>
   <div class="col-lg-6 col-md-6">
-    <% @measurement_ingredients.each do | x | %>
-      <p class="recipe-ingredients"><%= x.ingredient.name %> x <%= "%gx" % x.unit %> <%= x.type_of_measurement %></p>
+    <% @measurement_ingredients.each do | y | %>
+      <p class="recipe-ingredients"><%= y.ingredient.name %> x <%= "%g" % y.unit %> <%= y.type_of_measurement %></p>
     <% end %>
   </div>
 </div>
