@@ -16,8 +16,6 @@ Rails.application.routes.draw do
   resources :recipes, only: [:index]
 
 
-
-
   root to: 'welcome#home'
 
   get "welcome/download_pdf"
@@ -31,5 +29,6 @@ Rails.application.routes.draw do
   get '/gdp/area_tool' => 'gdp#area_tool'
   get '/gdp/radial_bubble' => 'gdp#radial_bubble'
 
-resource :grocery_lists, only: :show, :defaults => { :format => 'csv' }
+  resource :grocery_lists, only: :show, :defaults => { :format => 'csv' }
+  resources :measurements, only: [:show], path: "recipes"
 end

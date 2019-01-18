@@ -1,25 +1,14 @@
 <div class="container avoid-menu">
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
   <div class="col-lg-12 col-md-12">
     <% @recipes.each do |recipe| %>
-      <h5><%= recipe.name %><%= recipe.multiplier_view %></h5>
+      <%= link_to measurement_path(recipe) do %>
+        <h5><%= recipe.name %><%= recipe.multiplier_view %></h5>
+      <% end %>
     <% end %>
   </div>
 
   <div class="col-lg-12 col-md-12">
       <br>
     <%= link_to "Grocery List", grocery_lists_path(format: 'csv'), class: "btn btn-lg btn-gray" %>
-  </div>
-
-  <div class="row">
-    <div class="img-responsive section-box-big introduction center-block">
-    <div class="center-block" id="radial-area"></div>
   </div>
 </div>
