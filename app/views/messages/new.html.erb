@@ -1,0 +1,24 @@
+<%= form_for @message, url: contact_path do |message_form| %>
+  <fieldset>
+    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+      <label class="sr-only" for="cname">Your name</label>
+      <%= message_form.text_field :name, class: "form-control", placeholder: "Your Name", minlength: "2" %>
+    </div>
+
+    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+      <label class="sr-only" >Email address</label>
+      <%= message_form.email_field :email, class: "form-control", placeholder: "Your Email", minlength: "2" %>
+    </div>
+
+    <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+      <label class="sr-only" for="cmessage">Your message</label>
+      <%= message_form.text_area :content, class: "form-control", placeholder: "Your Message", minlength: "2", rows: "12"%>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+      <%= message_form.submit "Send", class: "btn btn-block btn-cta btn-cta-primary" %>
+    </div>
+  </fieldset>
+<% end %>

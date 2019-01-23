@@ -29,6 +29,9 @@ Rails.application.routes.draw do
   #GDP
   get '/gdp/area_tool' => 'gdp#area_tool'
   get '/gdp/radial_bubble' => 'gdp#radial_bubble'
+  #Contact Form
+  get 'welcome', to: 'messages#new', as: 'welcome'
+  post 'welcome', to: 'messages#create'
 
   resource :grocery_lists, only: :show, :defaults => { :format => 'csv' }
   resources :measurements, only: [:show], path: "recipes"

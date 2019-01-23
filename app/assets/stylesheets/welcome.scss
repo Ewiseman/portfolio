@@ -48,6 +48,10 @@ iframe {
     border: 0;
 }
 
+.wrapper {
+  padding-bottom: 0px !important;
+}
+
 .disable-hover {
     pointer-events: none;
 }
@@ -528,6 +532,7 @@ select.form-control-sm:not([size]):not([multiple]) {
     height: 450%;
     width: 120%;
     transition: all .4s linear;
+      color: #fff !important;
 }
 
 .btn:focus,
@@ -542,6 +547,7 @@ select.form-control-sm:not([size]):not([multiple]) {
 
 button {
     cursor: pointer;
+
 }
 
 /*------------------------------------------------------------------
@@ -586,6 +592,10 @@ button {
 
 .btn.btn-gray {
     background: #4c4c4c;
+    color: #fff;
+}
+
+a.btn.btn-gray:hover {
     color: #fff;
 }
 
@@ -1644,6 +1654,7 @@ button {
 
 .timeline > li > .timeline-panel .timeline-preview img {
     width: 100%;
+    height: 260px;
 }
 
 .timeline > li > .timeline-panel .timeline-body {
@@ -3663,6 +3674,10 @@ a[rel~="gallery"]:hover {
     border: 0;
 }
 
+.align-items-center {
+  text-align: center;
+}
+
 .twitter-feed-widget ul > li:last-child {
     padding: 0;
     margin: 0;
@@ -3779,7 +3794,9 @@ a[rel~="gallery"]:hover {
     bottom: 0;
     left: 0;
     background: #000;
-    padding: 10px 0;
+    padding: 20px 0;
+    height: 120px !important;
+    margin-bottom: -60px;
 }
 
 .footer a:hover,
