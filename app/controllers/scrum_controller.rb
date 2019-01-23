@@ -16,4 +16,8 @@ class ScrumController < ApplicationController
     render layout: 'no_navbar'
   end
 
+  def vertical_stream
+    render layout: 'no_navbar'
+  end
+
 end

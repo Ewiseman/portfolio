@@ -1124,12 +1124,6 @@ button {
     width: 100%;
 }
 
-#home {
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), asset-url('banner_images/radial_bubble_2.png')no-repeat center center;
-	// background: linear-gradient(to right, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), asset-url('projects/radial_bubble_cy.png')no-repeat center center;
-	background-size: cover;
-  height: 70vh;
-}
 
 .image-slider.owl-carousel .owl-prev,
 .image-slider.owl-carousel .owl-next {
@@ -3825,7 +3819,7 @@ a[rel~="gallery"]:hover {
 .bg-dark,
 .bg-gradient,
 .module-dark {
-    color: #828282;
+    color: #f7f7f7;
 }
 
 .bg-dark a:not(.btn),

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get "welcome/download_pdf"
   #Scrum
   get '/scrum/area_chart' => 'scrum#area_chart'
+  get '/scrum/vertical_stream' => 'scrum#vertical_stream'
   get '/scrum/radial_column' => 'scrum#radial_column'
   get '/scrum/radial_area' => 'scrum#radial_area'
   get '/scrum/scrolly_telling' => 'scrum#scrolly_telling'
