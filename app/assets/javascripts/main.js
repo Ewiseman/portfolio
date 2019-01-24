@@ -28,4 +28,19 @@ $(document).ready(function () {
   $('[data-toggle="offcanvas"]').click(function () {
         $('#wrapper').toggleClass('toggled');
   });
+
 });
+// Parallex Scrolling Header Fade //
+  $(window).on('load scroll', function () {
+    var scrolled = $(this).scrollTop();
+    $('.home-intro').css({
+      'transform': 'translate3d(0, ' + -(scrolled * .0) + 'px, 0)', // parallax (40% scroll rate)
+      'opacity': 1 - scrolled / 550 // fade out at 600px from top
+    });
+    $('.parallax').css({
+      'transform': 'translate3d(0, ' + -(scrolled * .15) + 'px, 0)', // parallax (40% scroll rate)
+    });
+
+
+
+  });
