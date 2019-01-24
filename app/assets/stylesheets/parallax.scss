@@ -1,15 +1,11 @@
 .parallax {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.0)), asset-url('banner_images/orizaba.jpg')!important;
+
   font-family: 'Rubik' !important;
+
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0)), asset-url('banner_images/radial-bubble-4.png')no-repeat center center;
+  background-size: cover;
+  padding: 250px 0 100px 0;
   height: 100vh;
-  padding: 17% 0;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
 }
 
 .parallax,
