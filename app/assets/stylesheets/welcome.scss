@@ -532,7 +532,7 @@ select.form-control-sm:not([size]):not([multiple]) {
     height: 450%;
     width: 120%;
     transition: all .4s linear;
-      color: #fff !important;
+
 }
 
 .btn:focus,
@@ -2703,6 +2703,10 @@ a.btn.btn-gray:hover {
 .module-sm {
     background-color: #fff;
     padding: 120px 0 100px;
+}
+
+.module.profile {
+    padding: 20px 0 100px;
 }
 
 .module.module-gray,
