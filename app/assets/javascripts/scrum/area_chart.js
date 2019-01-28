@@ -5,11 +5,22 @@ $(document).ready(function() {
     return;
   }
 
-  var tsvData = null;
+  var margin = {top: 20, right: 60, bottom: 30, left: 20},
+      width = $("#scrum-area").width(),
+      height = ($("#scrum-area").width()*.30);
 
-  var margin = {top: 20, right: 60, bottom: 30, left: 30},
-      width = 500 - margin.left - margin.right,
-      height = 500 - margin.top - margin.bottom;
+  // var svg = d3.select('#scrum-area').append('svg')
+  //     .attr('width', width + margin.left + margin.right)
+  //     .attr('height', height + margin.top + margin.bottom)
+  //     .append('g')
+  //     .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+  var svg = d3.select("#scrum-area")
+      .append("svg")
+      .attr("style", "padding-bottom: " + Math.ceil(height * 10 / width) + "%")
+
+      .attr("viewBox", "-20 -20 " + (width + margin.left + margin.right) + " " + (height + margin.top + margin.bottom))
+      .append("g")
 
   var parseDate = d3.timeParse('%Y');
 
@@ -24,7 +35,8 @@ $(document).ready(function() {
   var y = d3.scaleLinear()
       .range([height, 0]);
 
-  var color = d3.scaleOrdinal(d3.schemeCategory20);
+  var color = d3.scaleOrdinal()
+      .range(["#8FBC8F", "#ff8c00", "#98abc5", "#7b6888", "#CD5C5C", "#87e5da", "#c7f2e3", "#f7aa00", "#db2d43"]);
 
   var xAxis = d3.axisBottom()
       .scale(x);
@@ -36,24 +48,20 @@ $(document).ready(function() {
   var area = d3.area()
       .x(function(d) { return x(d.data.date); })
       .y0(function(d) { return y(d[0]); })
-      .y1(function(d) { return y(d[1]); });
+      .y1(function(d) { return y(d[1]); })
+      .curve(d3.curveBasis);
 
   var stack = d3.stack()
 
-  var svg = d3.select('#scrum-area').append('svg')
-      .attr('width', width + margin.left + margin.right)
-      .attr('height', height + margin.top + margin.bottom)
-    .append('g')
-      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
 
   d3.csv("/gdp/data.csv").then(function(data) {
-    color.domain(d3.keys(data[0]).filter(function(key) { return key !== 'date'; }));
+
     var keys = data.columns.filter(function(key) { return key !== 'date'; })
+
     data.forEach(function(d) {
       d.date = parseDate(d.date);
     });
-    tsvData = (function(){ return data; })();
-
 
     var maxDateVal = d3.max(data, function(d){
       var vals = d3.keys(d).map(function(key){ return key !== 'date' ? d[key] : 0 });
@@ -64,27 +72,26 @@ $(document).ready(function() {
     x.domain(d3.extent(data, function(d) { return d.date; }));
     y.domain([0, maxDateVal])
 
-    stack.keys(keys);
+    layers = stack.keys(keys);
 
-    stack.order(d3.stackOrderNone);
-    stack.offset(d3.stackOffsetNone);
+    layers.order(d3.stackOrderNone);
+    layers.offset(d3.stackOffsetNone);
 
     console.log(stack(data));
 
-    var browser = svg.selectAll('.browser')
+    var layer = svg.selectAll('.layer')
         .data(stack(data))
-      .enter().append('g')
-        .attr('class', function(d){ return 'browser ' + d.key; })
-        .attr('fill-opacity', 0.5);
+        .enter().append('g')
 
-    browser.append('path')
+    layer.append('path')
         .attr('class', 'area')
         .attr('d', area)
-        .style('fill', function(d) { return color(d.key); });
+        .style("fill", function(d, i) { return color(i); })
+        .attr('fill-opacity', 0.5);
 
-    browser.append('text')
+    layer.append('text')
         .datum(function(d) { return d; })
-        .attr('transform', function(d) { return 'translate(' + x(data[13].date) + ',' + y(d[13][1]) + ')'; })
+        .attr('transform', function(d, i) { return 'translate(' + x(data[13].date) + ',' + y(d[13][1]) + ')'; })
         .attr('x', -6)
         .attr('dy', '.35em')
         .style("text-anchor", "start")
