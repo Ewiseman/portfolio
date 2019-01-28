@@ -15,7 +15,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
-//= require d3
+//= require d3v3
+//= require d3v5
 //= require main
 
 //= require_tree .

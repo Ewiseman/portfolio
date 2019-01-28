@@ -97,8 +97,6 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.4)
     crass (1.0.4)
-    d3-rails (5.7.0)
-      railties (>= 3.1)
     datetime_picker_rails (0.0.7)
       momentjs-rails (>= 2.8.1)
     debug_inspector (0.0.3)
@@ -292,7 +290,6 @@ DEPENDENCIES
   capybara (>= 2.15, < 4.0)
   chromedriver-helper
   coffee-rails (~> 4.2)
-  d3-rails (~> 5.7.0)
   dotenv-rails
   figaro
   font-awesome-sass

@@ -5,19 +5,18 @@ $(document).ready(function() {
     return;
   }
 
-  //////////// *** VARIABLES *** ////////////
+  var tsvData = null;
 
-  var format = d3.timeParse("%Y-%m-%d");
+  var margin = {top: 20, right: 60, bottom: 30, left: 30},
+      width = 500 - margin.left - margin.right,
+      height = 500 - margin.top - margin.bottom;
 
-  var width = $("#scrum-area").width()-10,
-      height = ($("#scrum-area").width()*.30 +90);
+  var parseDate = d3.timeParse('%Y');
 
-  var svg = d3.select("#scrum-area")
-      .attr("style", "padding-bottom: " + Math.ceil(height * 10 / width) + "%")
-      .append("svg")
-      .attr("viewBox", "-20 20 " + width + " " + (height))
-      .append("g")
-      // .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  var formatSi = d3.format(".3s");
+
+  var formatNumber = d3.format(".1f"),
+      formatBillion = function(x) { return formatNumber(x / 1e9); };
 
   var x = d3.scaleTime()
       .range([0, width]);
@@ -25,89 +24,87 @@ $(document).ready(function() {
   var y = d3.scaleLinear()
       .range([height, 0]);
 
-  var z = d3.scaleOrdinal()
-      .range(["#8FBC8F", "#ff8c00", "#98abc5", "#7b6888", "#CD5C5C", "#87e5da", "#c7f2e3", "#f7aa00", "#db2d43"]);
+  var color = d3.scaleOrdinal(d3.schemeCategory20);
+
+  var xAxis = d3.axisBottom()
+      .scale(x);
+
+  var yAxis = d3.axisLeft()
+      .scale(y)
+      .tickFormat(formatBillion);
+
+  var area = d3.area()
+      .x(function(d) { return x(d.data.date); })
+      .y0(function(d) { return y(d[0]); })
+      .y1(function(d) { return y(d[1]); });
 
   var stack = d3.stack()
 
-  var nest = d3.nest()
-      .key(function(d) { return d.key; });
+  var svg = d3.select('#scrum-area').append('svg')
+      .attr('width', width + margin.left + margin.right)
+      .attr('height', height + margin.top + margin.bottom)
+    .append('g')
+      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
-  var area = d3.area()
-      .curve(d3.curveStep)
-      .x(function(d) { return x(d.date); })
-      .y0(function(d) { return y(d[0]); })
-      .y1(function(d) { return y(d[0] + d[1]); })
-
-  var area_two = d3.area()
-      .curve(d3.curveStep)
-      .x(function(d) { return x(d.date); })
-      .y0(function(d, i) { return y(d.y); })
-      .y1(function(d) {
-          if (d.value < 100) {return y(d.y) }
-          else  { return y(d.y) + d.value/15 }
-      ;});
-
-  var area_zero = d3.area()
-      .x(function(d) { return x(d.date); })
-      .y0(height)
-      .y1(height);
-
-  var tooltip = d3.select("body").append("div")
-      .attr("class", "tooltip")
-      .style("opacity", 0);
-
-
- //////////// *** DATA INTEGRATION *** ////////////
-
-
-  d3.csv("/scrum_reports.csv").then(function(data) {
-    var keys = data.columns.filter(function(key) { return key !== 'key'; })
-    console.log(data);
-
+  d3.csv("/gdp/data.csv").then(function(data) {
+    color.domain(d3.keys(data[0]).filter(function(key) { return key !== 'date'; }));
+    var keys = data.columns.filter(function(key) { return key !== 'date'; })
     data.forEach(function(d) {
-      d.date = format(d.date);
-      d.value = +d.value;
+      d.date = parseDate(d.date);
+    });
+    tsvData = (function(){ return data; })();
 
+
+    var maxDateVal = d3.max(data, function(d){
+      var vals = d3.keys(d).map(function(key){ return key !== 'date' ? d[key] : 0 });
+      return d3.sum(vals);
     });
 
-    var layers = stack(data);
-
-    stack.offset(d3.stackOffsetNone);
+    // Set domains for axes
+    x.domain(d3.extent(data, function(d) { return d.date; }));
+    y.domain([0, maxDateVal])
 
     stack.keys(keys);
 
-  stack.order(d3.stackOrderNone);
-  stack.offset(d3.stackOffsetNone);
+    stack.order(d3.stackOrderNone);
+    stack.offset(d3.stackOffsetNone);
 
+    console.log(stack(data));
 
-    x.domain(d3.extent(data, function(d) { return d.date; }));
-    y.domain([0, d3.max(data, function(d) { return d.y0 + d.y + 4; })]);
+    var browser = svg.selectAll('.browser')
+        .data(stack(data))
+      .enter().append('g')
+        .attr('class', function(d){ return 'browser ' + d.key; })
+        .attr('fill-opacity', 0.5);
 
-    svg.append("g")
-      .attr("class", "axis axis--x")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x).ticks(10, "%Y"));
+    browser.append('path')
+        .attr('class', 'area')
+        .attr('d', area)
+        .style('fill', function(d) { return color(d.key); });
 
-    svg.append("g")
-      .attr("class", "axis axis--y")
-      .call(d3.axisLeft(y).ticks(10))
-      .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", "0.71em")
-      .attr("text-anchor", "end")
-      .text("Frequency");
+    browser.append('text')
+        .datum(function(d) { return d; })
+        .attr('transform', function(d) { return 'translate(' + x(data[13].date) + ',' + y(d[13][1]) + ')'; })
+        .attr('x', -6)
+        .attr('dy', '.35em')
+        .style("text-anchor", "start")
+        .text(function(d) { return d.key; })
+        .attr('fill-opacity', 1);
 
-    // Area Chart Layers //
-    svg.selectAll(".layer")
-      .data(layers)
-      .enter().append("path")
-      .attr("class", "layer")
-      .attr("d", function(d) { return area(d.values); })
-      .style("fill", function(d, i) { return z(i); })
-      .style("stroke", "#2B2D42")
-      .style("opacity", 0.7);
+    svg.append('g')
+        .attr('class', 'x axis')
+        .attr('transform', 'translate(0,' + height + ')')
+        .call(xAxis);
+
+    svg.append('g')
+        .attr('class', 'y axis')
+        .call(yAxis);
+
+    svg.append ("text")
+      .attr("x", 0-margin.left)
+      .text("Billions of liters")
+
 
   });
+
 });

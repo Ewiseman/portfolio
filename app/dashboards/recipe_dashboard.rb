@@ -16,7 +16,7 @@ class RecipeDashboard < Administrate::BaseDashboard
       collection: ["", "Bison", "Chicken", "Pork", "Turkey", "Eggs", "Ground Beef", "Salmon", "Cod", "Halibut", "Steak"]
     ),
     cookbook: Field::Select.with_options(
-      collection: ["", "My Recipe", "True Food", "Straight From the Earth", "Salsas & Moles", "Whole 30 #1", "Whole 30 Slow Cooker", "Candida Cure"]
+      collection: ["", "My Recipe", "True Food", "Straight From the Earth", "Salsas & Moles", "Whole 30 #1", "Whole 30 Slow Cooker", "Candida Cure", "Sunday Soup", "Autoimmune Paleo Cookbook"]
     ),
     cookbook_page: Field::Number,
     directions: Field::Text,

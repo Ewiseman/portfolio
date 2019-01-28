@@ -17,7 +17,6 @@ gem "administrate"
 gem 'dotenv-rails'
 gem "figaro"
 gem 'groupdate'
-gem 'd3-rails', '~> 5.7.0'
 gem 'ionicons-rails'
 
 group :production do
