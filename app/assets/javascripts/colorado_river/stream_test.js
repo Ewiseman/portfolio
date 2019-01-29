@@ -1,58 +1,61 @@
 $(document).ready(function() {
 
-  var loadVisualization = $("#vertical-stream").length > 0;
+  var loadVisualization = $("#stream-test").length > 0;
   if (!loadVisualization) {
     return;
   }
 
   //////////// *** VARIABLES *** ////////////
 
-  var format = d3.time.format("%Y-%m-%d");
+  var format = d3v3.time.format("%Y-%m-%d");
 
-  var width = $("#vertical-stream").width(),
-      height =$("#vertical-stream").width();
+  var width = $("#stream-test").width(),
+      height =1100;
 
-  var svg = d3.select("#vertical-stream")
+  var svg = d3v3.select("#stream-test")
       .attr("style", "padding-bottom: " + Math.ceil(height * 10 / width) + "%")
       .append("svg")
-      .attr("viewBox", "-40 20 " + (width+40) + " " + (height))
+      .attr("viewBox", "-40 20 " + (width) + " " + (height))
       .append("g")
       // .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  var x = d3.time.scale().range([0, width]);
+  var x = d3v3.time.scale().range([0, width]);
 
-  var y = d3.scale.linear().range([height, 0]);
+  var y = d3v3.scale.linear().range([height, 0]);
 
-  var z = d3.scale.ordinal()
+  var z = d3v3.scale.ordinal()
       .range(["#8FBC8F", "#ff8c00", "#98abc5", "#7b6888", "#CD5C5C", "#87e5da", "#c7f2e3", "#f7aa00", "#db2d43"]);
 
-  var xAxis = d3.svg.axis()
+  var xAxis = d3v3.svg.axis()
       .scale(x)
-      .ticks(d3.time.years)
-      .tickFormat(d3.time.format("%Y"))
+      .ticks(d3v3.time.years)
+      .tickFormat(d3v3.time.format("%Y"))
       .orient("left");
 
-  var yAxis = d3.svg.axis()
+  var yAxis = d3v3.svg.axis()
       .scale(y)
       .orient("bottom")
       .ticks(0);
 
-  var stack = d3.layout.stack()
-      .offset("silhouette")
+  var randum = Math.random()
+
+  var stack = d3v3.layout.stack()
+      .offset("wiggle")
       .values(function(d) { return d.values; })
       .x(function(d) { return d.date; })
-      .y(function(d) { return d.value; });
+      .y(function(d) { return d.value + (d.spacer - 0.001)+3; });
 
-  var nest = d3.nest()
+
+  var nest = d3v3.nest()
       .key(function(d) { return d.key; });
 
-  var area = d3.svg.area()
+  var area = d3v3.svg.area()
       .interpolate("basis")
       .y(function(d) { return x(d.date); })
       .x0(function(d) { return y(d.y0); })
-      .x1(function(d) { return y(d.y0 + d.y); });
+      .x1(function(d) { return y(d.y0 + (d.y - d.spacer)); });
 
-  var area_two = d3.svg.area()
+  var area_two = d3v3.svg.area()
       .interpolate("basis")
       .y(function(d) { return x(d.date); })
       .x0(function(d, i) { return y(d.y); })
@@ -61,20 +64,20 @@ $(document).ready(function() {
           else  { return y(d.y) + d.value/15 }
       ;});
 
-  var area_zero = d3.svg.area()
+  var area_zero = d3v3.svg.area()
       .interpolate("basis")
       .y(function(d) { return x(d.date); })
       .x0(height)
       .x1(height)
 
-  var tooltip = d3.select("body").append("div")
+  var tooltip = d3v3.select("body").append("div")
       .attr("class", "tooltip")
       .style("opacity", 0);
 
 
  //////////// *** DATA INTEGRATION *** ////////////
 
-  d3.csv("/scrum_reports.csv", function(error, data) {
+  d3v3.csv("/scrum_spacer_test.csv", function(error, data) {
     if (error) throw error;
 
     data.forEach(function(d) {
@@ -85,11 +88,12 @@ $(document).ready(function() {
     var layers = stack(nest.entries(data));
     console.log(layers)
 
-    x.domain(d3.extent(data, function(d) { return d.date; }));
-    y.domain([0, d3.max(data, function(d) { return d.y0 + d.y + 4; })]);
+    x.domain(d3v3.extent(data, function(d) { return d.date; }));
+    y.domain([0, d3v3.max(data, function(d) { return d.y0 + d.y + 4; })]);
 
-    // y.domain(d3.extent(data, function(d) { return d.date; }));
-    // x.domain([0, d3.max(data, function(d) { return d.y0 + d.y + 4; })]);
+    // y.domain(d3v3.extent(data, function(d) { return d.date; }));
+    // x.domain([0, d3v3.max(data, function(d) { return d.y0 + d.y + 4; })]);
+
 
 
 
@@ -102,9 +106,8 @@ $(document).ready(function() {
       .data(layers)
       .enter().append("path")
       .attr("class", "layer")
-      .attr("d", function(d) { return area_zero(d.values); })
+      .attr("d", function(d) { return area(d.values); })
       .style("fill", function(d, i) { return z(i); })
-      .style("stroke", "#2B2D42")
       .style("opacity", 0.7)
 
       .on("mouseover", function(d, i) {
@@ -112,8 +115,8 @@ $(document).ready(function() {
         .style("cursor", "pointer")
           tooltip.html("<b>"+d.key+"</b>" + "<br/>")
           .style("opacity", 1)
-          .style("left", (d3.event.pageX) + "px")
-          .style("top", (d3.event.pageY-28) + "px");
+          .style("left", (d3v3.event.pageX) + "px")
+          .style("top", (d3v3.event.pageY-28) + "px");
       })
 
       .on("click", function(d, i) {
@@ -124,10 +127,6 @@ $(document).ready(function() {
         .attr("d", function(d) { return area_two(d.values); })
       });
 
-      svg.selectAll(".layer")
-        .transition()
-        .duration(1500)
-        .attr("d", function(d) { return area(d.values); })
 
 
     //////////// *** LEGEND *** ////////////

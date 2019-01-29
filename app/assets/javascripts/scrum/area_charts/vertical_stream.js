@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  var loadVisualization = $("#scrum-area-v3").length > 0;
+  var loadVisualization = $("#vertical-stream").length > 0;
   if (!loadVisualization) {
     return;
   }
@@ -9,40 +9,36 @@ $(document).ready(function() {
 
   var format = d3v3.time.format("%Y-%m-%d");
 
-  var width = $("#scrum-area-v3").width()-10,
-      height = ($("#scrum-area-v3").width()*.30 +90);
+  var width = $("#vertical-stream").width(),
+      height =$("#vertical-stream").width();
 
-  var svg = d3v3.select("#scrum-area-v3")
-      .append("svg")
+  var svg = d3v3.select("#vertical-stream")
       .attr("style", "padding-bottom: " + Math.ceil(height * 10 / width) + "%")
-      .attr("viewBox", "-20 20 " + width + " " + (height))
+      .append("svg")
+      .attr("viewBox", "-40 20 " + (width+40) + " " + (height))
       .append("g")
       // .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  var x = d3v3.time.scale()
-      .range([0, width]);
+  var x = d3v3.time.scale().range([0, width]);
 
-  var y = d3v3.scale.linear()
-      .range([height, 0]);
+  var y = d3v3.scale.linear().range([height, 0]);
 
   var z = d3v3.scale.ordinal()
       .range(["#8FBC8F", "#ff8c00", "#98abc5", "#7b6888", "#CD5C5C", "#87e5da", "#c7f2e3", "#f7aa00", "#db2d43"]);
 
   var xAxis = d3v3.svg.axis()
       .scale(x)
-      .orient("bottom")
       .ticks(d3v3.time.years)
-      .tickSize(0)
-      .tickFormat(d3v3.time.format("%Y"));
+      .tickFormat(d3v3.time.format("%Y"))
+      .orient("left");
 
   var yAxis = d3v3.svg.axis()
       .scale(y)
-      .tickSize(0)
-      .ticks(5)
-      .orient("left");
+      .orient("bottom")
+      .ticks(0);
 
   var stack = d3v3.layout.stack()
-      .offset("zero")
+      .offset("wiggle")
       .values(function(d) { return d.values; })
       .x(function(d) { return d.date; })
       .y(function(d) { return d.value; });
@@ -52,24 +48,24 @@ $(document).ready(function() {
 
   var area = d3v3.svg.area()
       .interpolate("basis")
-      .x(function(d) { return x(d.date); })
-      .y0(function(d) { return y(d.y0); })
-      .y1(function(d) { return y(d.y0 + d.y); })
+      .y(function(d) { return x(d.date); })
+      .x0(function(d) { return y(d.y0); })
+      .x1(function(d) { return y(d.y0 + d.y); });
 
   var area_two = d3v3.svg.area()
       .interpolate("basis")
-      .x(function(d) { return x(d.date); })
-      .y1(function(d, i) { return y(d.y); })
-      .y0(function(d) {
+      .y(function(d) { return x(d.date); })
+      .x0(function(d, i) { return y(d.y); })
+      .x1(function(d) {
           if (d.value < 100) {return y(d.y) }
           else  { return y(d.y) + d.value/15 }
       ;});
 
   var area_zero = d3v3.svg.area()
       .interpolate("basis")
-      .x(function(d) { return x(d.date); })
-      .y0(height)
-      .y1(height)
+      .y(function(d) { return x(d.date); })
+      .x0(height)
+      .x1(height)
 
   var tooltip = d3v3.select("body").append("div")
       .attr("class", "tooltip")
@@ -87,21 +83,19 @@ $(document).ready(function() {
     });
 
     var layers = stack(nest.entries(data));
-
-
+    console.log(layers)
 
     x.domain(d3v3.extent(data, function(d) { return d.date; }));
     y.domain([0, d3v3.max(data, function(d) { return d.y0 + d.y + 4; })]);
 
+    // y.domain(d3v3.extent(data, function(d) { return d.date; }));
+    // x.domain([0, d3v3.max(data, function(d) { return d.y0 + d.y + 4; })]);
+
+
 
     svg.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
       .call(xAxis);
-
-    svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis);
 
     // Area Chart Layers //
     svg.selectAll(".layer")
@@ -126,6 +120,7 @@ $(document).ready(function() {
         svg.selectAll(".layer")
         .transition()
         .duration(4000)
+        .ease("elastic")
         .attr("d", function(d) { return area_two(d.values); })
       });
 

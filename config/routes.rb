@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   get '/scrum/radial_area' => 'scrum#radial_area'
   get '/scrum/scrolly_telling' => 'scrum#scrolly_telling'
   get '/scrum/sticky_notes' => 'scrum#sticky_notes'
+
+  #Colorado River
+  get '/colorado_river/area_test' => 'colorado_river#area_test'
   #GDP
   get '/gdp/area_tool' => 'gdp#area_tool'
   get '/gdp/radial_bubble' => 'gdp#radial_bubble'

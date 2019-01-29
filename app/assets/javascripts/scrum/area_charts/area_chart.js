@@ -36,6 +36,7 @@ $(document).ready(function() {
 
   var yAxis = d3.axisLeft()
       .scale(y)
+      .ticks(10)
       .tickFormat(formatBillion);
 
   var area = d3.area()
@@ -58,7 +59,7 @@ $(document).ready(function() {
       .y0(height)
       .y1(height)
 
-  var stack = d3.stack()
+    var stack = d3.stack()
 
   var nest = d3.nest()
       .key(function(d) { return d.group; });
@@ -116,29 +117,6 @@ $(document).ready(function() {
       .transition()
       .duration(1500)
       .attr("d", area)
-
-
-
-    // var layer = svg.selectAll('.layer')
-    //     .data(stack(data))
-    //     .enter().append('g')
-    //
-    // layer.append('path')
-    //     .attr('class', 'area')
-    //     .attr('d', areaStep)
-    //     .style("fill", function(d, i) { return color(i); })
-    //     .attr('fill-opacity', 0.5)
-    //
-    //
-
-    // layer.append('text')
-    //     .datum(function(d) { return d; })
-    //     .attr('transform', function(d, i) { return 'translate(' + x(data[13].date) + ',' + y(d[13][1]) + ')'; })
-    //     .attr('x', -6)
-    //     .attr('dy', '.35em')
-    //     .style("text-anchor", "start")
-    //     .text(function(d) { return d.key; })
-    //     .attr('fill-opacity', 1);
 
     svg.append ("text")
       .attr("x", 0-margin.left)
