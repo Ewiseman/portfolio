@@ -6,7 +6,7 @@ $(document).ready(function() {
   }
 
   //////////// *** VARIABLES *** ////////////
-  var format = d3.time.format("%m/%d/%y");
+  var format = d3v3.time.format("%m/%d/%y");
 
   var areaElement = $("#gdp-area-tool");
 
@@ -16,44 +16,44 @@ $(document).ready(function() {
       screen_width = $("#gdp-area-tool").width()-60,
       height = 500 - margin.top - margin.bottom;
 
-  var x = d3.scale.linear()
+  var x = d3v3.scale.linear()
       .range([0, screen_width]);
 
-  var y = d3.scale.linear()
+  var y = d3v3.scale.linear()
       .range([height, 0]);
 
-  var z = d3.scale.ordinal()
+  var z = d3v3.scale.ordinal()
       .range(["#8FBC8F", "#ff8c00", "#98abc5", "#7b6888", "#CD5C5C"]);
 
-  var commasFormatter = d3.format(",.0f")
+  var commasFormatter = d3v3.format(",.0f")
 
-  var xAxis = d3.svg.axis()
+  var xAxis = d3v3.svg.axis()
       .scale(x)
       .orient("bottom")
       .tickSize(1)
       .tickFormat(function(d) { return (d); })
 
-  var yAxis = d3.svg.axis()
+  var yAxis = d3v3.svg.axis()
       .scale(y)
       .tickSize(1)
       .tickFormat(function(d) { return "%" + commasFormatter(d); })
       .orient("left");
 
-  var stack = d3.layout.stack()
+  var stack = d3v3.layout.stack()
       .offset("zero")
       .values(function(d) { return d.values; })
       .x(function(d) { return d.date; })
       .y(function(d) { return d.value; });
 
-  var nest = d3.nest()
+  var nest = d3v3.nest()
       .key(function(d) { return d.country; });
 
   var line_equation =
       function(d) {
-        if(d3.select("#line_area").property("checked")){
+        if(d3v3.select("#line_area").property("checked")){
           if (d.value == 0) { return y(d.y) }
           else { return y(d.y) + line_width }
-        } else if(d3.select("#dynamic_area").property("checked")){
+        } else if(d3v3.select("#dynamic_area").property("checked")){
           return y(d.y / 1.2)
         } else {
           return y(d.y / height)
@@ -64,37 +64,37 @@ $(document).ready(function() {
   ///////////////////////// Define Area Types ///////////////////////////////
   ////////////////////////////////////////////////////////////////////////////
 
-  var valueAreaCardinal = d3.svg.area()
+  var valueAreaCardinal = d3v3.svg.area()
       .interpolate("cardinal")
       .x(function(d) { return x(d.date); })
       .y0(function(d, i) { return y(d.y); })
       .y1(line_equation);
 
-  var valueAreaBasis = d3.svg.area()
+  var valueAreaBasis = d3v3.svg.area()
       .interpolate("basis")
       .x(function(d) { return x(d.date); })
       .y0(function(d, i) { return y(d.y); })
       .y1(line_equation);
 
-  var valueAreaMonotone = d3.svg.area()
+  var valueAreaMonotone = d3v3.svg.area()
       .interpolate("monotone")
       .x(function(d) { return x(d.date); })
       .y0(function(d, i) { return y(d.y); })
       .y1(line_equation);
 
-  var valueAreaLinear = d3.svg.area()
+  var valueAreaLinear = d3v3.svg.area()
       .interpolate("linear")
       .x(function(d) { return x(d.date); })
       .y0(function(d, i) { return y(d.y); })
       .y1(line_equation);
 
-  var valueAreaStep = d3.svg.area()
+  var valueAreaStep = d3v3.svg.area()
       .interpolate("step")
       .x(function(d) { return x(d.date); })
       .y0(function(d, i) { return y(d.y); })
       .y1(line_equation);
 
-  var valueOffset = d3.svg.area()
+  var valueOffset = d3v3.svg.area()
       .interpolate("cardinal")
       .x(function(d) {
           if (d.country == "China") {return x(d.date)+10 }
@@ -114,7 +114,7 @@ $(document).ready(function() {
   ///////////////////////// Draw Initial Chart ///////////////////////////////
   ////////////////////////////////////////////////////////////////////////////
 
-  var svg = d3.select("#gdp-area-tool").append("svg")
+  var svg = d3v3.select("#gdp-area-tool").append("svg")
       .attr("width", screen_width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
@@ -123,7 +123,7 @@ $(document).ready(function() {
   var areaSlider = +$("#rank-filter-area").val();
 
  //////////// *** DATA INTEGRATION *** ////////////
-  d3.csv("/gdp/gdp_nested_data.csv", function(error, data) {
+  d3v3.csv("/gdp/gdp_nested_data.csv", function(error, data) {
    data = jQuery.grep(data, function(d, index) {
      var is_viewable = (d.rank <= areaSlider);
      return is_viewable;
@@ -135,13 +135,13 @@ $(document).ready(function() {
      d.rank = +d.rank;
    });
 
-  var tooltip = d3.select("body").append("div")
+  var tooltip = d3v3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
   var layers = stack(nest.entries(data));
 
-  x.domain(d3.extent(data, function(d) { return d.date; }));
+  x.domain(d3v3.extent(data, function(d) { return d.date; }));
   y.domain([-30, 30]);
 
   // x-axis
@@ -171,10 +171,10 @@ $(document).ready(function() {
   svg.selectAll(".tick")
     .each(function (d) {
       if ( d === 0 ) {
-        d3.select(this)
+        d3v3.select(this)
         .style("stroke-width", "2px")
       } else {
-        d3.select(this)
+        d3v3.select(this)
        .style("stroke-dasharray", "4,4")
       }
     });
@@ -185,22 +185,22 @@ $(document).ready(function() {
     .enter().append("path")
     .attr("class", "layer")
     .attr("d", function(d) {
-      if(d3.select("#area_Cardinal").property("checked")){
+      if(d3v3.select("#area_Cardinal").property("checked")){
          return valueAreaCardinal(d.values)
-      } else if (d3.select("#area_Basis").property("checked")){
+      } else if (d3v3.select("#area_Basis").property("checked")){
          return valueAreaBasis(d.values)
-      } else if(d3.select("#area_Monotone").property("checked")){
+      } else if(d3v3.select("#area_Monotone").property("checked")){
          return valueAreaMonotone(d.values)
-      } else if(d3.select("#area_Linear").property("checked")){
+      } else if(d3v3.select("#area_Linear").property("checked")){
          return valueAreaLinear(d.values)
-      } else if (d3.select("#area_Step").property("checked")){
+      } else if (d3v3.select("#area_Step").property("checked")){
          return valueAreaStep(d.values)
       }
     })
     .style("fill", function(d, i) { return z(i); })
     .style("opacity", .6)
     .on("mouseover", function(d) {
-      line = d3.select(this)
+      line = d3v3.select(this)
       tooltip.transition()
         .duration(20)
         .style("opacity", 1)
@@ -209,8 +209,8 @@ $(document).ready(function() {
         .style("opacity", 1)
         .style("stroke-width", 2)
         tooltip.html("<b>"+d.key+"</b>" + "<br/>")
-        .style("left", (d3.event.pageX) + "px")
-        .style("top", (d3.event.pageY-28) + "px");
+        .style("left", (d3v3.event.pageX) + "px")
+        .style("top", (d3v3.event.pageY-28) + "px");
     })
     .on("mouseout", function(d) {
       tooltip.transition()
@@ -227,67 +227,67 @@ $(document).ready(function() {
     ////////////////////////////////////////////////////////////////////////////
 
     // Cardinal //
-    d3.select("#area_Cardinal").on("change", updateAreaCardinal);
+    d3v3.select("#area_Cardinal").on("change", updateAreaCardinal);
     function updateAreaCardinal() {
-      if(d3.select("#area_Cardinal").property("checked")){
-        d3.selectAll(".layer")
+      if(d3v3.select("#area_Cardinal").property("checked")){
+        d3v3.selectAll(".layer")
         .attr("d", function(d) { return valueAreaCardinal(d.values); })
       }
     }
 
       // Basis //
-    d3.select("#area_Basis").on("change", updateAreaBasis);
+    d3v3.select("#area_Basis").on("change", updateAreaBasis);
     function updateAreaBasis() {
-      if(d3.select("#area_Basis").property("checked")){
-        d3.selectAll(".layer")
+      if(d3v3.select("#area_Basis").property("checked")){
+        d3v3.selectAll(".layer")
         .attr("d", function(d) { return valueAreaBasis(d.values); })
       }
     }
 
     // Monotone //
-    d3.select("#area_Monotone").on("change", updateAreaMonotone);
+    d3v3.select("#area_Monotone").on("change", updateAreaMonotone);
     function updateAreaMonotone() {
-      if(d3.select("#area_Monotone").property("checked")){
-        d3.selectAll(".layer")
+      if(d3v3.select("#area_Monotone").property("checked")){
+        d3v3.selectAll(".layer")
         .attr("d", function(d) { return valueAreaMonotone(d.values); })
       }
     }
 
     // Linear //
-    d3.select("#area_Linear").on("change", updateAreaLinear);
+    d3v3.select("#area_Linear").on("change", updateAreaLinear);
     function updateAreaLinear() {
-      if(d3.select("#area_Linear").property("checked")){
-        d3.selectAll(".layer")
+      if(d3v3.select("#area_Linear").property("checked")){
+        d3v3.selectAll(".layer")
         .attr("d", function(d) { return valueAreaLinear(d.values); })
       }
     }
 
     // Step //
-    d3.select("#area_Step").on("change", updateAreaStep);
+    d3v3.select("#area_Step").on("change", updateAreaStep);
     function updateAreaStep() {
-      if(d3.select("#area_Step").property("checked")){
-        d3.selectAll(".layer")
+      if(d3v3.select("#area_Step").property("checked")){
+        d3v3.selectAll(".layer")
         .attr("d", function(d) { return valueAreaStep(d.values); })
       }
     }
 
     // Change to Regular Area //
-    d3.select("#traditional_area").on("change", updateTraditionalArea);
+    d3v3.select("#traditional_area").on("change", updateTraditionalArea);
     function updateTraditionalArea() {
-      if(d3.select("#traditional_area").property("checked")){
-        d3.selectAll(".layer")
+      if(d3v3.select("#traditional_area").property("checked")){
+        d3v3.selectAll(".layer")
         .transition()
         .duration(800)
         .attr("d", function(d) {
-          if(d3.select("#area_Cardinal").property("checked")){
+          if(d3v3.select("#area_Cardinal").property("checked")){
              return valueAreaCardinal(d.values)
-          } else if (d3.select("#area_Basis").property("checked")){
+          } else if (d3v3.select("#area_Basis").property("checked")){
              return valueAreaBasis(d.values)
-          } else if(d3.select("#area_Monotone").property("checked")){
+          } else if(d3v3.select("#area_Monotone").property("checked")){
              return valueAreaMonotone(d.values)
-          } else if(d3.select("#area_Linear").property("checked")){
+          } else if(d3v3.select("#area_Linear").property("checked")){
              return valueAreaLinear(d.values)
-          } else if (d3.select("#area_Step").property("checked")){
+          } else if (d3v3.select("#area_Step").property("checked")){
              return valueAreaStep(d.values)
           }
         })
@@ -295,22 +295,22 @@ $(document).ready(function() {
     }
 
     // Change to Line //
-    d3.select("#line_area").on("change", updateCreateLine);
+    d3v3.select("#line_area").on("change", updateCreateLine);
     function updateCreateLine() {
-      if(d3.select("#line_area").property("checked")){
-        d3.selectAll(".layer")
+      if(d3v3.select("#line_area").property("checked")){
+        d3v3.selectAll(".layer")
         .transition()
         .duration(800)
         .attr("d", function(d) {
-          if(d3.select("#area_Cardinal").property("checked")){
+          if(d3v3.select("#area_Cardinal").property("checked")){
              return valueAreaCardinal(d.values)
-          } else if (d3.select("#area_Basis").property("checked")){
+          } else if (d3v3.select("#area_Basis").property("checked")){
              return valueAreaBasis(d.values)
-          } else if(d3.select("#area_Monotone").property("checked")){
+          } else if(d3v3.select("#area_Monotone").property("checked")){
              return valueAreaMonotone(d.values)
-          } else if(d3.select("#area_Linear").property("checked")){
+          } else if(d3v3.select("#area_Linear").property("checked")){
              return valueAreaLinear(d.values)
-          } else if (d3.select("#area_Step").property("checked")){
+          } else if (d3v3.select("#area_Step").property("checked")){
              return valueAreaStep(d.values)
           }
         })
@@ -318,22 +318,22 @@ $(document).ready(function() {
     }
 
     // Change to Dynamic Area //
-    d3.select("#dynamic_area").on("change", updateDynamicArea);
+    d3v3.select("#dynamic_area").on("change", updateDynamicArea);
     function updateDynamicArea() {
-      if(d3.select("#dynamic_area").property("checked")){
-        d3.selectAll(".layer")
+      if(d3v3.select("#dynamic_area").property("checked")){
+        d3v3.selectAll(".layer")
         .transition()
         .duration(800)
         .attr("d", function(d) {
-          if(d3.select("#area_Cardinal").property("checked")){
+          if(d3v3.select("#area_Cardinal").property("checked")){
              return valueAreaCardinal(d.values)
-          } else if (d3.select("#area_Basis").property("checked")){
+          } else if (d3v3.select("#area_Basis").property("checked")){
              return valueAreaBasis(d.values)
-          } else if(d3.select("#area_Monotone").property("checked")){
+          } else if(d3v3.select("#area_Monotone").property("checked")){
              return valueAreaMonotone(d.values)
-          } else if(d3.select("#area_Linear").property("checked")){
+          } else if(d3v3.select("#area_Linear").property("checked")){
              return valueAreaLinear(d.values)
-          } else if (d3.select("#area_Step").property("checked")){
+          } else if (d3v3.select("#area_Step").property("checked")){
              return valueAreaStep(d.values)
           }
         })
@@ -344,33 +344,33 @@ $(document).ready(function() {
     ///////////////////////// Toggle Background Color ///////////////////////////
     /////////////////////////////////////////////////////////////////////////////
 
-    d3.select("#darkBackgroundArea").on("change",updateBackground);
+    d3v3.select("#darkBackgroundArea").on("change",updateBackground);
       function updateBackground() {
-        if(d3.select("#darkBackgroundArea").property("checked")){
+        if(d3v3.select("#darkBackgroundArea").property("checked")){
           document.body.style.background = "black";
-          d3.selectAll("g.tick text")
+          d3v3.selectAll("g.tick text")
             .style("fill","white")
             .style("opacity", .7);
-          d3.selectAll("g.tick line")
+          d3v3.selectAll("g.tick line")
             .style("stroke","white")
             .style("opacity", .1);
-          d3.selectAll("#area-label-id")
+          d3v3.selectAll("#area-label-id")
             .style("color","white")
-          d3.selectAll("#area-hambuger")
+          d3v3.selectAll("#area-hambuger")
             .style("color","white")
-          d3.selectAll(".layer")
+          d3v3.selectAll(".layer")
             .style("opacity", .7);
         } else {
           document.body.style.background = "#faf5f0";
-          d3.selectAll("g.tick text")
+          d3v3.selectAll("g.tick text")
             .style("fill","black")
-          d3.selectAll("g.tick line")
+          d3v3.selectAll("g.tick line")
             .style("stroke","black")
-          d3.selectAll("#area-label-id")
+          d3v3.selectAll("#area-label-id")
             .style("color","black")
-          d3.selectAll("#area-hambuger")
+          d3v3.selectAll("#area-hambuger")
             .style("color","black")
-          d3.selectAll(".layer")
+          d3v3.selectAll(".layer")
             .style("opacity", .8);
         }
       };
@@ -384,7 +384,7 @@ $(document).ready(function() {
 
       areaElement.empty();
 
-      var svg = d3.select("#gdp-area-tool").append("svg")
+      var svg = d3v3.select("#gdp-area-tool").append("svg")
           .attr("width", screen_width + margin.left + margin.right)
           .attr("height", height + margin.top + margin.bottom)
           .append("g")
@@ -392,7 +392,7 @@ $(document).ready(function() {
 
       var areaSlider = +$("#rank-filter-area").val();
 
-      d3.csv("/gdp/gdp_nested_data.csv", function(error, data) {
+      d3v3.csv("/gdp/gdp_nested_data.csv", function(error, data) {
         data = jQuery.grep(data, function(d, index) {
           var is_viewable = (d.rank <= areaSlider);
           return is_viewable;
@@ -404,15 +404,15 @@ $(document).ready(function() {
           d.rank = +d.rank;
         });
 
-       var tooltip = d3.select("body").append("div")
+       var tooltip = d3v3.select("body").append("div")
          .attr("class", "tooltip")
          .style("opacity", 0);
 
 
        var layers = stack(nest.entries(data));
 
-       x.domain(d3.extent(data, function(d) { return d.date; }));
-       // y.domain(d3.extent(data, function(d) { return d.value; }));
+       x.domain(d3v3.extent(data, function(d) { return d.date; }));
+       // y.domain(d3v3.extent(data, function(d) { return d.value; }));
        y.domain([-60, 60]);
 
        // x-axis
@@ -426,11 +426,11 @@ $(document).ready(function() {
          .attr("y", 30)
          .style("text-anchor", "middle")
          .text("Year")
-         if(d3.select("#darkBackgroundArea").property("checked")){
-           d3.selectAll("g.tick text")
+         if(d3v3.select("#darkBackgroundArea").property("checked")){
+           d3v3.selectAll("g.tick text")
              .style("fill","white")
              .style("opacity", .7);
-           d3.selectAll("g.tick line")
+           d3v3.selectAll("g.tick line")
              .style("stroke","white")
              .style("opacity", .1);
          };
@@ -446,11 +446,11 @@ $(document).ready(function() {
          .attr("dy", "-4em")
          .style("text-anchor", "end")
          .text("Annual Change")
-         if(d3.select("#darkBackgroundArea").property("checked")){
-           d3.selectAll("g.tick text")
+         if(d3v3.select("#darkBackgroundArea").property("checked")){
+           d3v3.selectAll("g.tick text")
              .style("fill","white")
              .style("opacity", .7);
-           d3.selectAll("g.tick line")
+           d3v3.selectAll("g.tick line")
              .style("stroke","white")
              .style("opacity", .1);
          };
@@ -459,10 +459,10 @@ $(document).ready(function() {
        svg.selectAll(".tick")
          .each(function (d) {
            if ( d === 0 ) {
-             d3.select(this)
+             d3v3.select(this)
              .style("stroke-width", "2px")
            } else {
-             d3.select(this)
+             d3v3.select(this)
             .style("stroke-dasharray", "4,4")
            }
          });
@@ -473,15 +473,15 @@ $(document).ready(function() {
          .enter().append("path")
          .attr("class", "layer")
          .attr("d", function(d) {
-           if(d3.select("#area_Cardinal").property("checked")){
+           if(d3v3.select("#area_Cardinal").property("checked")){
               return valueAreaCardinal(d.values)
-           } else if (d3.select("#area_Basis").property("checked")){
+           } else if (d3v3.select("#area_Basis").property("checked")){
               return valueAreaBasis(d.values)
-           } else if(d3.select("#area_Monotone").property("checked")){
+           } else if(d3v3.select("#area_Monotone").property("checked")){
               return valueAreaMonotone(d.values)
-           } else if(d3.select("#area_Linear").property("checked")){
+           } else if(d3v3.select("#area_Linear").property("checked")){
               return valueAreaLinear(d.values)
-           } else if (d3.select("#area_Step").property("checked")){
+           } else if (d3v3.select("#area_Step").property("checked")){
               return valueAreaStep(d.values)
            }
          })
@@ -489,7 +489,7 @@ $(document).ready(function() {
          .style("opacity", .8)
          /// MOUSE OVER EVENT ///
          .on("mouseover", function(d) {
-           area = d3.select(this)
+           area = d3v3.select(this)
            tooltip.transition()
              .duration(20)
              .style("opacity", 1)
@@ -499,8 +499,8 @@ $(document).ready(function() {
              .style("stroke-width", 2)
            // tooltip.html(d.countryname, +(d[changeHeaderName]))
              tooltip.html("<b>"+d.key+"</b>" + "<br/>")
-             .style("left", (d3.event.pageX) + "px")
-             .style("top", (d3.event.pageY-28) + "px");
+             .style("left", (d3v3.event.pageX) + "px")
+             .style("top", (d3v3.event.pageY-28) + "px");
          })
          .on("mouseout", function(d) {
            tooltip.transition()

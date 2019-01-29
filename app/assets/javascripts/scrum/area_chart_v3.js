@@ -17,7 +17,7 @@ $(document).ready(function() {
       .attr("style", "padding-bottom: " + Math.ceil(height * 10 / width) + "%")
       .attr("viewBox", "-20 20 " + width + " " + (height))
       .append("g")
-  
+      // .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   var x = d3v3.time.scale()
       .range([0, width]);
@@ -59,8 +59,8 @@ $(document).ready(function() {
   var area_two = d3v3.svg.area()
       .interpolate("basis")
       .x(function(d) { return x(d.date); })
-      .y0(function(d, i) { return y(d.y); })
-      .y1(function(d) {
+      .y1(function(d, i) { return y(d.y); })
+      .y0(function(d) {
           if (d.value < 100) {return y(d.y) }
           else  { return y(d.y) + d.value/15 }
       ;});
@@ -87,6 +87,7 @@ $(document).ready(function() {
     });
 
     var layers = stack(nest.entries(data));
+
 
 
     x.domain(d3v3.extent(data, function(d) { return d.date; }));
@@ -125,8 +126,6 @@ $(document).ready(function() {
         svg.selectAll(".layer")
         .transition()
         .duration(4000)
-        .delay(function(){return 100 * i} )
-        .ease("elastic")
         .attr("d", function(d) { return area_two(d.values); })
       });
 
