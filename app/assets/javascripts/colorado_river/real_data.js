@@ -43,7 +43,13 @@ $(document).ready(function() {
       .offset("wiggle")
       .values(function(d) { return d.values; })
       .x(function(d) { return d.date; })
-      .y(function(d) { return d.value + (d.spacer - 0.001)+3; });
+      .y(function(d) { return d.value; });
+
+  var stack_two = d3v3.layout.stack()
+      .offset("wiggle")
+      .values(function(d) { return d.values; })
+      .x(function(d) { return d.date; })
+      .y(function(d) { return d.value; });
 
 
   var nest = d3v3.nest()
@@ -53,7 +59,7 @@ $(document).ready(function() {
       .interpolate("basis")
       .y(function(d) { return x(d.date); })
       .x0(function(d) { return y(d.y0); })
-      .x1(function(d) { return y(d.y0 + (d.y - d.spacer)); });
+      .x1(function(d) { return y(d.y0 + (d.y)); });
 
   var area_two = d3v3.svg.area()
       .interpolate("basis")
@@ -77,7 +83,7 @@ $(document).ready(function() {
 
  //////////// *** DATA INTEGRATION *** ////////////
 
-  d3v3.csv("/scrum_spacer_test.csv", function(error, data) {
+  d3v3.csv("/river_flow_data.csv", function(error, data) {
     if (error) throw error;
 
     data.forEach(function(d) {
@@ -86,7 +92,6 @@ $(document).ready(function() {
     });
 
     var layers = stack(nest.entries(data));
-    console.log(layers)
 
     x.domain(d3v3.extent(data, function(d) { return d.date; }));
     y.domain([0, d3v3.max(data, function(d) { return d.y0 + d.y + 4; })]);
