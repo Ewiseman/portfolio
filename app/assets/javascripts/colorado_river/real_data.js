@@ -49,8 +49,7 @@ $(document).ready(function() {
       .offset("wiggle")
       .values(function(d) { return d.values; })
       .x(function(d) { return d.date; })
-      .y(function(d) { return d.no; });
-
+      .y(function(d) { return d.no; })
 
   var nest = d3v3.nest()
       .key(function(d) { return d.key; });
@@ -61,12 +60,11 @@ $(document).ready(function() {
       .x0(function(d) { return x(d.y0); })
       .x1(function(d) { return x(d.y0 + (d.y)); });
 
-
   var area_zero = d3v3.svg.area()
       .interpolate("basis")
       .y(function(d) { return y(d.date); })
-      .x0(width/2)
-      .x1(width/2)
+      .x0(function(d) { return x(d.y0); })
+      .x1(function(d) { return x(d.y0 + (d.y)); });
 
   var tooltip = d3v3.select("body").append("div")
       .attr("class", "tooltip")
@@ -75,7 +73,7 @@ $(document).ready(function() {
 
  //////////// *** DATA INTEGRATION *** ////////////
 
-  d3v3.csv("/river_flow_data.csv", function(error, data) {
+  d3v3.csv("/river_flow_data_three.csv", function(error, data) {
     if (error) throw error;
 
     data.forEach(function(d) {
@@ -84,14 +82,11 @@ $(document).ready(function() {
       d.no = +d.no;
     });
 
+
     var layers = stack(nest.entries(data));
 
-    console.log(layers)
-
-    // var layers_two = stack_two(nest.entries(data));
-
     y.domain(d3v3.extent(data, function(d) { return d.date; }));
-    x.domain([0, d3v3.max(data, function(d) { return d.y0 + d.y + 4; })]);
+    x.domain([0, d3v3.max(data, function(d) { return d.y0 + d.y; })]);
 
     svg.append("g")
       .attr("class", "x axis")
@@ -116,11 +111,11 @@ $(document).ready(function() {
       })
 
       .on("click", function(d, i) {
+        var layers_two = stack_two(nest.entries(data));
         svg.selectAll(".layer")
         .transition()
-        .duration(4000)
-        .ease("elastic")
-        .attr("d", function(d) { return area_zero(d.values); })
+        .duration(2000)
+        .attr("d", function(d) { return area(d.values); })
       });
 
 

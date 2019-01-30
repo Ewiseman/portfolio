@@ -86,7 +86,7 @@ $(document).ready(function() {
     });
 
     var layers = stack(nest.entries(data));
-    console.log(layers)
+
 
     y.domain(d3v3.extent(data, function(d) { return d.date; }));
     x.domain([0, d3v3.max(data, function(d) { return d.y0 + d.y + 4; })]);
@@ -121,6 +121,7 @@ $(document).ready(function() {
 
       .on("click", function(d, i) {
         svg.selectAll(".layer")
+        
         .transition()
         .duration(4000)
         .ease("elastic")
