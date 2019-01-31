@@ -121,7 +121,7 @@ $(document).ready(function() {
 
       .on("click", function(d, i) {
         svg.selectAll(".layer")
-        
+
         .transition()
         .duration(4000)
         .ease("elastic")
