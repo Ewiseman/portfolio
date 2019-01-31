@@ -12,20 +12,26 @@
       <div class="center-block" id="stream-test"></div>
     </div>
 
-    <div class="col-md-12 col-sm-12 col-xs-12">
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <div class="row">
-        <div id="vis">
-          <button id="play-button">Play</button>
+
+
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="row">
+      <div class="section-box-big gdp center-block">
+        <div class="d3-chart labels center-block">
+          <h3 class="label-indent">Colorado River </h3>
+          <br>
+
+          <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="row">
+              <div class="slider-padding">
+                <button name="play" class="scatterplot" id="play">Play</button>
+                <span class="year-number" id="range">1991</span>
+              </div>
+              <input id="slider" class=" year-slider" type="range" min="1991" max="2017" value="1991"</input>
+            </div>
+          </div>
+          <div id="real-data"></div>
         </div>
-        <br>
-        <div class="center-block" id="real-data"></div>
       </div>
+    </div>
   </div>

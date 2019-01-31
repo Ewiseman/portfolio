@@ -64,8 +64,8 @@ $(document).ready(function() {
   var area_zero = d3v3.svg.area()
       .interpolate("basis")
       .y(function(d) { return x(d.date); })
-      .x0(height)
-      .x1(height)
+      .x0(height/2)
+      .x1(height/2)
 
   var tooltip = d3v3.select("body").append("div")
       .attr("class", "tooltip")
