@@ -15,7 +15,7 @@ $(document).ready(function() {
 
   var svg = d3v3.select("#real-data")
       .append("svg")
-      .attr("viewBox", "-40 -150 " + (width) + " " + (height))
+      .attr("viewBox", "-40 -50 " + (width) + " " + (height-padding))
       .append("g")
       // .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -33,6 +33,9 @@ $(document).ready(function() {
   var yAxis = d3v3.svg.axis()
       .scale(m)
       .orient("left")
+      // .ticks(d3v3.time.years)
+      // .tickSize(0)
+      // .tickFormat(d3v3.time.format("%Y"));
 
 
 
@@ -212,13 +215,13 @@ $(document).ready(function() {
       .key(function(d) { return d.key; });
 
   var area = d3v3.svg.area()
-      .interpolate("basis")
+      .interpolate("cardinal")
       .y(function(d) { return y(d.date); })
       .x0(function(d) { return x(d.y0) ; })
       .x1(function(d) { return x(d.y0 + (d.y)); });
 
   var areaZero = d3v3.svg.area()
-      .interpolate("basis")
+      .interpolate("cardinal")
       .y(function(d) { return y(d.date); })
       .x0(height/2 )
       .x1(height/2);
@@ -230,7 +233,7 @@ $(document).ready(function() {
 
  //////////// *** DATA INTEGRATION *** ////////////
 
-  d3v3.csv("/river_flow_data_b.csv", function(error, data) {
+  d3v3.csv("/river_flow_data_c.csv", function(error, data) {
     if (error) throw error;
 
     data.forEach(function(d) {
@@ -272,9 +275,9 @@ $(document).ready(function() {
 
     m.domain(data.map(function(d) { return d.name; }));
     y.domain(d3v3.extent(data, function(d) { return d.date; }));
-    // x.domain([0, d3v3.max(data, function(d) { return d.y0 + d.y; })]);
+    x.domain([0, d3v3.max(data, function(d) { return d.y0 + d.y; })]);
 
-    x.domain([0, 40000]);
+    // x.domain([0, 10000]);
 
     svg.append("g")
       .attr("class", "y axis")
@@ -289,7 +292,7 @@ $(document).ready(function() {
       .data(layers)
       .enter().append("path")
       .attr("class", "layer-river")
-      .attr("d", function(d) { return areaZero(d.values); })
+      .attr("d", function(d) { return area(d.values); })
       .style("fill", function(d, i) { return z(i); })
       .style("opacity", 0.7)
 
@@ -300,14 +303,6 @@ $(document).ready(function() {
           .style("opacity", 1)
           .style("left", (d3v3.event.pageX) + "px")
           .style("top", (d3v3.event.pageY-28) + "px");
-      })
-
-      .on("click", function(d, i) {
-        var layers_2001 = stack_2001(nest.entries(data));
-        svg.selectAll(".layer")
-        .transition()
-        .duration(2000)
-        .attr("d", function(d) { return area(d.values); })
       })
 
       .transition()
