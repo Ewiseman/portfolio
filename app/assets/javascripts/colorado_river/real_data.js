@@ -15,7 +15,7 @@ $(document).ready(function() {
 
   var svg = d3v3.select("#real-data")
       .append("svg")
-      .attr("viewBox", "-40 -50 " + (width) + " " + (height-padding))
+      .attr("viewBox", "-90 -50 " + (width) + " " + (height-padding))
       .append("g")
       // .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -26,7 +26,10 @@ $(document).ready(function() {
   var x = d3v3.scale.linear().range([height, 0]);
 
   var z = d3v3.scale.ordinal()
-      .range(["#8FBC8F", "#ff8c00", "#98abc5", "#7b6888", "#CD5C5C", "#87e5da", "#c7f2e3", "#f7aa00", "#db2d43"]);
+      .range(  ['#52beda',
+     '#3691a8',
+     '#206d81',
+     '#0c4351']);
 
   var formatNumber = d3.format(".1f");
 
@@ -36,6 +39,10 @@ $(document).ready(function() {
       // .ticks(d3v3.time.years)
       // .tickSize(0)
       // .tickFormat(d3v3.time.format("%Y"));
+
+
+
+
 
 
 
@@ -53,163 +60,163 @@ $(document).ready(function() {
       .offset("wiggle")
       .values(function(d) { return d.values; })
       .x(function(d) { return d.date; })
-      .y(function(d) { return d.value_1991; });
+        .y(function(d) { return d.value_1991 + (d.spacer - 0.001)+3; });
 
   var stack_1992 = d3v3.layout.stack()
     .offset("wiggle")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
-    .y(function(d) { return d.value_1992; })
+    .y(function(d) { return d.value_1992 + (d.spacer - 0.001)+3; });
 
   var stack_1993 = d3v3.layout.stack()
     .offset("wiggle")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
-    .y(function(d) { return d.value_1993; })
+    .y(function(d) { return d.value_1993 + (d.spacer - 0.001)+3; });
 
   var stack_1994 = d3v3.layout.stack()
     .offset("wiggle")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
-    .y(function(d) { return d.value_1994; })
+    .y(function(d) { return d.value_1994 + (d.spacer - 0.001)+3; });
 
   var stack_1995 = d3v3.layout.stack()
     .offset("wiggle")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
-    .y(function(d) { return d.value_1995; })
+    .y(function(d) { return d.value_1995 + (d.spacer - 0.001)+3; });
 
   var stack_1996 = d3v3.layout.stack()
     .offset("wiggle")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
-    .y(function(d) { return d.value_1996; })
+    .y(function(d) { return d.value_1996 + (d.spacer - 0.001)+3; });
 
   var stack_1997 = d3v3.layout.stack()
     .offset("wiggle")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
-    .y(function(d) { return d.value_1997; })
+    .y(function(d) { return d.value_1997 + (d.spacer - 0.001)+3; });
 
   var stack_1998 = d3v3.layout.stack()
     .offset("wiggle")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
-    .y(function(d) { return d.value_1998; })
+    .y(function(d) { return d.value_1998 + (d.spacer - 0.001)+3; });
 
   var stack_1999 = d3v3.layout.stack()
     .offset("wiggle")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
-    .y(function(d) { return d.value_1999; })
+    .y(function(d) { return d.value_1999 + (d.spacer - 0.001)+3; });
 
   var stack_2000 = d3v3.layout.stack()
     .offset("wiggle")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
-    .y(function(d) { return d.value_2000; })
+    .y(function(d) { return d.value_2000 + (d.spacer - 0.001)+3; });
 
   var stack_2001 = d3v3.layout.stack()
     .offset("wiggle")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
-    .y(function(d) { return (d.value_2001); })
+    .y(function(d) { return (d.value_2001) + (d.spacer - 0.001)+3; });
 
   var stack_2002 = d3v3.layout.stack()
     .offset("wiggle")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
-    .y(function(d) { return d.value_2002; })
+    .y(function(d) { return d.value_2002 + (d.spacer - 0.001)+3; });
 
   var stack_2003 = d3v3.layout.stack()
     .offset("wiggle")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
-    .y(function(d) { return d.value_2003; })
+    .y(function(d) { return d.value_2003 + (d.spacer - 0.001)+3; });
 
   var stack_2004 = d3v3.layout.stack()
     .offset("wiggle")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
-    .y(function(d) { return d.value_2004; })
+    .y(function(d) { return d.value_2004 + (d.spacer - 0.001)+3; });
 
   var stack_2005 = d3v3.layout.stack()
     .offset("wiggle")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
-    .y(function(d) { return d.value_2005; })
+    .y(function(d) { return d.value_2005 + (d.spacer - 0.001)+3; });
 
   var stack_2006 = d3v3.layout.stack()
     .offset("wiggle")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
-    .y(function(d) { return d.value_2006; })
+    .y(function(d) { return d.value_2006 + (d.spacer - 0.001)+3; });
 
   var stack_2007 = d3v3.layout.stack()
     .offset("wiggle")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
-    .y(function(d) { return d.value_2007; })
+    .y(function(d) { return d.value_2007 + (d.spacer - 0.001)+3; });
 
   var stack_2008 = d3v3.layout.stack()
     .offset("wiggle")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
-    .y(function(d) { return d.value_2008; })
+    .y(function(d) { return d.value_2008 + (d.spacer - 0.001)+3; });
 
   var stack_2009 = d3v3.layout.stack()
     .offset("wiggle")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
-    .y(function(d) { return d.value_2009; })
+    .y(function(d) { return d.value_2009 + (d.spacer - 0.001)+3; });
 
   var stack_2010 = d3v3.layout.stack()
     .offset("wiggle")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
-    .y(function(d) { return d.value_2010; })
+    .y(function(d) { return d.value_2010 + (d.spacer - 0.001)+3; });
 
   var stack_2011 = d3v3.layout.stack()
     .offset("wiggle")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
-    .y(function(d) { return d.value_2011; })
+    .y(function(d) { return d.value_2011 + (d.spacer - 0.001)+3; });
 
   var stack_2012 = d3v3.layout.stack()
     .offset("wiggle")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
-    .y(function(d) { return d.value_2012; })
+    .y(function(d) { return d.value_2012 + (d.spacer - 0.001)+3; });
 
   var stack_2013 = d3v3.layout.stack()
     .offset("wiggle")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
-    .y(function(d) { return d.value_2013; })
+    .y(function(d) { return d.value_2013 + (d.spacer - 0.001)+3; });
 
   var stack_2014 = d3v3.layout.stack()
     .offset("wiggle")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
-    .y(function(d) { return d.value_2014; })
+    .y(function(d) { return d.value_2014 + (d.spacer - 0.001)+3; });
 
   var stack_2015 = d3v3.layout.stack()
     .offset("wiggle")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
-    .y(function(d) { return d.value_2015; })
+    .y(function(d) { return d.value_2015 + (d.spacer - 0.001)+3; });
 
   var stack_2016 = d3v3.layout.stack()
     .offset("wiggle")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
-    .y(function(d) { return d.value_2016; })
+    .y(function(d) { return d.value_2016 + (d.spacer - 0.001)+3; });
 
   var stack_2017 = d3v3.layout.stack()
     .offset("wiggle")
     .values(function(d) { return d.values; })
     .x(function(d) { return d.date; })
-    .y(function(d) { return d.value_2017; })
+    .y(function(d) { return d.value_2017 + (d.spacer - 0.001)+3; });
 
   var nest = d3v3.nest()
       .key(function(d) { return d.key; });
@@ -218,7 +225,8 @@ $(document).ready(function() {
       .interpolate("cardinal")
       .y(function(d) { return y(d.date); })
       .x0(function(d) { return x(d.y0) ; })
-      .x1(function(d) { return x(d.y0 + (d.y)); });
+      // .x1(function(d) { return x(d.y0 + (d.y)); });
+    .x1(function(d) { return x(d.y0 + (d.y - d.spacer)); });
 
   var areaZero = d3v3.svg.area()
       .interpolate("cardinal")
@@ -233,7 +241,7 @@ $(document).ready(function() {
 
  //////////// *** DATA INTEGRATION *** ////////////
 
-  d3v3.csv("/river_flow_data_c.csv", function(error, data) {
+  d3v3.csv("/river_flow_data_d.csv", function(error, data) {
     if (error) throw error;
 
     data.forEach(function(d) {
@@ -277,7 +285,7 @@ $(document).ready(function() {
     y.domain(d3v3.extent(data, function(d) { return d.date; }));
     x.domain([0, d3v3.max(data, function(d) { return d.y0 + d.y; })]);
 
-    // x.domain([0, 10000]);
+    // x.domain([-10000, 40000]);
 
     svg.append("g")
       .attr("class", "y axis")

@@ -34,13 +34,10 @@ $(document).ready(function () {
   $(window).on('load scroll', function () {
     var scrolled = $(this).scrollTop();
     $('.home-intro').css({
-      'transform': 'translate3d(0, ' + -(scrolled * .30) + 'px, 0)', // parallax (40% scroll rate)
-      'opacity': 1 - scrolled / 550 // fade out at 600px from top
+      'transform': 'translate3d(0, ' + -(scrolled * .23) + 'px, 0)', // parallax (40% scroll rate)
+      'opacity': 1 - scrolled / 575 // fade out at 600px from top
     });
     $('.parallax').css({
-      'transform': 'translate3d(0, ' + -(scrolled * .0) + 'px, 0)', // parallax (40% scroll rate)
+      'transform': 'translate3d(0, ' + -(scrolled * .05) + 'px, 0)', // parallax (40% scroll rate)
     });
-
-
-
   });

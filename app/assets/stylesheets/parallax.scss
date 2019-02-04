@@ -1,7 +1,5 @@
 .parallax {
-
   font-family: 'Rubik' !important;
-
   background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0)), asset-url('banner_images/radial-bubble-4.png')no-repeat center center;
   background-size: cover;
   padding: 220px 0 100px 0;
@@ -31,6 +29,7 @@
     margin: 3px;
 }
 
+
 .parallax h1,
 .parallax h2,
 .parallax h3,
@@ -47,6 +46,7 @@
     font-size: 64px;
     margin-right: 20px !important;
 }
+
 
 .parallax h1.h2 {
     letter-spacing: 14px;
@@ -74,9 +74,14 @@
 
 .parallax h1.h6 {
     letter-spacing: 2.8px;
-    font-size: 12px;
+    font-size: 14px;
     margin-right: -2.8px;
     font-weight: 600;
+    color: black;
+    // background-color: #F55;
+    background-color: rgba(255,85,85, 0.8);
+    width: 535px;
+    padding-left: 10px;
 }
 
 .parallax p {
@@ -128,6 +133,8 @@
 
     .parallax h1.h6 {
         font-size: 9px;
+        width: 65%;
+        padding-left: 10px;
     }
 
 
@@ -163,7 +170,7 @@
     }
 
     .parallax h1.h6 {
-        font-size: 8px;
+        font-size: 9px;
     }
 
     .parallax p {
@@ -193,10 +200,19 @@
     }
 
     .parallax h1.h6 {
-        font-size: 7px;
+        font-size: 9px;
     }
 
     .parallax p {
         font-size: 12px;
     }
+}
+
+
+
+@media (min-width: 1400px) {
+
+  .parallax {
+    padding: 440px 0 100px 0;
+  }
 }
