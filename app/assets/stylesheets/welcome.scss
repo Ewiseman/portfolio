@@ -311,7 +311,7 @@ h4,
 h5,
 .h5 {
     letter-spacing: 2.8px;
-    font-size: 12px;
+    font-size: 11px;
     margin: 0 0 10px;
 }
 
@@ -927,6 +927,10 @@ a.btn.btn-gray:hover {
 /*------------------------------------------------------------------
 [Pie charts]
 */
+
+.progress-bar {
+  opacity: .7 !important;
+}
 
 .pie-chart {
     position: relative;
@@ -1861,10 +1865,10 @@ a.btn.btn-gray:hover {
                 -webkit-transform .5s;
     font-family: "Montserrat", Arial, serif;
     line-height: 24px;
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 2.2px;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .header.header-small {
@@ -2027,8 +2031,7 @@ a.btn.btn-gray:hover {
 .header.header-small .inner-nav > ul > li > a:focus,
 .header.header-small .inner-nav > ul > li > a.active {
     // color: #00a2ae;
-    color: #9c9c9c;
-    font-weight: 700;
+    color: #F55;
 }
 
 .header.header-small .inner-nav > ul > li.sub-menu-open > a {
@@ -2742,7 +2745,7 @@ a.btn.btn-gray:hover {
 }
 
 .m-title h6 {
-    font-size: 12px;
+    font-size: 11px;
     color: #9b9b9b;
 }
 
