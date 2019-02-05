@@ -38,6 +38,6 @@ $(document).ready(function () {
       'opacity': 1 - scrolled / 575 // fade out at 600px from top
     });
     $('.parallax').css({
-      'transform': 'translate3d(0, ' + -(scrolled * .05) + 'px, 0)', // parallax (40% scroll rate)
+      'transform': 'translate3d(0, ' + -(scrolled * .07) + 'px, 0)', // parallax (40% scroll rate)
     });
   });
