@@ -41,7 +41,7 @@ class SprintDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :tasks,
+    # :tasks,
     :sprint_date,
   ].freeze
 
@@ -53,7 +53,7 @@ class SprintDashboard < Administrate::BaseDashboard
     return ' ' if date.nil?
     date.strftime "%b %-e, %Y"
   end
-  
+
   def display_resource(sprint)
     format_long_date(sprint.sprint_date)
   end
