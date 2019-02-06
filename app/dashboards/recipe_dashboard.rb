@@ -52,8 +52,7 @@ class RecipeDashboard < Administrate::BaseDashboard
     :on_the_menu,
     :name,
     :protein,
-    :cusine_region,
-    :type_of_food,
+    :cookbook,
     :rank,
   ].freeze
 
