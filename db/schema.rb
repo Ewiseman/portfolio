@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_16_225210) do
+ActiveRecord::Schema.define(version: 2019_02_06_162355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cookbooks", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
@@ -38,7 +44,6 @@ ActiveRecord::Schema.define(version: 2019_01_16_225210) do
   create_table "recipes", force: :cascade do |t|
     t.string "name"
     t.string "protein"
-    t.string "cookbook"
     t.integer "cookbook_page"
     t.string "cusine_region"
     t.string "type_of_food"
@@ -51,12 +56,8 @@ ActiveRecord::Schema.define(version: 2019_01_16_225210) do
     t.text "directions"
     t.integer "multiplier", default: 1
     t.integer "rank"
-  end
-
-  create_table "scrum_dates", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.date "sprint_date"
+    t.bigint "cookbook_id"
+    t.index ["cookbook_id"], name: "index_recipes_on_cookbook_id"
   end
 
   create_table "sprints", force: :cascade do |t|
@@ -76,5 +77,6 @@ ActiveRecord::Schema.define(version: 2019_01_16_225210) do
     t.index ["sprint_id"], name: "index_tasks_on_sprint_id"
   end
 
+  add_foreign_key "recipes", "cookbooks"
   add_foreign_key "tasks", "sprints"
 end
