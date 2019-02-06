@@ -22,7 +22,7 @@ class RecipeDashboard < Administrate::BaseDashboard
       collection: ["", "No Region", "American", "Asian", "Mexican", "Italian", "Southwest", "Mediterranean"]
     ),
     type_of_food: Field::Select.with_options(
-      collection: ["", "Soup", "Salad", "Side Dish", "Main Dish", "Baked Good", "Desert", "Sauce / Dressing", "Drink"]
+      collection: Recipe::TYPE_OF_FOOD_CONST
     ),
     on_the_menu: Field::Boolean,
     multiplier: Field::Select.with_options(
@@ -48,7 +48,7 @@ class RecipeDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    # :id,
+    :id,
     :on_the_menu,
     :name,
     :protein,
