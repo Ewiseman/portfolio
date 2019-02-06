@@ -8,6 +8,7 @@ class RecipeDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    cookbook: Field::BelongsTo,
     id: Field::Number,
     ingredients: Field::HasMany,
     measurements: Field::HasMany,
@@ -61,11 +62,12 @@ class RecipeDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     # :id,
     :name,
+    :cookbook,
+    :cookbook_page,
     :rank,
     :on_the_menu,
     :multiplier,
     :protein,
-    :cookbook_page,
     :cusine_region,
     :type_of_food,
     :vegetarian,
@@ -83,11 +85,12 @@ class RecipeDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :cookbook,
+    :cookbook_page,
     :rank,
     :on_the_menu,
     :multiplier,
     :protein,
-    :cookbook_page,
     :cusine_region,
     :type_of_food,
     :vegetarian,

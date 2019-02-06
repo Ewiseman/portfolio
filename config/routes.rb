@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :recipes
     resources :ingredients
     resources :measurements
+    resources :cookbooks
 
     root to: "tasks#index"
   end
