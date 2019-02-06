@@ -7,5 +7,4 @@ class Recipe < ApplicationRecord
     return " x #{multiplier}" if multiplier > 1
   end
 
-
 end
