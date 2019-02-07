@@ -3,9 +3,18 @@
   background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0)), asset-url('banner_images/radial-bubble-4.png')no-repeat center center;
   background-attachment: fixed;
   background-size: cover;
+  top: 0;
+  left: 0;
   padding-top: 18%;
   height: 100vh;
+    z-index: -10;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
 }
+
 
 .parallax,
 .module-slides {
