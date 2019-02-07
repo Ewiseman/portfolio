@@ -191,6 +191,10 @@
     .parallax p {
         font-size: 13.5px;
     }
+
+    .parallax h1.h6 {
+      width: 75%;
+    }
 }
 
 @media (max-width: 568px) {
@@ -220,5 +224,13 @@
 
     .parallax p {
         font-size: 11px;
+    }
+
+    .home-intro {
+      padding-top: 40%;
+    }
+
+    .parallax h1.h6 {
+      width: 75%;
     }
 }
