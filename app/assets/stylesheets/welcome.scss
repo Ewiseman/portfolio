@@ -3004,6 +3004,10 @@ a.btn.btn-gray:hover {
     .row-portfolio[data-columns="5"] .portfolio-item.large {
         width: 66.666666%;
     }
+
+    .timeline > li > .timeline-panel .timeline-preview img {
+      height: auto;
+    }
 }
 
 @media (max-width: 991px) {
@@ -3024,7 +3028,14 @@ a.btn.btn-gray:hover {
     .row-portfolio[data-columns="5"] .portfolio-item.large {
         width: 100%;
     }
-}
+
+    .module.module-dark, .module-sm.module-dark {
+      background-color: #000;
+      background: color #000 !important;
+
+
+    }
+  }
 
 @media (max-width: 767px) {
     .row-portfolio .grid-sizer,
