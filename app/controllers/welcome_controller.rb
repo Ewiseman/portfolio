@@ -1,11 +1,15 @@
 class WelcomeController < ApplicationController
 
   def download_pdf
-  send_file(
-    "#{Rails.root}/public/resume.pdf",
-    filename: "resume.pdf",
-    type: "application/pdf"
-  )
-end
+    send_file(
+      "#{Rails.root}/public/resume.pdf",
+      filename: "resume.pdf",
+      type: "application/pdf"
+    )
+  end
+
+  def gear_lift
+    render layout: 'navbar_two'
+  end
 
 end
