@@ -12,7 +12,8 @@
 
 	$(window).on('load', function() {
 
-		$('.page-loader').delay(150).fadeOut('slow');
+		$('.page-loader-two').delay(200).fadeOut('slow');
+	  $('.page-loader').delay(200).fadeOut('slow');
 
 		/* ---------------------------------------------- /*
 		 * WOW Animation on page load
