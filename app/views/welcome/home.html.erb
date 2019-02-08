@@ -1,9 +1,5 @@
 <!-- Preloader-->
-<div class="page-loader">
-  <div class="cssload-container">
-    <div class="cssload-whirlpool"></div>
-  </div>
-</div>
+<%= render partial: 'preloader' %>
 <!-- Preloader end-->
 
 <!-- Wrapper-->
@@ -21,7 +17,7 @@
       </div>
     </div>
   </section>
-  
+
   <!-- Profile-->
   <section class="module profile" id="profile">
     <div class="container">
@@ -149,17 +145,17 @@
         <div class="grid-sizer"></div>
         <div class="portfolio-item js-tilt rails large">
           <div class="portfolio-wrapper">
-            <div class="img-responsive"><%= image_tag('projects/gearlift-two.png') %></div>
+            <div class="img-responsive"><%= image_tag('portfolio/gearlift-macbook-mockup-2.png') %></div>
             <div class="portfolio-overlay"></div>
             <div class="portfolio-caption">
               <h5 class="portfolio-title">Gear Lift</h5>
               <h6 class="portfolio-subtitle">Full Stack Development | Data Visualization</h6>
             </div>
-          </div><a class="portfolio-link"></a>
+        	</div><%= link_to '', gear_lift_path, class:'portfolio-link' %>
         </div>
         <div class="portfolio-item js-tilt dv">
           <div class="portfolio-wrapper">
-          <div class="portfolio-img-wrap"><%= image_tag('projects/radial-column-two.png') %></div>
+          <div class="portfolio-img-wrap"><%= image_tag('portfolio/radial-bar.png') %></div>
             <div class="portfolio-overlay"></div>
             <div class="portfolio-caption">
               <h5 class="portfolio-title">Ski Resort Data Sketches</h5>
@@ -169,7 +165,7 @@
         </div>
         <div class="portfolio-item js-tilt rails">
           <div class="portfolio-wrapper">
-            <div class="portfolio-img-wrap"><%= image_tag('banner_images/fcfs-project.png') %></div>
+            <div class="portfolio-img-wrap"><%= image_tag('portfolio/fcfs_mockup.jpg') %></div>
             <div class="portfolio-overlay"></div>
             <div class="portfolio-caption">
               <h5 class="portfolio-title">First Class Financial Services</h5>
@@ -179,7 +175,7 @@
         </div>
         <div class="portfolio-item js-tilt dv ">
           <div class="portfolio-wrapper">
-            <div class="portfolio-img-wrap"><%= image_tag('projects/gdp-area.png') %></div>
+            <div class="portfolio-img-wrap"><%= image_tag('portfolio/line_tool.png') %></div>
             <div class="portfolio-overlay"></div>
             <div class="portfolio-caption">
               <h5 class="portfolio-title">GDP Data Sketches</h5>
@@ -554,19 +550,7 @@
   <!-- Map end-->
 
   <!-- Footer-->
-  <footer class="footer">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-4 col-md-offset-4">
-          <span class="copyright">©2019 Eric Wiseman, All Rights Reserved.</span>
-          <span class="copyright">ewiseman1@gmail.com</span>
-          <br>
-          <br>
-          <a target="_blank" href="https://twitter.com/ericrwiseman"><i class="fab fa-twitter"></i></a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <%= render partial: 'footer' %>
   <!-- Footer end-->
 </div>
 <!-- Wrapper end-->

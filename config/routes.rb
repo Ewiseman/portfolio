@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :recipes, only: [:index]
 
-
+  get 'gear_lift' =>'welcome#gear_lift'
   root to: 'welcome#home'
 
   get "welcome/download_pdf"
@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get '/colorado_river/area_test' => 'colorado_river#area_test'
   #GDP
   get '/gdp/area_tool' => 'gdp#area_tool'
+  get '/gdp/line_tool' => 'gdp#line_tool'
   get '/gdp/radial_bubble' => 'gdp#radial_bubble'
   #Contact Form
   get 'welcome', to: 'messages#new', as: 'welcome'
