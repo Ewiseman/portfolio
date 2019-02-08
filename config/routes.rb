@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :recipes, only: [:index]
 
   get 'gear_lift' =>'welcome#gear_lift'
+  get 'fcfs' =>'welcome#fcfs'
   root to: 'welcome#home'
 
   get "welcome/download_pdf"

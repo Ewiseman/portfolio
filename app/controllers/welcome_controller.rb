@@ -12,4 +12,8 @@ class WelcomeController < ApplicationController
     render layout: 'navbar_two'
   end
 
+  def fcfs
+    render layout: 'navbar_two'
+  end
+
 end
