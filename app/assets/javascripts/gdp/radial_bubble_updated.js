@@ -20,16 +20,16 @@ $(document).ready(function() {
   ///////////////////////// Setup SVG /////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////
 
-  var svg = d3.select("#gdp-radial-bubble-updated").append("svg")
+  var svg = d3v3.select("#gdp-radial-bubble-updated").append("svg")
     .attr("width",  outerWidth)
     .attr("height", outerHeight)
     .append("g")
     .attr("transform", "translate(" + innerWidth / 2 + "," + innerHeight / 2 + ")");
 
-  d3.csv("/gdp/gdp_radial.csv", function(error, data) {
-    var headerNames = d3.keys(data[0]);
+  d3v3.csv("/gdp/gdp_radial.csv", function(error, data) {
+    var headerNames = d3v3.keys(data[0]);
 
-    var tooltip = d3.select("body").append("div")
+    var tooltip = d3v3.select("body").append("div")
       .attr("class", "tooltip")
       .style("opacity", 0);
 
@@ -42,16 +42,16 @@ $(document).ready(function() {
     var spacerValue = +$("#spacer-value").val();
     var centerPadding = outerWidth / +$("#center-slider").val();
     var radiusMultiplier = 1
-    var positivePercentageColor = d3.rgb(rgbOne, rgbTwo, rgbThree);
+    var positivePercentageColor = d3v3.rgb(rgbOne, rgbTwo, rgbThree);
     var negativePercentageColor = "red"
     var cirlceOpacity = .8
-    var radialMap = 360/(d3.selectAll(data).size())
+    var radialMap = 360/(d3v3.selectAll(data).size())
     var radialPlacement = function(d, i) { return "rotate(" + (i * radialMap - 180) + ")"; }
     var radialText = function(d,i) { return "rotate(" +  (i * radialMap - 90) + ")"; }
 
 
     //WITH AXIS LAYOUT
-    // var radialMap = 360/(d3.selectAll(data).size()+5)
+    // var radialMap = 360/(d3v3.selectAll(data).size()+5)
     // var radialPlacement = function(d, i) { return "rotate(" + (i * radialMap - 174) + ")"; }
     // var radialText = function(d,i) { return "rotate(" +  (i * radialMap - 84) + ")"; }
 
@@ -86,7 +86,7 @@ $(document).ready(function() {
         ;})
         .attr("data-change-index", index)
         .attr("cy", function(d) {
-          if(d3.select("#radialPlot").property("checked")){
+          if(d3v3.select("#radialPlot").property("checked")){
             var value = +this.getAttribute('data-change-value');
             return (value * +$("#spacer-value").val()) + (outerWidth / +$("#center-slider").val());
           } else {
@@ -107,7 +107,7 @@ $(document).ready(function() {
 
         /// MOUSE OVER EVENT ///
         .on("mouseover", function(d) {
-          circle = d3.select(this)
+          circle = d3v3.select(this)
           tooltip.transition()
             .duration(20)
             .style("opacity", 1)
@@ -117,8 +117,8 @@ $(document).ready(function() {
             .style("stroke-opacity", 1)
           // tooltip.html(d.countryname, +(d[changeHeaderName]))
             tooltip.html("<b>"+d.countryname+"</b>" + "<br/>" + changeHeaderName.replace(/\D/g,'') + "<br/>"  + parseInt(d[changeHeaderName]) + "% Change" )
-            .style("left", (d3.event.pageX) + "px")
-            .style("top", (d3.event.pageY-28) + "px");
+            .style("left", (d3v3.event.pageX) + "px")
+            .style("top", (d3v3.event.pageY-28) + "px");
         })
         .on("mouseout", function(d) {
           tooltip.transition()
@@ -153,11 +153,11 @@ $(document).ready(function() {
 
     // Space between nodes slider //
     $("#spacer-value").on("change", function(){
-      d3.selectAll(".data-node")
+      d3v3.selectAll(".data-node")
         .transition()
         .duration(1000)
         .attr("cy", function(d) {
-          if(d3.select("#radialPlot").property("checked")){
+          if(d3v3.select("#radialPlot").property("checked")){
             var value = +this.getAttribute('data-change-value');
             return (value * +$("#spacer-value").val()) + (outerWidth / +$("#center-slider").val());
           } else {
@@ -170,7 +170,7 @@ $(document).ready(function() {
 
     //Bubble Radius //
     $("#bubble-radius").on("change", function(){
-    d3.selectAll(".data-node")
+    d3v3.selectAll(".data-node")
         .transition()
         .duration(1000)
         .style("r",  function(d) {
@@ -182,11 +182,11 @@ $(document).ready(function() {
 
     // Center Padding //
     $("#center-slider").on("change", function(){
-      d3.selectAll(".data-node")
+      d3v3.selectAll(".data-node")
         .transition()
         .duration(1000)
         .attr("cy", function(d) {
-          if(d3.select("#radialPlot").property("checked")){
+          if(d3v3.select("#radialPlot").property("checked")){
             var value = +this.getAttribute('data-change-value');
             return (value * +$("#spacer-value").val()) + (outerWidth / +$("#center-slider").val());
           } else {
@@ -196,7 +196,7 @@ $(document).ready(function() {
           }
         })
 
-      d3.selectAll(".radial-text")
+      d3v3.selectAll(".radial-text")
         .transition()
         .duration(1000)
         .attr("x", (outerWidth / +$("#center-slider").val()) +1)
@@ -204,23 +204,23 @@ $(document).ready(function() {
 
     // RGB Color One Slider //
     $("#color-slider-one").on("change", function(){
-      d3.selectAll(".positive")
+      d3v3.selectAll(".positive")
         .transition()
-        .style("fill", d3.rgb(+$("#color-slider-one").val(), +$("#color-slider-two").val(),+$("#color-slider-three").val()));
+        .style("fill", d3v3.rgb(+$("#color-slider-one").val(), +$("#color-slider-two").val(),+$("#color-slider-three").val()));
     });
 
     // RGB Color Two Slider //
     $("#color-slider-two").on("change", function(){
-      d3.selectAll(".positive")
+      d3v3.selectAll(".positive")
         .transition()
-        .style("fill", d3.rgb(+$("#color-slider-one").val(), +$("#color-slider-two").val(),+$("#color-slider-three").val()));
+        .style("fill", d3v3.rgb(+$("#color-slider-one").val(), +$("#color-slider-two").val(),+$("#color-slider-three").val()));
     });
 
     //RGB Color Two Slider//
     $("#color-slider-three").on("change", function(){
-      d3.selectAll(".positive")
+      d3v3.selectAll(".positive")
         .transition()
-        .style("fill", d3.rgb(+$("#color-slider-one").val(), +$("#color-slider-two").val(),+$("#color-slider-three").val()));
+        .style("fill", d3v3.rgb(+$("#color-slider-one").val(), +$("#color-slider-two").val(),+$("#color-slider-three").val()));
     });
 
     /////////////////////////////////////////////////////////////////////////////
@@ -228,46 +228,46 @@ $(document).ready(function() {
     /////////////////////////////////////////////////////////////////////////////
 
     // Toggle Radial Text //
-    d3.select("#radialText").on("change",updateText);
+    d3v3.select("#radialText").on("change",updateText);
       function updateText(){
-  			if(d3.select("#radialText").property("checked")){
-          d3.selectAll(".radial-text")
+  			if(d3v3.select("#radialText").property("checked")){
+          d3v3.selectAll(".radial-text")
             .style("opacity", .5)
   			} else {
-          d3.selectAll(".radial-text")
+          d3v3.selectAll(".radial-text")
             .style("opacity", 0)
   			}
       }
 
     // Toggle Negative Circles //
-    d3.select("#negativeValues").on("change",updateNegatives);
+    d3v3.select("#negativeValues").on("change",updateNegatives);
       function updateNegatives(){
-        if(d3.select("#negativeValues").property("checked")){
-          d3.selectAll(".negative")
+        if(d3v3.select("#negativeValues").property("checked")){
+          d3v3.selectAll(".negative")
             .style("opacity", .8)
         } else {
-          d3.selectAll(".negative")
+          d3v3.selectAll(".negative")
             .style("opacity", 0)
         }
       }
 
     // Toggle Positive Circles //
-    d3.select("#positiveValues").on("change",updatePositives);
+    d3v3.select("#positiveValues").on("change",updatePositives);
       function updatePositives(){
-        if(d3.select("#positiveValues").property("checked")){
-          d3.selectAll(".positive")
+        if(d3v3.select("#positiveValues").property("checked")){
+          d3v3.selectAll(".positive")
             .style("opacity", .8)
         } else {
-          d3.selectAll(".positive")
+          d3v3.selectAll(".positive")
             .style("opacity", 0)
         }
       }
 
     // Toggle Plot //
-    d3.select("#radialPlot").on("change",updatePlot)
+    d3v3.select("#radialPlot").on("change",updatePlot)
       function updatePlot(){
-        if(d3.select("#radialPlot").property("checked")){
-          d3.selectAll(".data-node")
+        if(d3v3.select("#radialPlot").property("checked")){
+          d3v3.selectAll(".data-node")
           .transition()
           .duration(1000)
           .attr("cy",  function(d) {
@@ -275,7 +275,7 @@ $(document).ready(function() {
             return (value * +$("#spacer-value").val()) + (outerWidth / +$("#center-slider").val());
           })
         } else {
-          d3.selectAll(".data-node")
+          d3v3.selectAll(".data-node")
           .transition()
           .duration(1000)
           .attr("cy", function() {
@@ -287,19 +287,19 @@ $(document).ready(function() {
       }
 
     // Toggle Background //
-    d3.select("#darkBackground").on("change",updateBackground);
+    d3v3.select("#darkBackground").on("change",updateBackground);
       function updateBackground() {
-        if(d3.select("#darkBackground").property("checked")){
+        if(d3v3.select("#darkBackground").property("checked")){
           document.body.style.background = "black";
-          d3.selectAll(".radial-text")
+          d3v3.selectAll(".radial-text")
             .style("fill", "white")
-          d3.selectAll(".basic-line-title")
+          d3v3.selectAll(".basic-line-title")
             .style("color","white")
         } else {
           document.body.style.background = "#fff";
-          d3.selectAll(".radial-text")
+          d3v3.selectAll(".radial-text")
             .style("fill", "black")
-          d3.selectAll(".basic-line-title")
+          d3v3.selectAll(".basic-line-title")
             .style("color","black")
         }
       }
