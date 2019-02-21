@@ -6,6 +6,6 @@ module ApplicationHelper
 
   def d3_date_format(date)
     return ' ' if date.nil?
-    date.strftime "%a"
+    date.strftime "%Y"
   end
 end
