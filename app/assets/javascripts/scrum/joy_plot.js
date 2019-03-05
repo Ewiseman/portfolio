@@ -5,83 +5,97 @@ $(document).ready(function() {
     return;
   }
 
-  // set the dimensions and margins of the graph
-  var margin = {top: 200, right: 60, bottom: 30, left: 20},
+  var margin = {top: 20, right: 60, bottom: 90, left: 20},
       width = $("#my_dataviz").width(),
       height = ($("#my_dataviz").width()*.50);
 
   var svg = d3.select("#my_dataviz")
       .append("svg")
-      .attr("style", "padding-bottom: " + Math.ceil(height * 0 / width) + "%")
-      .attr("viewBox", "-90 -200 " + (width + margin.left + margin.right) + " " + (height + margin.top + margin.bottom))
+      .attr("style", "padding-bottom: " + Math.ceil(height * 10 / width) + "%")
+      .attr("viewBox", "-50 -90 " + (width + margin.left + margin.right) + " " + (height + margin.top + margin.bottom))
       .append("g")
+  // Percent two area charts can overlap
+  var overlap = 0.7;
 
-  //read data
-  d3.csv("https://raw.githubusercontent.com/zonination/perceptions/master/probly.csv").then(function(data) {
+  var parseTime = d3.timeParse("%Y-%m-%d");
 
-    // Get the different categories and count them
-    var categories = data.columns
-    var n = categories.length
+  var parseDate = d3.timeParse('%Y');
 
-    // Add X axis
-    var x = d3.scaleLinear()
-      .domain([-10, 140])
-      .range([ 0, width ]);
-    svg.append("g")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
+  var x = function(d) { return d.date; },
+      xScale = d3.scaleTime().range([0, width]),
+      xValue = function(d) { return xScale(x(d)); },
+      xAxis = d3.axisBottom(xScale);
 
-    // Create a Y scale for densities
-    var y = d3.scaleLinear()
-      .domain([0, 0.4])
-      .range([ height, 0]);
+  var y = function(d) { return d.value; },
+      yScale = d3.scaleLinear(),
+      yValue = function(d) { return yScale(y(d)); };
 
-    // Create the Y axis for names
-    var yName = d3.scaleBand()
-      .domain(categories)
-      .range([0, height])
-      .paddingInner(1)
-    svg.append("g")
-      .call(d3.axisLeft(yName));
+  var activity = function(d) { return d.key; },
+      activityScale = d3.scaleBand().range([0, height]),
+      activityValue = function(d) { return activityScale(activity(d)); },
+      activityAxis = d3.axisLeft(activityScale);
 
-    // Compute kernel density estimation for each column:
-    var kde = kernelDensityEstimator(kernelEpanechnikov(7), x.ticks(40)) // increase this 40 for more accurate density.
-    var allDensity = []
-    for (i = 0; i < n; i++) {
-        key = categories[i]
-        density = kde( data.map(function(d){  return d[key]; }) )
-        allDensity.push({key: key, density: density})
-    }
+      console.log(activityScale)
 
-    // Add areas
-    svg.selectAll("areas")
-      .data(allDensity)
-      .enter()
-      .append("path")
-        .attr("transform", function(d){return("translate(0," + (yName(d.key)-height) +")" )})
-        .datum(function(d){return(d.density)})
-        .attr("fill", "#69b3a2")
-        .attr("stroke", "#000")
-        .attr("stroke-width", 1)
-        .attr("d",  d3.line()
-            .curve(d3.curveBasis)
-            .x(function(d) { return x(d[0]); })
-            .y(function(d) { return y(d[1]); })
-        )
+  var area = d3.area()
+      .x(xValue)
+      .y1(yValue)
+      // .curve(d3.curveBasis);
 
-  })
+  var line = area.lineY1();
 
-  // This is what I need to compute kernel density estimation
-  function kernelDensityEstimator(kernel, X) {
-    return function(V) {
-      return X.map(function(x) {
-        return [x, d3.mean(V, function(v) { return kernel(x - v); })];
-      });
-    };
-  }
-  function kernelEpanechnikov(k) {
-    return function(v) {
-      return Math.abs(v /= k) <= 1 ? 0.75 * (1 - v * v) / k : 0;
-    };
-  }
+  d3.csv("/scrum_reports.csv").then(function(data) {
+
+    data.forEach(function(d) {
+      d.date = parseTime(d.date);
+      d.value = +d.value;
+    });
+
+      // Sort by time
+      data.sort(function(a, b) { return a.date - b.date; });
+
+      var nest = d3.nest()
+          .key(function(d) { return d.key; })
+          .entries(data);
+
+      xScale.domain(d3.extent(data, x));
+
+      activityScale.domain(nest.map(function(d) { return d.key; }));
+
+      var areaChartHeight = (1 + overlap) * (height / activityScale.domain().length);
+
+      yScale
+          .domain(d3.extent(data, y))
+          .range([areaChartHeight, 0]);
+
+      area.y0(yScale(0));
+
+      svg.append('g').attr('class', 'axis axis--x')
+          .attr('transform', 'translate(0,' + height + ')')
+          .call(xAxis);
+
+      svg.append('g').attr('class', 'axis axis--activity')
+          .call(activityAxis);
+
+      var gActivity = svg.append('g').attr('class', 'activities')
+              .selectAll('.activity').data(nest)
+              .enter().append('g')
+              .attr('class', function(d) { return 'activity activity--' + d.key; })
+              .attr('transform', function(d) {
+                  var ty = activityValue(d) - activityScale.bandwidth() + 5;
+                  return 'translate(0,' + ty + ')';
+              });
+
+      gActivity.append('path').attr('class', 'area')
+          .datum(function(d) { return d.values; })
+          .attr('d', area);
+
+      gActivity.append('path').attr('class', 'line')
+          .datum(function(d) { return d.values; })
+          .attr('d', line);
+  });
+
+
+
+
 });
