@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   resource :scrum_reports, only: :show, :defaults => { :format => 'csv' }
   resource :task_reports, only: :show, :defaults => { :format => 'csv' }
   resource :scrum_maps, only: :show, :defaults => { :format => 'csv' }
-  resource :scrum_columns, only: :show, :defaults => { :format => 'csv' }
 
   resources :recipes, only: [:index]
 

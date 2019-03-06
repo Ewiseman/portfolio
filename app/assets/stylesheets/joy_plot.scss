@@ -1,5 +1,5 @@
 .axis .domain {
-    display: none;
+
 }
 
 .axis--x text {
@@ -11,16 +11,13 @@
 }
 
 .axis--activity .tick line {
-    display: none;
+  display: none;
 }
 
 .axis--activity text {
-    font-size: 12px;
+    font-size: 20px;
+    font-weight: 20px;
     fill: #777;
-}
-
-.axis--activity .tick:nth-child(odd) text {
-    fill: #222;
 }
 
 .line {
@@ -28,10 +25,7 @@
     stroke: #fff;
 }
 
-.area {
-    fill: #448cab;
-}
-
-.activity:nth-child(odd) .area {
-    fill: #5ca3c1;
+.joy-area {
+  fill: url(#area-gradient);
+    stroke-width: 0px;
 }
