@@ -5,18 +5,18 @@ $(document).ready(function() {
   ///////////////////////////////////////////////////////////////
 
   var loadVisualization = $("#my_dataviz").length > 0;
-  if (!loadVisualization) {
+    if (!loadVisualization) {
     return;
   }
 
-  var margin = {top: 20, right: 30, bottom: 120, left: 300},
+  var margin = {top: 20, right: 30, bottom: 130, left: 300},
       width = $("#my_dataviz").width(),
       height = ($("#my_dataviz").width()*.40);
 
   var svg = d3.select("#my_dataviz")
       .append("svg")
       .attr("style", "padding-bottom: " + Math.ceil(height * 20 / width) + "%")
-      .attr("viewBox", "-200 -120 " + (width + margin.left + margin.right) + " " + (height + margin.top + margin.bottom))
+      .attr("viewBox", "-200 -130 " + (width + margin.left + margin.right) + " " + (height + margin.top + margin.bottom))
       .append("g")
 
   var color = d3.scaleOrdinal()
@@ -32,6 +32,14 @@ $(document).ready(function() {
 
   var xAxis = d3.axisBottom(x);
   var yAxis = d3.axisLeft(activity);
+
+  var tooltip = d3v3.select("body").append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 0);
+
+  var area_base = d3.area()
+  .x(function(d) { return x(d.date); })
+  .y1(function(d) { return y(function(d) { return d.value; }(d)); } - function(d) { return y(function(d) { return d.value; }(d)); })
 
   var area = d3.area()
       .x(function(d) { return x(d.date); })
@@ -89,7 +97,7 @@ $(document).ready(function() {
       .selectAll("stop")
         .data([
           {offset: "0%", color: "#fff"},
-          {offset: "10%", color: "#6dd5ed"},
+          {offset: "14%", color: "#6dd5ed"},
           {offset: "100%", color: "#2193b0"}
         ])
       .enter().append("stop")
@@ -112,11 +120,17 @@ $(document).ready(function() {
     gActivity.append('path').attr('class', 'joy-area')
         .datum(function(d) { return d.values; })
         .attr('d', area)
-        // .style("fill", function(d, i) { return color(i); })
+
+    gActivity.selectAll(".joy-area")
+      .transition()
+      .duration(1500)
+      .attr("d", area)
 
     gActivity.append('path').attr('class', 'line')
         .datum(function(d) { return d.values; })
         .attr('d', line);
+
+
 
     ///////////////////////////////////////////////////////////////
     /////////////////////   Annotations   /////////////////////////
@@ -131,11 +145,11 @@ $(document).ready(function() {
                },
                //settings for the subject, in this case the circle radius
                subject: {
-                 radius: 5
+                 radius: 8
                },
                data: { x: "2018-11-1", y: -135},
-               dy: 0,
-               dx: 105
+               dy: -($("#my_dataviz").width()*.14),
+               dx: 0
              },
              {
              type: d3.annotationCalloutCircle,
@@ -145,10 +159,10 @@ $(document).ready(function() {
                 },
                 //settings for the subject, in this case the circle radius
                 subject: {
-                  radius: 5
+                  radius: 8
                 },
                 data: { x: "2018-1-1", y: -355},
-                dy: -320,
+                dy: -($("#my_dataviz").width()*.22),
                 dx: -1
               },
               {
@@ -159,7 +173,7 @@ $(document).ready(function() {
                  },
                  //settings for the subject, in this case the circle radius
                  subject: {
-                   radius: 5
+                   radius: 8
                  },
                  data: { x: "2018-3-1", y: 75},
                  dy: -135,
@@ -173,7 +187,7 @@ $(document).ready(function() {
                   },
                   //settings for the subject, in this case the circle radius
                   subject: {
-                    radius: 5
+                    radius: 8
                   },
                   data: { x: "2017-3-1", y: 75},
                   dy: -135,
@@ -187,7 +201,7 @@ $(document).ready(function() {
                    },
                    //settings for the subject, in this case the circle radius
                    subject: {
-                     radius: 5
+                     radius: 8
                    },
                    data: { x: "2016-3-1", y: 75},
                    dy: -135,
@@ -201,28 +215,44 @@ $(document).ready(function() {
                     },
                     //settings for the subject, in this case the circle radius
                     subject: {
-                      radius: 5
+                      radius: 8
                     },
                     data: { x: "2017-11-1", y: 110},
-                    dy: -120,
+                    dy: -105,
                     dx: -1
-                  }
+                  },
+                  {
+                  type: d3.annotationCalloutCircle,
+                     note: {
+                       title: "Intermittent Fasting, Juicing, Meditating",
+                       wrap: 190
+                     },
+                     //settings for the subject, in this case the circle radius
+                     subject: {
+                       radius: 8
+                     },
+                     data: { x: "2018-10-1", y: 670},
+                     dy: -20,
+                     dx: -1
+                   },
+                   {
+                   type: d3.annotationCalloutCircle,
+                      note: {
+                        title: "Learning React",
+                        wrap: 190
+                      },
+                      //settings for the subject, in this case the circle radius
+                      subject: {
+                        radius: 8
+                      },
+                      data: { x: "2018-12-1", y: -1700},
+                      dy: -50,
+                      dx: -1
+                    }
+
+
 
             ].map(function(d){ d.color = "#E8336D"; return d})
-
-
-
-            //An example of taking the XYThreshold and merging it
-            //with custom settings so you don't have to
-            //repeat yourself in the annotations Objects
-            var type = d3.annotationCustomType(
-              d3.annotationXYThreshold,
-              {"note":{
-                  "lineType":"none",
-                  "orientation": "top",
-                  "align":"middle"}
-              }
-            )
 
             var makeAnnotations = d3.annotation()
               // .type(type)
@@ -234,11 +264,16 @@ $(document).ready(function() {
               .annotations(annotations)
               .textWrap(30)
 
-                console.log(makeAnnotations)
-
               svg.append("g")
                 .attr("class", "annotation-group")
                 .call(makeAnnotations)
+                .style("opacity", 0)
+
+              svg.selectAll(".annotation-group")
+                .transition()
+                .duration(3500)
+                .style("opacity", 1)
+
 
 
 
