@@ -15,42 +15,42 @@ require 'csv'
    board = Sprint.joins(:tasks).where(tasks: { category: "board" }).group_by_month(:sprint_date, range: (time_ago)..time_here).unscope(:order).sum(:value)
    career_development = Sprint.joins(:tasks).where(tasks: { category: "career development" }).group_by_month(:sprint_date, range: (time_ago)..time_here).unscope(:order).sum(:value)
 
-    csv = "key,value,date\n"
+    csv = "key,value,date,value_two\n"
 
     health.each do |row|
-      csv << "Health,#{row[1]},#{row[0]}\n"
+      csv << "Health,#{row[1]},#{row[0]},0\n"
     end
 
     vacation.each do |row|
-      csv << "Vacation,#{row[1]},#{row[0]}\n"
+      csv << "Vacations,#{row[1]},#{row[0]},0\n"
     end
 
     personal.each do |row|
-      csv << "Personal,#{row[1]},#{row[0]}\n"
+      csv << "Personal,#{row[1]},#{row[0]},0\n"
     end
 
     gear_lift.each do |row|
-      csv << "Gear Lift,#{row[1]},#{row[0]}\n"
+      csv << "Gear Lift,#{row[1]},#{row[0]},0\n"
     end
 
     snowmass.each do |row|
-      csv << "Rental House,#{row[1]},#{row[0]}\n"
+      csv << "Rental House,#{row[1]},#{row[0]},0\n"
     end
 
     fcfs.each do |row|
-      csv << "First Class Financial,#{row[1]},#{row[0]}\n"
+      csv << "First Class Financial,#{row[1]},#{row[0]},0\n"
     end
 
     one_dataset.each do |row|
-      csv << "One Dataset,#{row[1]},#{row[0]}\n"
+      csv << "One Dataset,#{row[1]},#{row[0]},0\n"
     end
 
     board.each do |row|
-      csv << "School Board,#{row[1]},#{row[0]}\n"
+      csv << "School Board,#{row[1]},#{row[0]},0\n"
     end
 
     career_development.each do |row|
-      csv << "Career Development,#{row[1]},#{row[0]}\n"
+      csv << "Career Development,#{row[1]},#{row[0]},0\n"
     end
 
     respond_to do |format|

@@ -121,158 +121,151 @@ $(document).ready(function() {
         .datum(function(d) { return d.values; })
         .attr('d', area)
 
-    gActivity.selectAll(".joy-area")
-      .transition()
-      .duration(1500)
-      .attr("d", area)
-
     gActivity.append('path').attr('class', 'line')
         .datum(function(d) { return d.values; })
         .attr('d', line);
-
-
 
     ///////////////////////////////////////////////////////////////
     /////////////////////   Annotations   /////////////////////////
     ///////////////////////////////////////////////////////////////
 
-          //Add annotations
-          var annotations = [{
-               type: d3.annotationCalloutCircle,
+    //Add annotations
+    var annotations = [{
+         type: d3.annotationCalloutCircle,
+         note: {
+           title: "Launched Startup",
+           wrap: 190
+         },
+         //settings for the subject, in this case the circle radius
+         subject: {
+           radius: 8
+         },
+         data: { x: "2018-11-1", y: -135},
+         dy: -($("#my_dataviz").width()*.14),
+         dx: 0
+       },
+       {
+       type: d3.annotationCalloutCircle,
+          note: {
+            title: "1st Place Startup Comp.",
+            wrap: 190
+          },
+          //settings for the subject, in this case the circle radius
+          subject: {
+            radius: 8
+          },
+          data: { x: "2018-1-1", y: -355},
+          dy: -($("#my_dataviz").width()*.22),
+          dx: -1
+        },
+        {
+        type: d3.annotationCalloutCircle,
+           note: {
+             title: "Costa Rica",
+             wrap: 190
+           },
+           //settings for the subject, in this case the circle radius
+           subject: {
+             radius: 8
+           },
+           data: { x: "2018-3-1", y: 75},
+           dy: -135,
+           dx: -1
+         },
+         {
+         type: d3.annotationCalloutCircle,
+            note: {
+              title: "Hawaii",
+              wrap: 190
+            },
+            //settings for the subject, in this case the circle radius
+            subject: {
+              radius: 8
+            },
+            data: { x: "2017-3-1", y: 75},
+            dy: -135,
+            dx: -1
+          },
+          {
+          type: d3.annotationCalloutCircle,
+             note: {
+               title: "Hawaii",
+               wrap: 190
+             },
+             //settings for the subject, in this case the circle radius
+             subject: {
+               radius: 8
+             },
+             data: { x: "2016-3-1", y: 75},
+             dy: -135,
+             dx: -1
+           },
+           {
+           type: d3.annotationCalloutCircle,
+              note: {
+                title: "Ski Mexico",
+                wrap: 190
+              },
+              //settings for the subject, in this case the circle radius
+              subject: {
+                radius: 8
+              },
+              data: { x: "2017-11-1", y: 110},
+              dy: -125,
+              dx: -1
+            },
+            {
+            type: d3.annotationCalloutCircle,
                note: {
-                 title: "Launched Startup",
+                 title: "Intermittent Fasting, Juicing, Meditating",
                  wrap: 190
                },
                //settings for the subject, in this case the circle radius
                subject: {
                  radius: 8
                },
-               data: { x: "2018-11-1", y: -135},
-               dy: -($("#my_dataviz").width()*.14),
-               dx: 0
+               data: { x: "2018-10-1", y: 670},
+               dy: -20,
+               dx: -1
              },
              {
              type: d3.annotationCalloutCircle,
                 note: {
-                  title: "1st Place Startup Comp.",
+                  title: "Learning React",
                   wrap: 190
                 },
                 //settings for the subject, in this case the circle radius
                 subject: {
                   radius: 8
                 },
-                data: { x: "2018-1-1", y: -355},
-                dy: -($("#my_dataviz").width()*.22),
+                data: { x: "2018-12-1", y: -1700},
+                dy: -50,
                 dx: -1
-              },
-              {
-              type: d3.annotationCalloutCircle,
-                 note: {
-                   title: "Costa Rica",
-                   wrap: 190
-                 },
-                 //settings for the subject, in this case the circle radius
-                 subject: {
-                   radius: 8
-                 },
-                 data: { x: "2018-3-1", y: 75},
-                 dy: -135,
-                 dx: -1
-               },
-               {
-               type: d3.annotationCalloutCircle,
-                  note: {
-                    title: "Hawaii",
-                    wrap: 190
-                  },
-                  //settings for the subject, in this case the circle radius
-                  subject: {
-                    radius: 8
-                  },
-                  data: { x: "2017-3-1", y: 75},
-                  dy: -135,
-                  dx: -1
-                },
-                {
-                type: d3.annotationCalloutCircle,
-                   note: {
-                     title: "Hawaii",
-                     wrap: 190
-                   },
-                   //settings for the subject, in this case the circle radius
-                   subject: {
-                     radius: 8
-                   },
-                   data: { x: "2016-3-1", y: 75},
-                   dy: -135,
-                   dx: -1
-                 },
-                 {
-                 type: d3.annotationCalloutCircle,
-                    note: {
-                      title: "Ski Orizaba",
-                      wrap: 190
-                    },
-                    //settings for the subject, in this case the circle radius
-                    subject: {
-                      radius: 8
-                    },
-                    data: { x: "2017-11-1", y: 110},
-                    dy: -105,
-                    dx: -1
-                  },
-                  {
-                  type: d3.annotationCalloutCircle,
-                     note: {
-                       title: "Intermittent Fasting, Juicing, Meditating",
-                       wrap: 190
-                     },
-                     //settings for the subject, in this case the circle radius
-                     subject: {
-                       radius: 8
-                     },
-                     data: { x: "2018-10-1", y: 670},
-                     dy: -20,
-                     dx: -1
-                   },
-                   {
-                   type: d3.annotationCalloutCircle,
-                      note: {
-                        title: "Learning React",
-                        wrap: 190
-                      },
-                      //settings for the subject, in this case the circle radius
-                      subject: {
-                        radius: 8
-                      },
-                      data: { x: "2018-12-1", y: -1700},
-                      dy: -50,
-                      dx: -1
-                    }
+              }
 
 
 
-            ].map(function(d){ d.color = "#E8336D"; return d})
+      ].map(function(d){ d.color = "#E8336D"; return d})
 
-            var makeAnnotations = d3.annotation()
-              // .type(type)
-              //Gives you access to any data objects in the annotations array
-              .accessors({
-                x: function(d){ return x(new Date(d.x))},
-                y: function(d){ return y(d.y) }
-              })
-              .annotations(annotations)
-              .textWrap(30)
+      var makeAnnotations = d3.annotation()
+        // .type(type)
+        //Gives you access to any data objects in the annotations array
+        .accessors({
+          x: function(d){ return x(new Date(d.x))},
+          y: function(d){ return y(d.y) }
+        })
+        .annotations(annotations)
+        .textWrap(30)
 
-              svg.append("g")
-                .attr("class", "annotation-group")
-                .call(makeAnnotations)
-                .style("opacity", 0)
+        svg.append("g")
+          .attr("class", "annotation-group")
+          .call(makeAnnotations)
+          .style("opacity", 0)
 
-              svg.selectAll(".annotation-group")
-                .transition()
-                .duration(3500)
-                .style("opacity", 1)
+        svg.selectAll(".annotation-group")
+          .transition()
+          .duration(3500)
+          .style("opacity", 1)
 
 
 
