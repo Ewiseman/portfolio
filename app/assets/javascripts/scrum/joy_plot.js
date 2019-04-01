@@ -94,7 +94,7 @@ $(document).ready(function() {
         .attr("gradientUnits", "userSpaceOnUse")
         .attr("x1", 0).attr("y1", y(0))
         .attr("x2", 0).attr("y2", y(300))
-      .selectAll("stop")
+        .selectAll("stop")
         .data([
           {offset: "0%", color: "#fff"},
           {offset: "14%", color: "#6dd5ed"},
@@ -112,16 +112,19 @@ $(document).ready(function() {
         .selectAll('.activity').data(nest)
         .enter().append('g')
         .attr('class', function(d) { return 'activity activity--' + d.key; })
-        .attr('transform', function(d) {
+        .attr('transform', function(d,i) {
             var ty = function(d) { return activity(function(d) { return d.key }(d)) }(d) - activity.bandwidth() + 5;
+            // var tx = i *50
             return 'translate(0,' + ty + ')';
         });
 
-    gActivity.append('path').attr('class', 'joy-area')
+    gActivity.append('path')
+        .attr('class', 'joy-area')
         .datum(function(d) { return d.values; })
         .attr('d', area)
 
-    gActivity.append('path').attr('class', 'line')
+    gActivity.append('path')
+        .attr('class', 'line')
         .datum(function(d) { return d.values; })
         .attr('d', line);
 
@@ -155,7 +158,7 @@ $(document).ready(function() {
             radius: 8
           },
           data: { x: "2018-1-1", y: -355},
-          dy: -($("#my_dataviz").width()*.22),
+          dy: -5,
           dx: -1
         },
         {
@@ -225,7 +228,7 @@ $(document).ready(function() {
                  radius: 8
                },
                data: { x: "2018-10-1", y: 670},
-               dy: -20,
+               dy: 0,
                dx: -1
              },
              {

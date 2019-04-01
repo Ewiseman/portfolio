@@ -41,7 +41,7 @@ $(document).ready(function() {
     var rgbThree = +$("#color-slider-three").val();
     var spacerValue = +$("#spacer-value").val();
     var centerPadding = outerWidth / +$("#center-slider").val();
-    var radiusMultiplier = 1
+    var radiusMultiplier = 2
     var positivePercentageColor = d3v3.rgb(rgbOne, rgbTwo, rgbThree);
     var negativePercentageColor = "red"
     var cirlceOpacity = .8
@@ -60,9 +60,26 @@ $(document).ready(function() {
     /////////////////////////////////////////////////////////////////////////////
     ///////////////////////// Circles ///////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////
+    var numColors = 10;
+		var colorScale = d3v3.scale.linear()
+		   .domain([0,(numColors-1)/2,numColors-1])
+		   .range(["#2c7bb6", "#ffff8c", "#d7191c"])
+		   .interpolate(d3.interpolateHcl);
 
-    function remove(array, element) {
-      return array.filter(function(e) { return e.includes(element); });
+		svg.append("defs").append("radialGradient")
+			.attr("id", "gradientRainbow")
+			.attr("gradientUnits", "userSpaceOnUse")
+			.attr("cx", "10%")
+			.attr("cy", "0%")
+			.attr("r", "45%")
+			.selectAll("stop")
+			.data(d3v3.range(numColors))
+			.enter().append("stop")
+			.attr("offset", function(d,i) { return (i/(numColors-1)*50 + 40) + "%"; })
+			.attr("stop-color", function(d) { return colorScale(d); });
+
+function remove(array, element) {
+  return array.filter(function(e) { return e.includes(element); });
     }
 
     var changeHeaderNames = remove(headerNames, "change");
@@ -84,6 +101,7 @@ $(document).ready(function() {
           var x = +(d[changeHeaderName]);
             return x
         ;})
+
         .attr("data-change-index", index)
         .attr("cy", function(d) {
           if(d3v3.select("#radialPlot").property("checked")){
@@ -95,12 +113,16 @@ $(document).ready(function() {
             return newCy;
           }
         })
+          .style("fill", "url(#gradientRainbow)")
 
-        .style("fill", function(d) {
-          var x = +(d[changeHeaderName]);
-          if (x < 0) {return negativePercentageColor }
-          else  { return positivePercentageColor }
-        ;})
+
+        // .style("fill", "red")
+
+        // .style("fill", function(d) {
+        //   var x = +(d[changeHeaderName]);
+        //   if (x < 0) {return negativePercentageColor }
+        //   else  { return positivePercentageColor }
+        // ;})
         .attr("opacity", 0.8)
         .style("stroke-opacity", .3)
         .attr("transform", radialPlacement)

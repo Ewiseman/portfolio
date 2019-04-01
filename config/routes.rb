@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   get 'gear_lift' =>'welcome#gear_lift'
   get 'fcfs' =>'welcome#fcfs'
+  get 'business_plan' =>'welcome#business_plan'
   root to: 'welcome#home'
 
   get "welcome/download_pdf"

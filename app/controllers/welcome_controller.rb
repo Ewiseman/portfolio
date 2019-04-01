@@ -16,4 +16,8 @@ class WelcomeController < ApplicationController
     render layout: 'navbar_two'
   end
 
+  def business_plan
+    render layout: 'no_navbar'
+  end
+
 end
