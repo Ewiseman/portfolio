@@ -228,7 +228,7 @@ $(document).ready(function() {
                  radius: 8
                },
                data: { x: "2018-10-1", y: 670},
-               dy: 0,
+               dy: -5,
                dx: -1
              },
              {
