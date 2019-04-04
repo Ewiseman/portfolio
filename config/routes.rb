@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   root to: 'welcome#home'
 
   get "welcome/download_pdf"
-  #Scrum
+  ### Final Projects ###
+  get '/projects/ski_resorts' =>'projects#ski_resorts'
+  ### Scrum ###
   get '/scrum/area_chart' => 'scrum#area_chart'
   get '/scrum/vertical_stream' => 'scrum#vertical_stream'
   get '/scrum/radial_column' => 'scrum#radial_column'

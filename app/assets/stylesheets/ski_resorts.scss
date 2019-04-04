@@ -1,0 +1,50 @@
+.parallax {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0)), asset-url('ski_resorts/vail.jpg')no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.parallax:after{
+    content:"";
+    position:fixed; /* stretch a fixed position to the whole screen */
+    top:0;
+    height:70vh; /* fix for mobile browser address bar appearing disappearing */
+    left:0;
+    right:0;
+    z-index:-1; /* needed to keep in the background */
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0)), asset-url('ski_resorts/vail.jpg')no-repeat center center;;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#ski-resorts {
+  font-family: 'Rubik' !important;
+  padding-top: 17%;
+  height: 70vh;
+}
+
+#states {
+  fill: #eee;
+}
+
+#states .active {
+  fill: white;
+}
+
+#state-borders {
+  fill: none;
+  stroke: #333;
+  stroke-width: 1px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+.chord path {
+  fill-opacity: .6;
+  stroke-width: .5px;
+}
