@@ -7,18 +7,18 @@
 }
 
 .parallax:after{
-    content:"";
-    position:fixed; /* stretch a fixed position to the whole screen */
-    top:0;
-    height:70vh; /* fix for mobile browser address bar appearing disappearing */
-    left:0;
-    right:0;
-    z-index:-1; /* needed to keep in the background */
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0)), asset-url('ski_resorts/vail.jpg')no-repeat center center;;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+  content:"";
+  position:fixed; /* stretch a fixed position to the whole screen */
+  top:0;
+  height:70vh; /* fix for mobile browser address bar appearing disappearing */
+  left:0;
+  right:0;
+  z-index:-1; /* needed to keep in the background */
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0)), asset-url('ski_resorts/vail.jpg')no-repeat center center;;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 #ski-resorts {
@@ -47,4 +47,45 @@
 .chord path {
   fill-opacity: .6;
   stroke-width: .5px;
+}
+
+.image-bg .hero-section {
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0)), asset-url('ski_resorts/vail.jpg')no-repeat center center;
+	background-size: cover;
+	padding: 150px 0 100px 0;
+  height:70vh;
+}
+
+.image-bg .hero-content h1 {
+	font-weight: 500;
+	color: #fcfefd;
+}
+
+.mygrid-wrapper-div {
+    border: solid red 5px;
+    overflow: scroll;
+    height: 70%;
+}
+
+.triangle-container div {
+  width: 50%;
+  height: 100vh;
+}
+
+.ski-resort-width {
+  margin-left: 150px !important;
+  margin-right: 150px !important;
+}
+
+
+
+.image-bg .hero-content p {
+	color: #fcfefd;
+}
+
+.main-text {
+  position: absolute;
+  top: 15%;
+  width: 100%;
+  color: #262626;
 }

@@ -1,21 +1,84 @@
-<!-- Preloader-->
-<%#= render partial: 'preloader' %>
-<!-- Preloader end-->
-
-<!-- Wrapper-->
-<div class="wrapper">
-
-  <section class="parallax text-left" id="ski-resorts">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h1 class="h1 m-b-15 wow fadeInUp" data-wow-delay="0.5s"">Ski Resorts</h1>
+<div class="main image-bg" id="main">
+  <div id="carousel" class="carousel slide" data-ride="carousel" data-interval="9000">
+    <ol class="carousel-indicators">
+      <li data-target="#carousel" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel" data-slide-to="1"></li>
+      <li data-target="#carousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="item active">
+        <div class="hero-section">
+        </div>
+      </div>
+      <div class="item">
+        <div class="hero-section two">
+        </div>
+      </div>
+      <div class="item">
+        <div class="hero-section three">
         </div>
       </div>
     </div>
-  </section>
 
-  <section class="module us-map" id="us-map">
+    <div class="main-text">
+      <div class="container nopadding">
+        <div class="col-md-12">
+          <div class="col-md-7 col-sm-8">
+            <div class="hero-content">
+              <h1 class="wow fadeInUp" data-wow-delay="0s">Your Outdoor Gear Search Nirvana</h1>
+              <!-- <h1 class="wow fadeInUp" data-wow-delay="0s">Elevate Your Gear Buying Experience</h1> -->
+              <p class="wow fadeInUp" data-wow-delay="0.2s">
+                Discover the perfect outdoor gear for you, without spending hours in stores or researching online. Gear Lift's mission is to help you find the outdoor gear that matches your unique style, size, and budget.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container">
+  <div class="d3-chart labels center-block">
+    <h3 class="label-indent">US Map</h3>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+      <div id="triangles"></div>
+    </div>
+  </div>
+</div> -->
+
+<section class="module co-chord" id="co-chord">
+  <div class="container-fluid ski-resort-width">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 container-for-me">
+        <div id="welcome">
+          <h3>As of 2016, there were 365 ski resorts in the US.</h3>
+        </div>
+        <div id="all-organized">
+          <h3>Over the coure of that time I used a lot of sticky notes...<strong>7,158</strong> to be exact.</h3>
+          <p></p>
+        </div>
+        <div id="color-coded">
+          <h3>I color coded my sticky notes to correpsond to an area of life.  </h3>
+        </div>
+        <div id="health">
+          <h3>Health</h3>
+        </div>
+        <div id="vacation">
+          <h3>Vacations</h3>
+        </div>
+        <div id="work">
+          <h3>Work </h3>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div id="triangles"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
     <div class="container">
       <div class="d3-chart labels center-block">
         <h3 class="label-indent">US Map</h3>
@@ -23,7 +86,9 @@
         <script src="//d3js.org/topojson.v1.min.js"></script>
       </div>
     </div>
-  </section>
+
+
+
 
   <section class="module co-chord" id="co-chord">
     <div class="container">
@@ -33,16 +98,3 @@
       </div>
     </div>
   </section>
-
-<!-- <section>
-  <div id="ski-map-top" class="col-md-12 col-sm-12 col-xs-12">
-    <div class=row>
-      <div class="d3-chart labels center-block">
-        <h3 class="label-indent">US Map</h3>
-        <div id="us-map"></div>
-        <script src="//d3js.org/topojson.v1.min.js"></script>
-      </div>
-    </div>
-    </div>
-  </section>
-</div> -->
