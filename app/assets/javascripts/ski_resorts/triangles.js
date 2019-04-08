@@ -7,21 +7,22 @@ $(document).ready(function() {
 
   // Defines the width and height of visualization
   var margin = {top: 20, right: 0, bottom: 40, left: 0},
-      width = $("#triangles").width(),
+      width = $("#triangles").width()/.55,
       height = ($("#triangles").width());
 
-  var svg = d3.select("#triangles")
+  var svg = d3v3.select("#triangles")
       .append("svg")
-      .attr("viewBox", "-0 +200 " + (width + margin.left + margin.right) + " " + (height + margin.top + margin.bottom))
+      .attr("viewBox", "-0 -100 " + (width + margin.left + margin.right) + " " + (height + margin.top + margin.bottom))
       .append("g")
+
 
 
   // Maps the latitude on longitude on the SVG and adjust scaling and rotation
   var projection = d3v3.geo.conicConformal()
     .rotate([98, 0])
     .center([0, 38])
-    .parallels([22.5, 45.5])
-    .scale(1200)
+    .parallels([29.5, 45.5])
+    .scale(width)
     .translate([width / 2, height / 2])
     .precision(.1);
 
@@ -37,19 +38,75 @@ $(document).ready(function() {
     // Ski resort data
     d3v3.csv("/ski_resorts/ski_resort_root_data.csv", function(error, data) {
 
-      // Creates Markers using d3 symbols
-      g.selectAll("g")
-        .data(data)
-        .enter()
-        .append("path")
-        .attr("id", "ball")
-        .attr("d", d3v3.svg.symbol()
-        .size(function(d) { return d.acres/10;})
-        .type( function(d) { return d3v3.svg.symbolTypes[5]; }))
-        .attr("transform", function(d) { return "translate(" + projection([d.lon,d.lat])[0] + "," + projection([d.lon,d.lat])[1] + ")"; })
-        .style("fill", "steelblue")
-        .style("stroke", "black")
-        .style("opacity", .7);
+    //Convert strings to numbers
+    data.forEach(function(d) {
+      d.resort_name = d.resort_name;
+      d.acres = +d.acres;
+      d.vertical = +d.vertical
+      d.summit = +d.summit
+      d.base = +d.base
+    });
+
+      //Draw Triangles
+    g.selectAll("g")
+      .data(data)
+      .enter()
+      .append("path")
+      .attr("d", d3v3.svg.symbol()
+      .size(function(d) { return d.acres/10;})
+      .type( function(d) { return d3v3.svg.symbolTypes[5]; }))
+      .attr("transform", function(d) { return "translate(" + projection([d.lon,d.lat])[0] + "," + projection([d.lon,d.lat])[1] + ")"; })
+      .attr("class", "ball")
+      .style("fill", "steelblue")
+      .style("stroke", "black")
+      .style("opacity", .7);
+
+      //On button click arrange triangles flat Y axis
+      d3v3.selectAll("#tri-acres")
+        .on("click", function () {
+          svg.selectAll(".ball")
+            .transition()
+            .delay(0)
+            .duration(2000)
+            .attr("transform", function(d) { return "translate(" + 400 + "," + projection([d.lon,d.lat])[1] + ")"; })
+      });
+
+      //On button click arrange triangles flat Y axis
+      d3v3.selectAll("#tri-vertical")
+        .on("click", function () {
+          svg.selectAll(".ball")
+            .transition()
+            .delay(0)
+            .duration(2000)
+            .attr('d', function(d, i) {
+              var x = (d.vertical)/6,
+                  y = 400,
+                  p = (d.acres)/20,
+                  f = (((d.summit * 10)-((d.acres/20)+(d.summit*10)))/2),
+                  j = -(d.vertical/30),
+                  l;
+                  return "M " + x +" "+ y + " l "+p+" 0 l "+f+" "+j+" z"
+            ;})
+      });
+
+      //On button click arrange triangles by summit height
+      d3v3.selectAll("#tri-summit")
+        .on("click", function () {
+          svg.selectAll(".ball")
+            .transition()
+            .delay(0)
+            .duration(2000)
+            .attr('d', function(d, i) {
+              var x = (d.acres)/11,
+                  y = (d.summit)/16,
+                  p = (d.acres)/20,
+                  f = (((d.summit * 10)-((d.acres/20)+(d.summit*10)))/2),
+                  j = -(d.vertical/30),
+                  l;
+                  return "M " + x +" "+ y + " l "+p+" 0 l "+f+" "+j+" z"
+            ;})
+      });
+
 
     });
 
