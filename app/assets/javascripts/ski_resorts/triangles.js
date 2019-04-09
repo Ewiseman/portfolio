@@ -38,6 +38,10 @@ $(document).ready(function() {
     // Ski resort data
     d3v3.csv("/ski_resorts/ski_resort_root_data.csv", function(error, data) {
 
+      data.sort(function(a,b) {
+        return b.acres - a.acres;
+      });
+
     //Convert strings to numbers
     data.forEach(function(d) {
       d.resort_name = d.resort_name;
@@ -53,9 +57,10 @@ $(document).ready(function() {
       .enter()
       .append("path")
       .attr("d", d3v3.svg.symbol()
-      .size(function(d) { return d.acres/10;})
+      .size(function(d) { return d.acres/8;})
       .type( function(d) { return d3v3.svg.symbolTypes[5]; }))
-      .attr("transform", function(d) { return "translate(" + projection([d.lon,d.lat])[0] + "," + projection([d.lon,d.lat])[1] + ")"; })
+      .attr("transform", function(d) { return "translate(" + 50 + "," + (d.acres)/10 + ")"; })
+
       .attr("class", "ball")
       .style("fill", "steelblue")
       .style("stroke", "black")
@@ -66,9 +71,12 @@ $(document).ready(function() {
         .on("click", function () {
           svg.selectAll(".ball")
             .transition()
-            .delay(0)
+            .delay(function(d, i) { return 5 * i})
             .duration(2000)
-            .attr("transform", function(d) { return "translate(" + 400 + "," + projection([d.lon,d.lat])[1] + ")"; })
+            .attr("d", d3v3.svg.symbol()
+            .size(function(d) { return d.acres/8;})
+            .type( function(d) { return d3v3.svg.symbolTypes[5]; }))
+            .attr("transform", function(d) { return "translate(" + projection([d.lon,d.lat])[0] + "," + projection([d.lon,d.lat])[1] + ")"; })
       });
 
       //On button click arrange triangles flat Y axis
@@ -78,34 +86,13 @@ $(document).ready(function() {
             .transition()
             .delay(0)
             .duration(2000)
-            .attr('d', function(d, i) {
-              var x = (d.vertical)/6,
-                  y = 400,
-                  p = (d.acres)/20,
-                  f = (((d.summit * 10)-((d.acres/20)+(d.summit*10)))/2),
-                  j = -(d.vertical/30),
-                  l;
-                  return "M " + x +" "+ y + " l "+p+" 0 l "+f+" "+j+" z"
-            ;})
+            .attr("d", d3v3.svg.symbol()
+            .size(function(d) { return d.acres/8;})
+            .type( function(d) { return d3v3.svg.symbolTypes[5]; }))
+            .attr("transform", function(d) { return "translate(" + 400 + "," + (d.acres)/20 + ")"; })
+
       });
 
-      //On button click arrange triangles by summit height
-      d3v3.selectAll("#tri-summit")
-        .on("click", function () {
-          svg.selectAll(".ball")
-            .transition()
-            .delay(0)
-            .duration(2000)
-            .attr('d', function(d, i) {
-              var x = (d.acres)/11,
-                  y = (d.summit)/16,
-                  p = (d.acres)/20,
-                  f = (((d.summit * 10)-((d.acres/20)+(d.summit*10)))/2),
-                  j = -(d.vertical/30),
-                  l;
-                  return "M " + x +" "+ y + " l "+p+" 0 l "+f+" "+j+" z"
-            ;})
-      });
 
 
     });
