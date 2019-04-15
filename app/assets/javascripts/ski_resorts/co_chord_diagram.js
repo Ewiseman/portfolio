@@ -71,11 +71,11 @@ $(document).ready(function() {
   // Resort Acres//
   var acres = d3v3.scale.ordinal()
     .range([
-    "(5,289 ac)","(3,362 ac)","(3,148 ac)","(3,078 ac)","(2,965 ac)","(2,465 ac)","(2,358 ac)","(2,000 ac)","(1,832 ac)","(1,819 ac)","(1,800 ac)","(1,600 ac)","(1,600 ac)","(1,547 ac)","(1,200 ac)","(1,028 ac)","(900 ac)","(800 ac)","(680 ac)","(673 ac)","(470 ac)","(470 a)","(406 ac)","(400 ac)","","",""]);
+    "(5,289 ac)","(3,362 ac)","(3,148 ac)","(3,078 ac)","(2,965 ac)","(2,465 ac)","(2,358 ac)","(2,000 ac)","(1,832 ac)","(1,819 ac)","(1,800 ac)","(1,600 ac)","(1,600 ac)","(1,547 ac)","(1,200 ac)","(1,028 ac)","(900 ac)","(800 ac)","(680 ac)","(673 ac)","(470 ac)","(470 a)","(406 ac)","(400 ac)","  ","",""]);
 
   // Run Names//
   var runs = d3v3.scale.ordinal()
-    .range(["","","","","","","","","","","","","","","","","","","","","","","","","Green","Blue","Black"]);
+    .range(["","","","","","","","","","","","","","","","","","","","","","","","","Beginner","Intermediate","Advanced"]);
 
   ////////////////////////////////////////////////////////////////////
   ///////////////// DRAW VISUALIZAION ////////////////////////////////
@@ -182,23 +182,23 @@ $(document).ready(function() {
     .attr("class", "text2");
 
 
-  // Adds Runs Labels //
-  // svg.append("g").selectAll("runs_labels")
-  //   .attr("class", "text3")
-  //   .data(chord.groups)
-  //   .enter()
-  //   .append("text")
-  //   .each(function(d) { d.angle = (d.startAngle + d.endAngle) / 2; })
-  //   .attr("x", 10)
-  //   .attr("dy", ".34em")
-  //   .attr("opacity", 1)
-  //   .attr("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
-  //    .attr("transform", function(d) {return "rotate(" + (d.angle * 180 / Math.PI - 88) + ")"
-  //           + "translate(" + (innerRadius + 5) + ")"
-  //           + (d.angle > Math.PI ? "rotate(85)" : "");
-  //     })
-  //   .attr("style", " font-weight: 700; font-size: 12; font  -family: Helvetica, sans-serif; fill: white")
-  //   .text(function(d) { return runs(d.index); });
+//  Adds Runs Labels //
+  svg.append("g").selectAll("runs_labels")
+    .attr("class", "text3")
+    .data(chord.groups)
+    .enter()
+    .append("text")
+    .each(function(d) { d.angle = (d.startAngle + d.endAngle) / 2; })
+    .attr("x", 10)
+    .attr("dy", ".34em")
+    .attr("opacity", 1)
+    .attr("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
+     .attr("transform", function(d) {return "rotate(" + (d.angle * 180 / Math.PI - 88) + ")"
+            + "translate(" + (innerRadius + 5) + ")"
+            + (d.angle > Math.PI ? "rotate(85)" : "");
+      })
+    .attr("style", " font-weight: 700; font-size: 12; font  -family: Helvetica, sans-serif; fill: white")
+    .text(function(d) { return runs(d.index); });
 
 
   ////////////////////////////////////////////////////////////////////

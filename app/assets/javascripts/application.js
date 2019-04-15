@@ -13,10 +13,13 @@
 //= require_self
 //= require jquery
 //= require jquery_ujs
+//= require lodash
 //= require turbolinks
 //= require bootstrap
+
 //= require d3v3
 //= require d3v5
+
 //= require main
 
 //= require_tree .

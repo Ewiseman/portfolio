@@ -29,6 +29,9 @@
 
 #states {
   fill: #eee;
+  stroke: #333;
+  stroke-width: 1px;
+  opacity: 0;
 }
 
 #states .active {
@@ -37,8 +40,7 @@
 
 #state-borders {
   fill: none;
-  stroke: #333;
-  stroke-width: 1px;
+
   stroke-linejoin: round;
   stroke-linecap: round;
   pointer-events: none;
@@ -88,4 +90,24 @@
   top: 15%;
   width: 100%;
   color: #262626;
+}
+
+
+#circle circle {
+    fill: none;
+    pointer-events: all;
+}
+
+path.group {
+    fill-opacity: .8;
+}
+
+path.chord {
+    fill-opacity: .8;
+    stroke: #000;
+    stroke-width: .25px;
+}
+
+#circle:hover path.fade {
+    display: none;
 }

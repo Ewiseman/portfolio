@@ -9,12 +9,13 @@ $(document).ready(function() {
   var margin = {top: 20, right: 0, bottom: 40, left: 0},
       width = $("#triangles").width()/.55,
       height = ($("#triangles").width());
+      centered;
 
   var svg = d3v3.select("#triangles")
       .append("svg")
       .attr("viewBox", "-0 -100 " + (width + margin.left + margin.right) + " " + (height + margin.top + margin.bottom))
       .append("g")
-
+var centered;
 
 
   // Maps the latitude on longitude on the SVG and adjust scaling and rotation
@@ -24,7 +25,7 @@ $(document).ready(function() {
     .parallels([29.5, 45.5])
     .scale(width)
     .translate([width / 2, height / 2])
-    .precision(.1);
+    .precision(0);
 
   // Defines the paths of the maps
   var path = d3v3.geo.path()
@@ -34,6 +35,16 @@ $(document).ready(function() {
 
   // US map data
   d3v3.json("/us-10m.json", function(error, us) {
+
+    g.append("g")
+      .attr("id", "states")
+      .selectAll("path")
+      .data(topojson.feature(us, us.objects.states).features)
+      .enter().append("path")
+      .attr("d", path)
+      .on("click", clicked)
+      .style("opacity", 0);
+
 
     // Ski resort data
     d3v3.csv("/ski_resorts/ski_resort_root_data.csv", function(error, data) {
@@ -52,15 +63,14 @@ $(document).ready(function() {
     });
 
       //Draw Triangles
-    g.selectAll("g")
+    svg.selectAll("g")
       .data(data)
       .enter()
       .append("path")
       .attr("d", d3v3.svg.symbol()
-      .size(function(d) { return d.acres/8;})
+      .size(function(d) { return d.acres/4;})
       .type( function(d) { return d3v3.svg.symbolTypes[5]; }))
-      .attr("transform", function(d) { return "translate(" + 50 + "," + (d.acres)/10 + ")"; })
-
+      .attr("transform", function(d) { return "translate(" + Math.random() * height*2 + "," + (d.acres)/10 + ")"; })
       .attr("class", "ball")
       .style("fill", "steelblue")
       .style("stroke", "black")
@@ -74,43 +84,50 @@ $(document).ready(function() {
             .delay(function(d, i) { return 5 * i})
             .duration(2000)
             .attr("d", d3v3.svg.symbol()
-            .size(function(d) { return d.acres/8;})
+            .size(function(d) { return d.acres/4;})
             .type( function(d) { return d3v3.svg.symbolTypes[5]; }))
             .attr("transform", function(d) { return "translate(" + projection([d.lon,d.lat])[0] + "," + projection([d.lon,d.lat])[1] + ")"; })
-      });
 
-      //On button click arrange triangles flat Y axis
-      d3v3.selectAll("#tri-vertical")
-        .on("click", function () {
-          svg.selectAll(".ball")
+          svg.selectAll("#states")
             .transition()
             .delay(0)
-            .duration(2000)
-            .attr("d", d3v3.svg.symbol()
-            .size(function(d) { return d.acres/8;})
-            .type( function(d) { return d3v3.svg.symbolTypes[5]; }))
-            .attr("transform", function(d) { return "translate(" + 400 + "," + (d.acres)/20 + ")"; })
-
+            .duration(8000)
+            .style("opacity", 1)
       });
+
 
 
 
     });
 
-    // Defines country border
-    g.append("g")
+    // Defines borders
+    svg.append("g")
       .attr("id", "states")
       .selectAll("path")
       .data(topojson.feature(us, us.objects.states).features)
       .enter().append("path")
       .attr("d", path)
-      .on("click", clicked);
+      .on("click", clicked)
 
-    // Defines state borders
-    g.append("path")
-      .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
-      .attr("id", "state-borders")
-      .attr("d", path);
+
+    //On button click arrange triangles flat Y axis
+    d3v3.selectAll("#tri-vertical")
+      .on("click", function () {
+
+        svg.selectAll(".ball")
+          .transition()
+          .delay(0)
+          .duration(2000)
+          .attr("d", d3v3.svg.symbol()
+          .size(function(d) { return d.acres/4;})
+          .type( function(d) { return d3v3.svg.symbolTypes[5]; }))
+          .attr("transform", function(d) { return "translate(" + 400 + "," + (d.acres)/20 + ")"; })
+            .style("opacity", .2)
+
+
+
+
+      });
   });
 
 
@@ -142,7 +159,7 @@ $(document).ready(function() {
         .transition()
         .delay(0)
         .duration(750)
-        .size(function(d) { return d.acres/50;})
+        .size(function(d) { return d.acres/40;})
 
     }
 

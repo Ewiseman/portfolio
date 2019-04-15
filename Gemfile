@@ -18,6 +18,7 @@ gem 'dotenv-rails'
 gem "figaro"
 gem 'groupdate'
 gem 'ionicons-rails'
+gem 'lodash-rails'
 
 group :production do
 
