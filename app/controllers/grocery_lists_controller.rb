@@ -16,6 +16,10 @@ class GroceryListsController < ApplicationController
      end
     end
     csv << "Bananas, 1, Bunch\n"
+    csv << "Berries\n"
+    csv << "Fruit\n"
+    csv << "Sweet Peppers\n"
+    csv << "Snacking Veggies\n"
     csv << "\n"
 
     csv << "Meat\n"
