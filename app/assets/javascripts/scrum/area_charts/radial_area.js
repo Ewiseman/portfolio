@@ -85,7 +85,7 @@ $(document).ready(function() {
         .attr("class", "layer")
         .attr("d", function(d) { return area(d.values); })
         .style("fill", function(d, i) { return z(i); })
-        .style("stroke", "#2B2D42")
+        .style("stroke", "#fff")
         .style("opacity", 0.7)
         .on("mouseover", function(d, i) {
           svg.selectAll(".layer")
@@ -110,6 +110,7 @@ $(document).ready(function() {
           svg.selectAll(".layer")
               .transition()
               .duration(2000)
+              .style("stroke", "#2B2D42")
               .ease("elastic")
               .attr("d", function(d) { return area_two(d.values); })
         });

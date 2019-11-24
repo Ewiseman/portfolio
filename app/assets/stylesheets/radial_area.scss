@@ -9,6 +9,7 @@
     opacity: .2;
 }
 
-// .axis + .axis g text {
-//   display: none;
-// }
+.axis g text {
+  display: none;
+  opacity: .2;
+}
