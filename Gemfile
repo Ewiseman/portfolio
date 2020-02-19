@@ -19,6 +19,7 @@ gem "figaro"
 gem 'groupdate'
 gem 'ionicons-rails'
 gem 'lodash-rails'
+gem 'devise'
 
 group :production do
 
