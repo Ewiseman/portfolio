@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  # devise_scope :user do
-  #   authenticated :user do
-  #     root 'welcome#home', as: :authenticated_root
-  #   end
-  #
-  #   unauthenticated do
-  #     root 'devise/sessions#new', as: :unauthenticated_root
-  #   end
-  # end
+  devise_scope :user do
+    authenticated :user do
+      root 'admin/tasks#index', as: :authenticated_root
+    end
+
+    unauthenticated do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
   namespace :admin do
     resources :sprints
     resources :tasks
