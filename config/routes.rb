@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
   resources :recipes, only: [:index]
 
+  resources :sprints, only: [:new, :create, :index, :update, :edit, :show]
+  
   get 'gear_lift' =>'welcome#gear_lift'
   get 'fcfs' =>'welcome#fcfs'
   get 'business_plan' =>'welcome#business_plan'

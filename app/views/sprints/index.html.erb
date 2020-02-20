@@ -1,0 +1,41 @@
+<div class="section-big">
+  <div class="container">
+    <div class="col-md-12 col-sm-12 col-xs-12>
+      <div class="float-md-left">
+        <%= link_to "+", new_sprint_path, class: 'btn btn-primary' %>
+      </div>
+      <div class="ibox-content">
+        <div class="center_div">
+          <div class="row">
+            <h3 class="table-labels">Active</h3>
+
+          </div>
+          <div class="row-table ">
+            <div class="table-responsive">
+              <table data-toggle="table" data-pagination="true" class='table table-bordered'>
+                <thead class="thead-light">
+                <tr>
+                  <th data-sortable="true"> Sprint Start Date</th>
+                  <th data-sortable="true"> Sprint Value</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <% @sprints.each do |sprint| %>
+                  <tr>
+                    <td>
+                      <%= link_to sprint.sprint_date, sprint_path(sprint) %>
+                    </td>
+                    <td>
+                      <%= link_to sprint.sprint_date, sprint_path(sprint) %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
