@@ -1,0 +1,28 @@
+
+<br>
+  <%= form_for @sprint do |f| %>
+    <%= render partial: "error_list" %>
+    <form>
+      <% if @sprint.sprint_date.present? %>
+        <h1><%= @sprint.sprint_date %></h1>
+      <% else %>
+        <h1>Create Sprint</h1>
+      <% end %>
+      <br>
+      <br>
+
+
+      <h5>Start of Sprint</h5>
+      <hr>
+      <div class="row">
+        <div class="col-md-4 col-sm-12 col-xs-12 form-spacer">
+          <label class="sr-only">Sprint Date</label>
+          <%= f.date_field :sprint_date, class: "form-control", placeholder: "Sprint Date", minlength: "1" %>
+        </div>
+
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+    </form>
+  <% end %>
+  <br>
+  <br>
+  <br>

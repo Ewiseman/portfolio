@@ -1,0 +1,10 @@
+<% if @sprint.errors.any? %>
+  <div class="alert alert-danger" data-errors>
+    <h4><%= error_count_message(@sprint) %></h4>
+    <ul>
+      <% @sprint.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
