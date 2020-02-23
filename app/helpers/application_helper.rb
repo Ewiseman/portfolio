@@ -8,4 +8,8 @@ module ApplicationHelper
     return ' ' if date.nil?
     date.strftime "%Y"
   end
+
+  def error_count_message(object)
+    "There #{object.errors.count == 1 ? 'is' : 'are'} #{object.errors.count} missing field#{'s' unless object.errors.count == 1} on this page"
+  end
 end

@@ -9,10 +9,13 @@ class SprintsController < ApplicationController
 
   def show
     @sprint = Sprint.find(params[:id])
+    @tasks = @sprint.tasks
+    @task = Task.new
   end
 
   def create
     @sprint = Sprint.new(sprint_params)
+    @sprint.user = current_user
     if @sprint.save
       flash[:notice] = "#{@sprint.sprint_date} has been created."
       redirect_to sprint_path(@sprint)

@@ -1,0 +1,6 @@
+<% if @task.valid? %>
+   $('.js-tasks').prepend("<%= escape_javascript(render(@task)) %>");
+   $('.new-task').html("<%= escape_javascript(render partial: 'tasks/form', locals: { sprint: @sprint, task: @new_task }) %>");
+<% else %>
+   $('.new-task').html("<%= escape_javascript(render partial: 'tasks/form', locals: { sprint: @sprint, task: @task }) %>");
+<% end %>

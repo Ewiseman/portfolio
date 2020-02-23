@@ -1,0 +1,16 @@
+<%= form_for [sprint, task], remote: true do |f| %>
+
+    <div class="input-group">
+
+      <div class="col-md-4 col-sm-12 col-xs-12 form-spacer">
+        <%= f.select :category, Task::CATEGORY, {include_blank: "Category"}, {class: "form-control safari-dropdown"} %>
+        <%= f.text_field :task, class: "form-control input-sm", placeholder: "Task" %>
+        <%= f.select :value, Task::VALUE, {include_blank: "Value"}, {class: "form-control safari-dropdown"} %>
+      </div>
+
+      <span class="input-group-btn">
+        <%= f.submit "Post", class: 'btn btn-cta-notes btn-sm' %>
+      </span>
+    </div>
+
+<% end %>

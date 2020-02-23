@@ -27,7 +27,7 @@
                       <%= link_to sprint.sprint_date, sprint_path(sprint) %>
                     </td>
                     <td>
-                      <%= link_to sprint.sprint_date, sprint_path(sprint) %>
+                      <%= sprint.tasks.count %>
                     </td>
                   </tr>
                 <% end %>

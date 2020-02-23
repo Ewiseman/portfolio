@@ -1,9 +1,22 @@
 <div class="section-big">
   <div class="container">
     <h1><%= @sprint.sprint_date %></h1>
-    <br>
-
-     <br>
       <%= link_to "Edit Sprint", edit_sprint_path, class: 'btn btn-primary' %>
   </div>
+
+  <div class="tasks-container col-lg-4">
+    <div class="panel panel-default">
+      <div class="ibox-content pipeline">
+        <div class="row">
+          <ul class="chat">
+            <div class='js-tasks'>
+              <%= render partial: 'tasks/task', collection: @tasks %>
+            </div>
+          </ul>
+        </div>
+        <div class='new-note'>
+          <%= render partial: 'tasks/form', locals: { sprint: @sprint, task: @task } %>
+        </div>
+      </div>
+    </div>
 </div>
