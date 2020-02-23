@@ -15,8 +15,12 @@
               <table data-toggle="table" data-pagination="true" class='table table-bordered'>
                 <thead class="thead-light">
                 <tr>
-                  <th data-sortable="true"> Sprint Start Date</th>
-                  <th data-sortable="true"> Sprint Value</th>
+                  <th data-sortable="true"> Sprint Start Date </th>
+                  <th data-sortable="true"> All Tasks </th>
+                  <th data-sortable="true"> Tasks Remaining </th>
+                  <th data-sortable="true"> Tasks Complete </th>
+                  <th data-sortable="true"> % </th>
+
 
                 </tr>
               </thead>
@@ -28,6 +32,15 @@
                     </td>
                     <td>
                       <%= sprint.tasks.count %>
+                    </td>
+                    <td>
+                      <%= sprint.working.count %>
+                    </td>
+                    <td>
+                      <%= sprint.complete.count %>
+                    </td>
+                    <td>
+                      <%= number_to_percentage(sprint.percentage_complete, precision: 0) %>
                     </td>
                   </tr>
                 <% end %>

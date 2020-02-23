@@ -1,6 +1,6 @@
 <div class="media" id="task-<%= task.id %>">
   <small>
-      | <%= link_to "Delete", [@sprint, task], method: :delete, remote: true %>
+    <%= link_to "Delete", [@sprint, task], method: :delete, remote: true %>
   </small>
   <blockquote class="tasks-blockquotes"><%= task.task %></blockquote>
 </div>

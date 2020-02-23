@@ -10,6 +10,9 @@ class Task < ApplicationRecord
   default_scope { order('updated_at DESC') }
   # default_scope { order('sprint_id ASC', 'category ASC') }
 
-    CATEGORY = ["health", "personal", "gear lift", "snowmass", "vacation", "fcfs", "one dataset", "board", "career development"]
-    VALUE = [1,2,3,5,8,10,15,20]
+  CATEGORY = ["health", "personal", "gear lift", "snowmass", "vacation", "fcfs", "one dataset", "board", "career development"]
+  VALUE = [1,2,3,5,8,10,15,20]
+
+    
+
 end
