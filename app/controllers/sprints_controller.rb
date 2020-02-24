@@ -1,3 +1,4 @@
+require 'csv'
 class SprintsController < ApplicationController
   def index
     @sprints = Sprint.all
@@ -20,7 +21,26 @@ class SprintsController < ApplicationController
     @sprint = Sprint.new(sprint_params)
     @sprint.user = current_user
     authorize @sprint
+
+
     if @sprint.save
+      CSV.foreach('recurring.csv', headers: true) do |row|
+        task = row['task']
+
+         category = row['yellow']
+
+        value = row['value']
+        day = row['day']
+        Task.create!(
+          sprint_id: @sprint.id,
+          user_id: current_user.id,
+          task: task,
+          category: category,
+          value: value,
+          status: "to_do",
+          day: day
+        )
+      end
       flash[:notice] = "#{@sprint.sprint_date} has been created."
       redirect_to sprint_path(@sprint)
     else
