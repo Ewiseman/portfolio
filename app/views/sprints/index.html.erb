@@ -28,7 +28,7 @@
                 <% @sprints.each do |sprint| %>
                   <tr>
                     <td>
-                      <%= link_to sprint.sprint_date, sprint_path(sprint) %>
+                      <%= link_to format_long_date(sprint.sprint_date), sprint_path(sprint) %>
                     </td>
                     <td>
                       <%= sprint.tasks.count %>

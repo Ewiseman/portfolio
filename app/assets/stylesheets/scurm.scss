@@ -34,3 +34,18 @@
 .invisible {
   visibility: hidden;
 }
+
+
+
+.to-do-list {
+    color: #333;
+}
+
+.to-do-list:hover,
+.style:focus {
+    color: darkred;
+}
+
+.chat.today {
+  margin-top:72px;
+}

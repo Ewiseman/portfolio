@@ -12,4 +12,9 @@ module ApplicationHelper
   def error_count_message(object)
     "There #{object.errors.count == 1 ? 'is' : 'are'} #{object.errors.count} missing field#{'s' unless object.errors.count == 1} on this page"
   end
+
+  def format_long_date(date)
+    return ' ' if date.nil?
+    date.strftime "%b %-e, %Y"
+  end
 end

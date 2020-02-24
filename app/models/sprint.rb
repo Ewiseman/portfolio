@@ -18,7 +18,8 @@ class Sprint < ApplicationRecord
     if complete.count > 0
       (complete.count.to_f / tasks.count.to_f) * 100
     end
-
   end
+
+  
 
 end

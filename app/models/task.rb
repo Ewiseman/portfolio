@@ -13,6 +13,8 @@ class Task < ApplicationRecord
 
   CATEGORY = ["health", "personal", "work", "vacation"]
   VALUE = [1,2,3,5,8,10,15,20]
+  STATUS = ["to_do", "today", "complete"]
+  DAY = ["Monday", "Tuesday", "Wednesday","Thrusday", "Friday", "Saturday", "Sunday"]
 
 
 

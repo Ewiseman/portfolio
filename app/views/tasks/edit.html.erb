@@ -1,5 +1,36 @@
-<div class="section-big">
+<br>
+<br>
   <div class="container">
-    <%= render partial: 'form', locals: { sprint: @sprint, task: @task } %>
+    <div class="row">
+    <%= form_for [@sprint, @task], remote: true do |f| %>
+
+
+          <div class="col-sm-12 col-xs-12 form-spacer task-form">
+
+            <div class="col-md-2 clear">
+              <%= f.select :category, Task::CATEGORY, {include_blank: "Category"}, {class: "form-control safari-dropdown"} %>
+            </div>
+            <div class="col-md-3 clear">
+              <%= f.text_field :task, class: "form-control input-sm", placeholder: "Task" %>
+            </div>
+            <div class="col-md-1 clear">
+              <%= f.select :value, Task::VALUE, {include_blank: "Value"}, {class: "form-control safari-dropdown"} %>
+            </div>
+            <div class="col-md-2 clear">
+              <%= f.select :status, Task::STATUS, {include_blank: "Status"}, {class: "form-control safari-dropdown"} %>
+            </div>
+            <div class="col-md-2 clear">
+              <%= f.select :day, Task::DAY, {include_blank: "Day"}, {class: "form-control safari-dropdown"} %>
+            </div>
+
+
+
+          <span class="col-md-2 input-group-btn">
+            <%= f.submit "Post", class: 'btn btn-primary' %>
+          </span>
+          </div>
+        </div>
+
+
+    <% end %>
   </div>
-</div>
