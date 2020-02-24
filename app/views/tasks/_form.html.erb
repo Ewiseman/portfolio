@@ -10,7 +10,8 @@
           <%= f.text_field :task, class: "clear form-control input-sm", placeholder: "Task" %>
         </div>
         <div class="col-md-3 clear">
-          <%= f.select :value, Task::VALUE, {include_blank: "Value"}, {class: "clear form-control safari-dropdown"} %>
+            <%= f.number_field :value, class: "clear form-control input-sm", placeholder: "Value" %>
+          <%#= f.select :value, Task::VALUE, {include_blank: "Value"}, {class: "clear form-control safari-dropdown"} %>
         </div>
         <%= f.hidden_field :status, value: 'to_do'%>
 
