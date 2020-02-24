@@ -2,15 +2,24 @@
 
     <div class="input-group">
 
-      <div class="col-md-4 col-sm-12 col-xs-12 form-spacer">
-        <%= f.select :category, Task::CATEGORY, {include_blank: "Category"}, {class: "form-control safari-dropdown"} %>
-        <%= f.text_field :task, class: "form-control input-sm", placeholder: "Task" %>
-        <%= f.select :value, Task::VALUE, {include_blank: "Value"}, {class: "form-control safari-dropdown"} %>
-      </div>
+      <div class="col-sm-12 col-xs-12 form-spacer task-form">
 
-      <span class="input-group-btn">
+        <div class="col-md-3 clear">
+          <%= f.select :category, Task::CATEGORY, {include_blank: "Category"}, {class: "form-control safari-dropdown"} %>
+        </div>
+        <div class="col-md-4 clear">
+          <%= f.text_field :task, class: "form-control input-sm", placeholder: "Task" %>
+        </div>
+        <div class="col-md-3 clear">
+          <%= f.select :value, Task::VALUE, {include_blank: "Value"}, {class: "form-control safari-dropdown"} %>
+        </div>
+        <%= f.hidden_field :status, value: 'to_do'%>
+
+
+      <span class="col-md-2 input-group-btn">
         <%= f.submit "Post", class: 'btn btn-cta-notes btn-sm' %>
       </span>
+      </div>
     </div>
 
 <% end %>

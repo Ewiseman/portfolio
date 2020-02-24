@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   resources :recipes, only: [:index]
 
   resources :sprints, only: [:new, :create, :index, :update, :edit, :show] do
-    resources :tasks, only: [:create, :destroy]
+    resources :tasks, only: [:create, :destroy, :edit, :update]
   end
 
   get 'dashboard' =>'dashboards#main'

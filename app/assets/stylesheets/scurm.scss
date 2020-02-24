@@ -1,0 +1,36 @@
+.task-card {
+  padding: 5px;
+  margin: 3px;
+}
+
+.task-form {
+  margin-bottom: 25px;
+}
+
+.task-card.health {
+  background-color: #6DCEED;
+  border: 1px solid #6DCEED;
+}
+
+.task-card.personal {
+  background-color: #F9DF91;
+  border: 1px solid #F9DF91;
+}
+
+.task-card.work {
+  background-color: #F3946F;
+  border: 1px solid #F3946F;
+}
+
+.task-card.vacation {
+  background-color: #E6F6FC;
+  border: 1px solid #E6F6FC;
+}
+
+.chat {
+  margin-top: 10px;
+}
+
+.invisible {
+  visibility: hidden;
+}

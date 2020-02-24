@@ -22,6 +22,24 @@ class TasksController < ApplicationController
     end
   end
 
+  def edit
+    @sprint = Sprint.find(params[:sprint_id])
+    @task = @sprint.tasks.find(params[:id])
+  end
+
+  def update
+    @sprint = Sprint.find(params[:sprint_id])
+    @task = @sprint.tasks.find(params[:id])
+
+    if @task.update_attributes(post_params)
+      flash[:notice] = "Task was updated."
+      redirect_to [@sprint, @task]
+    else
+      flash[:error] = "There was an error saving the post. Please try again."
+      render :new
+    end
+  end
+
 
 private
 
@@ -30,7 +48,8 @@ private
     :category,
     :task,
     :value,
-    :day)
+    :day,
+    :status)
   end
 
 end
