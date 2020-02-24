@@ -31,9 +31,9 @@ class TasksController < ApplicationController
     @sprint = Sprint.find(params[:sprint_id])
     @task = @sprint.tasks.find(params[:id])
 
-    if @task.update_attributes(post_params)
+    if @task.update_attributes(task_params)
       flash[:notice] = "Task was updated."
-      redirect_to [@sprint, @task]
+      redirect_to [@sprint]
     else
       flash[:error] = "There was an error saving the post. Please try again."
       render :new

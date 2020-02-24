@@ -2,7 +2,7 @@
   <small>
     <%= link_to "", [@sprint, task], method: :delete, remote: true %>
   </small>
-    <div><%#= link_to "#{task.value} - #{task.task}", edit_sprint_task_path(task), class: "btn btn-mini", remote: true %></div>
-    <div><%= task.value %> - <%= task.task %></div>
+    <div><%= link_to "#{task.value} - #{task.task}", edit_sprint_task_path(@sprint, task), class: "btn btn-mini" %></div>
+    <div><%#= task.value %>  <%#= task.task %></div>
 
 </div>
