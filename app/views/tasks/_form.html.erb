@@ -3,14 +3,14 @@
 
       <div class="col-sm-12 col-xs-12 form-spacer task-form">
 
-        <div class="col-md-3 clear">
-          <%= f.select :category, Task::CATEGORY, {include_blank: "Category"}, {class: "form-control safari-dropdown"} %>
+        <div class="col-md-3 ">
+          <%= f.select :category, Task::CATEGORY, {include_blank: "Category"}, {class: "clear form-control safari-dropdown"} %>
         </div>
         <div class="col-md-4 clear">
-          <%= f.text_field :task, class: "form-control input-sm", placeholder: "Task" %>
+          <%= f.text_field :task, class: "clear form-control input-sm", placeholder: "Task" %>
         </div>
         <div class="col-md-3 clear">
-          <%= f.select :value, Task::VALUE, {include_blank: "Value"}, {class: "form-control safari-dropdown"} %>
+          <%= f.select :value, Task::VALUE, {include_blank: "Value"}, {class: "clear form-control safari-dropdown"} %>
         </div>
         <%= f.hidden_field :status, value: 'to_do'%>
 
