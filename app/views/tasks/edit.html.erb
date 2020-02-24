@@ -14,7 +14,8 @@
               <%= f.text_field :task, class: "form-control input-sm", placeholder: "Task" %>
             </div>
             <div class="col-md-1 clear">
-              <%= f.select :value, Task::VALUE, {include_blank: "Value"}, {class: "form-control safari-dropdown"} %>
+              <%= f.number_field :value, class: "clear form-control input-sm", placeholder: "Value " %>
+              <%#= f.select :value, Task::VALUE, {include_blank: "Value"}, {class: "form-control safari-dropdown"} %>
             </div>
             <div class="col-md-2 clear">
               <%= f.select :status, Task::STATUS, {include_blank: "Status"}, {class: "form-control safari-dropdown"} %>
