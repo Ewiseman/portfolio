@@ -20,6 +20,7 @@ gem 'groupdate'
 gem 'ionicons-rails'
 gem 'lodash-rails'
 gem 'devise'
+gem 'pundit'
 
 group :production do
 

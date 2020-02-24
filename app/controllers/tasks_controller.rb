@@ -5,13 +5,14 @@ class TasksController < ApplicationController
     @task = @sprint.tasks.new(task_params)
     @task.user = current_user
     @new_task = Task.new
+    authorize @task
     @task.save
   end
 
   def destroy
     @sprint = Sprint.find(params[:sprint_id])
     @task = @sprint.tasks.find(params[:id])
-
+    authorize @task
     if !@task.destroy
       flash[:error] = "Task couldn't be deleted. Try again."
     end
@@ -25,11 +26,13 @@ class TasksController < ApplicationController
   def edit
     @sprint = Sprint.find(params[:sprint_id])
     @task = @sprint.tasks.find(params[:id])
+    authorize @task
   end
 
   def update
     @sprint = Sprint.find(params[:sprint_id])
     @task = @sprint.tasks.find(params[:id])
+    authorize @task
 
     if @task.update_attributes(task_params)
       flash[:notice] = "Task was updated."
