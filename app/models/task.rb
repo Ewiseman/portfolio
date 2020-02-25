@@ -8,8 +8,8 @@ class Task < ApplicationRecord
   validates :status, presence: true
   validates :user_id, presence: true
 
-  default_scope { order('category DESC') }
-  # default_scope { order('sprint_id ASC', 'category ASC') }
+  # default_scope { order('category DESC') }
+  default_scope { order('category DESC', 'task ASC') }
 
   CATEGORY = ["health", "personal", "work", "vacation"]
   VALUE = [1,2,3,5,8,10,15,20]

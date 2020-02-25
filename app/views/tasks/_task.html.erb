@@ -1,8 +1,8 @@
-<div class="task-card <%= task.category %>" id="task-<%= task.id %>">
+<div class="col-md-5 align-items-center task-card <%= task.category %>" id="task-<%= task.id %>">
   <small>
 
   </small>
-    <div><%= link_to "#{task.value} - #{task.task}", edit_sprint_task_path(@sprint, task), class: "btn btn-mini to-do-list" %>  <%= link_to "-", [@sprint, task], method: :delete, class:'pull-right', remote: true %></div>
+    <div><%= link_to "(#{task.value}) - #{task.task}", edit_sprint_task_path(@sprint, task), class: "btn btn-mini to-do-list" %>  <%= link_to "-", [@sprint, task], method: :delete, class:'pull-right', remote: true %></div>
     <div><%#= task.value %>  <%#= task.task %></div>
 
 </div>

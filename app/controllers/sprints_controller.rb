@@ -13,6 +13,8 @@ class SprintsController < ApplicationController
   def show
     @sprint = Sprint.find(params[:id])
     @tasks = @sprint.tasks
+    @tasks_today = @sprint.tasks.where(status: "today")
+    @tasks_complete = @sprint.tasks.where(status: 'complete')
     @task = Task.new
     authorize @sprint
   end

@@ -23,12 +23,12 @@
       </div>
     </div>
   </div>
-  
+
   <div class="col-md-4">
     <div class="ibox-content pipeline">
       <div class="row">
         <ul class="chat today">
-            <%= render @tasks.where(status: 'today') %>
+            <%= render @tasks_today %>
           <h3>
         </h3>
         </ul>
@@ -40,7 +40,7 @@
     <div class="ibox-content pipeline">
       <div class="row">
         <ul class="chat today">
-            <%= render @tasks.where(status: 'complete') %>
+            <%= render @tasks_complete %>
           <h3>
         </h3>
         </ul>
