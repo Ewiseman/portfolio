@@ -13,6 +13,16 @@ class SprintsController < ApplicationController
   def show
     @sprint = Sprint.find(params[:id])
     @tasks = @sprint.tasks
+
+    @tasks_monday = @sprint.tasks.where(day: "monday")
+    @tasks_tuesday = @sprint.tasks.where(day: "tuesday")
+    @tasks_wednesday = @sprint.tasks.where(day: "wednesday")
+    @tasks_thursday = @sprint.tasks.where(day: "thursday")
+    @tasks_friday = @sprint.tasks.where(day: "friday")
+    @tasks_sat_sun = @sprint.tasks.where(day: "sat/sun")
+
+
+
     @tasks_today = @sprint.tasks.where(status: "today")
     @tasks_complete = @sprint.tasks.where(status: 'complete')
     @task = Task.new
@@ -28,11 +38,11 @@ class SprintsController < ApplicationController
     if @sprint.save
       CSV.foreach('recurring.csv', headers: true) do |row|
         task = row['task']
-
-         category = row['yellow']
-
+        category = row['category']
         value = row['value']
         day = row['day']
+        confidence_score = row['confidence_score']
+        rank = row['rank']
         Task.create!(
           sprint_id: @sprint.id,
           user_id: current_user.id,
@@ -40,6 +50,8 @@ class SprintsController < ApplicationController
           category: category,
           value: value,
           status: "to_do",
+          confidence_score: confidence_score,
+          ranks: rank,
           day: day
         )
       end

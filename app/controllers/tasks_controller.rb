@@ -52,7 +52,9 @@ private
     :task,
     :value,
     :day,
-    :status)
+    :status,
+    :confidence_score,
+    :ranks)
   end
 
 end

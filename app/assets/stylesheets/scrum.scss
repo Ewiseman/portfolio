@@ -1,12 +1,17 @@
-.task-card {
-  padding: 5px;
-  margin: 3px;
-  text-align: center;
-
-}
-
 .task-form {
   margin-bottom: 25px;
+}
+
+.task-card {
+  border-radius: 10px;
+  padding: 5px;
+  margin-bottom: 6px;
+  margin-left: -15px;
+  text-align: center;
+}
+
+.task-card.complete {
+  opacity: 0.2;
 }
 
 .task-card.health {
@@ -19,7 +24,22 @@
   border: 1px solid #F9DF91;
 }
 
-.task-card.work {
+.task-card.programming {
+  background-color: #F3946F;
+  border: 1px solid #F3946F;
+}
+
+.task-card.admin {
+  background-color: #feff9c;
+  border: 1px solid #feff9c;
+}
+
+.task-card.sales {
+  background-color: #ff7eb9;
+  border: 1px solid #ff7eb9;
+}
+
+.task-card.programming {
   background-color: #F3946F;
   border: 1px solid #F3946F;
 }
@@ -37,6 +57,10 @@
   visibility: hidden;
 }
 
+.day-of-week {
+  font-size: 2em;
+  text-align: center;
+}
 
 
 .to-do-list {

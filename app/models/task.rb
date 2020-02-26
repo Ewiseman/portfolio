@@ -6,15 +6,16 @@ class Task < ApplicationRecord
   validates :task, presence: true
   validates :value, presence: true
   validates :status, presence: true
+  # validates :day, presence: true
   validates :user_id, presence: true
 
   # default_scope { order('category DESC') }
-  default_scope { order('category DESC', 'task ASC') }
+  default_scope { order('status DESC', 'ranks ASC', 'category ASC', 'value DESC') }
 
-  CATEGORY = ["health", "personal", "work", "vacation"]
+  CATEGORY = ["health", "personal", "programming", "sales", "admin", "vacation"]
   VALUE = [1,2,3,5,8,10,15,20]
-  STATUS = ["to_do", "today", "complete"]
-  DAY = ["monday", "tuesday", "wednesday","thrusday", "friday", "saturday", "sunday"]
+  STATUS = ["to_do", "complete"]
+  DAY = ["monday", "tuesday", "wednesday","thursday", "friday", "sat/sun"]
 
 
 
