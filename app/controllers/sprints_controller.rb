@@ -36,24 +36,46 @@ class SprintsController < ApplicationController
 
 
     if @sprint.save
-      CSV.foreach('recurring.csv', headers: true) do |row|
-        task = row['task']
-        category = row['category']
-        value = row['value']
-        day = row['day']
-        confidence_score = row['confidence_score']
-        rank = row['rank']
-        Task.create!(
-          sprint_id: @sprint.id,
-          user_id: current_user.id,
-          task: task,
-          category: category,
-          value: value,
-          status: "to_do",
-          confidence_score: confidence_score,
-          ranks: rank,
-          day: day
-        )
+      if @sprint.exercies == 'endurance'
+        CSV.foreach('endurance.csv', headers: true) do |row|
+          task = row['task']
+          category = row['category']
+          value = row['value']
+          day = row['day']
+          confidence_score = row['confidence_score']
+          rank = row['rank']
+          Task.create!(
+            sprint_id: @sprint.id,
+            user_id: current_user.id,
+            task: task,
+            category: category,
+            value: value,
+            status: "to_do",
+            confidence_score: confidence_score,
+            ranks: rank,
+            day: day
+          )
+        end
+        elsif @sprint.exercies == 'muscle building'
+            CSV.foreach('muscle_building.csv', headers: true) do |row|
+            task = row['task']
+            category = row['category']
+            value = row['value']
+            day = row['day']
+            confidence_score = row['confidence_score']
+            rank = row['rank']
+            Task.create!(
+              sprint_id: @sprint.id,
+              user_id: current_user.id,
+              task: task,
+              category: category,
+              value: value,
+              status: "to_do",
+              confidence_score: confidence_score,
+              ranks: rank,
+              day: day
+            )
+        end
       end
       flash[:notice] = "#{@sprint.sprint_date} has been created."
       redirect_to sprint_path(@sprint)
@@ -84,7 +106,8 @@ class SprintsController < ApplicationController
   private
   def sprint_params
     params.require(:sprint).permit(
-      :sprint_date)
+      :sprint_date,
+      :exercies)
     end
 
 end

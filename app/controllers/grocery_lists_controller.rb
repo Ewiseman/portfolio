@@ -18,8 +18,8 @@ class GroceryListsController < ApplicationController
     csv << "Bananas, 1, Bunch\n"
     csv << "Berries\n"
     csv << "Fruit\n"
-    csv << "Sweet Peppers\n"
-    csv << "Snacking Veggies\n"
+    csv << "Spinach\n"
+    csv << "Flowers\n"
     csv << "\n"
 
     csv << "Meat\n"
@@ -51,6 +51,7 @@ class GroceryListsController < ApplicationController
     csv << "Milk?\n"
     csv << "Almond Milk?\n"
     csv << "Yogurt?\n"
+    csv << "Eggs?\n"
     csv << "\n"
 
     csv << "Dry Good\n"
@@ -61,6 +62,8 @@ class GroceryListsController < ApplicationController
       end
     end
     csv << "Seb Snacks?\n"
+    csv << "Coffee?\n"
+    csv << "Lemon Juice\n"
     csv << "\n"
 
     csv << "Canned Good\n"
