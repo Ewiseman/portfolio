@@ -101,6 +101,19 @@ class SprintsController < ApplicationController
      end
   end
 
+  def destroy
+  @sprint = Sprint.find(params[:id])
+  authorize @sprint
+
+  if @sprint.destroy
+    flash[:notice] = "sprint was deleted successfully."
+    redirect_to authenticated_root_path
+  else
+    flash[:error] = "Error in deleting sprint. Please try again."
+    render :show
+  end
+end
+
 
 
   private

@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   resources :recipes, only: [:index]
 
-  resources :sprints, only: [:new, :create, :index, :update, :edit, :show] do
+  resources :sprints, only: [:new, :create, :index, :update, :edit, :show, :destroy] do
     resources :tasks, only: [:create, :destroy, :edit, :update]
   end
 

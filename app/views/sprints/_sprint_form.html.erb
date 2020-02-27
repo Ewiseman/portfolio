@@ -23,6 +23,7 @@
         <div class="col-md-1 clear">
           <%= f.select :exercies, Sprint::EXERCISES, {include_blank: ""}, {class: "clear form-control safari-dropdown"} %>
         </div>
+      </div>
 
         <%= f.submit "Submit", class: "btn btn-primary" %>
     </form>
@@ -30,3 +31,4 @@
   <br>
   <br>
   <br>
+<%= link_to "Delete Sprint", @sprint, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this file?  This cannot be un-done.' } %>
