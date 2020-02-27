@@ -5,12 +5,12 @@ holding,task,value,day,confidence_score,category,rank
 ,HIIT 30 min,10,tuesday,8,health,5
 ,HIIT 60 min,10,thursday,8,health,5
 ,HIIT 30 min,10,sat/sun,8,health,5
-,Mediate,5,monday,5,health,2
-,Mediate,5,tuesday,5,health,2
-,Mediate,5,wednesday,5,health,2
-,Mediate,5,thursday,5,health,2
-,Mediate,5,friday,5,health,2
-,Mediate,5,sat/sun,5,health,2
+,Meditate,5,monday,5,health,2
+,Meditate,5,tuesday,5,health,2
+,Meditate,5,wednesday,5,health,2
+,Meditate,5,thursday,5,health,2
+,Meditate,5,friday,5,health,2
+,Meditate,5,sat/sun,5,health,2
 ,Wake up 5am,5,monday,8,health,1
 ,Wake up 5am,5,tuesday,8,health,1
 ,Wake up 5am,5,wednesday,8,health,1
@@ -32,6 +32,7 @@ holding,task,value,day,confidence_score,category,rank
 ,Laundry,5,sat/sun,3,personal,
 ,Menu,3,tuesday,3,personal,
 ,Groceries,3,tuesday,3,personal,
+,Trash,3,wednesday,,personal,
 ,Rollout,5,monday,2,health,20
 ,Rollout,5,tuesday,2,health,20
 ,Rollout,5,wednesday,2,health,20
