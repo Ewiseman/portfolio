@@ -1,27 +1,27 @@
 <%= form_for [sprint, task], remote: true do |f| %>
     <div class="col-md-12">
 
-        <div class="col-md-1 ">
-          <%= f.select :category, Task::CATEGORY, {include_blank: ""}, {class: "clear form-control safari-dropdown"} %>
-        </div>
-        <div class="col-md-2 clear">
-          <%= f.text_field :task, class: "clear form-control input-sm", placeholder: "Task" %>
-        </div>
-        <div class="col-md-1 clear">
-          <%#= f.number_field :value, class: "clear form-control input-sm", placeholder: "Value " %>
-          <%= f.select :value, Task::VALUE, {include_blank: ""}, {class: "clear form-control safari-dropdown"} %>
-        </div>
-        <div class="col-md-1 clear">
-          <%= f.select :day, Task::DAY, {include_blank: ""}, {class: "clear form-control safari-dropdown"} %>
-        </div>
-        <%= f.hidden_field :status, value: 'to_do'%>
+      <div class="col-md-1 ">
+        <%= f.select :category, Task::CATEGORY, {include_blank: ""}, {class: "clear form-control safari-dropdown"} %>
+      </div>
+      <div class="col-md-2 clear">
+        <%= f.text_field :task, class: "clear form-control input-sm", placeholder: "Task" %>
+      </div>
+      <div class="col-md-1 clear">
+        <%#= f.number_field :value, class: "clear form-control input-sm", placeholder: "Value " %>
+        <%= f.select :value, Task::VALUE, {include_blank: ""}, {class: "clear form-control safari-dropdown"} %>
+      </div>
+      <div class="col-md-1 clear">
+        <%= f.select :day, Task::DAY, {include_blank: ""}, {class: "clear form-control safari-dropdown"} %>
+      </div>
+      <%= f.hidden_field :status, value: 'to_do'%>
 
 
-      <span class="col-md-2 input-group-btn">
-        <%= f.submit "Post", class: 'btn btn-cta-notes btn-sm' %>
-      </span>
+    <span class="col-md-2 input-group-btn">
+      <%= f.submit "Post", class: 'btn btn-cta-notes btn-sm' %>
+    </span>
 
-    </div>
+  </div>
 
 
 <% end %>

@@ -9,7 +9,13 @@ class ApplicationController < ActionController::Base
     protected
 
   def after_sign_in_path_for(resource)
-    stored_location_for(resource) || sprints_path
+    if current_user.role == 'admin'
+      sprints_path
+    elsif current_user.role == 'sai_maa'
+      programs_path
+    else
+      stored_location_for(resource) || sprints_path
+    end
   end
 
 end

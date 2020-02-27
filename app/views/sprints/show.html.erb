@@ -3,7 +3,7 @@
   <h1><%= format_long_date(@sprint.sprint_date) %></h1>
   <%= link_to "Edit Sprint", edit_sprint_path, class: 'btn btn-primary' %>
   <br>
-  <br>
+  <br><%= render 'notices' %>
   <div class='new-note'>
     <%= render partial: 'tasks/form', locals: { sprint: @sprint, task: @task } %>
   </div>
