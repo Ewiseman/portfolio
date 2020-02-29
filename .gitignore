@@ -24,6 +24,8 @@
 /config/application.yml
 .env
 
+/muscle_building.csv
+/endurance.csv
 
 /node_modules
 /yarn-error.log
