@@ -23,11 +23,18 @@
         <div class="navbar-header">
           <a class="navbar-brand" href="#"></a>
         </div>
-        <ul class="nav navbar-nav">
-          <li><a href="/programs">Programs</a></li>
-          <li><a href="#">Participants</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
+          <% if current_user.admin? %>
+            <ul class="nav navbar-nav">
+              <li><a href="/programs">Sprints</a></li>
+              <li><a href="/admin">Admin</a></li>
+            </ul>
+          <% elsif current_user.role.sai_maa? %>
+            <ul class="nav navbar-nav">
+              <li><a href="/programs">Programs</a></li>
+              <li><a href="#">Participants</a></li>
+            </ul>
+          <% end %>
+          <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
             <%= link_to "Sign out", destroy_user_session_path, method: :delete, li: true,  class: "glyphicon glyphicon-log-in" %>
           <% else %>
