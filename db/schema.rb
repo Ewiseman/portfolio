@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_27_202918) do
+ActiveRecord::Schema.define(version: 2020_03_01_153111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,8 +67,7 @@ ActiveRecord::Schema.define(version: 2020_02_27_202918) do
     t.string "emergency_secondary_phone_number"
     t.string "emergency_time_zone"
     t.string "emergency_country"
-    t.bigint "program_id"
-    t.index ["program_id"], name: "index_participants_on_program_id"
+    t.string "tags"
   end
 
   create_table "programs", force: :cascade do |t|
@@ -76,6 +75,7 @@ ActiveRecord::Schema.define(version: 2020_02_27_202918) do
     t.string "new_tag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "participant_id"
   end
 
   create_table "recipes", force: :cascade do |t|
