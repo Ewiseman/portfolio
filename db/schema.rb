@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_27_033900) do
+ActiveRecord::Schema.define(version: 2020_03_02_190124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 2020_02_27_033900) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "locations", force: :cascade do |t|
+    t.bigint "tag_id"
+    t.bigint "participant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["participant_id"], name: "index_locations_on_participant_id"
+    t.index ["tag_id"], name: "index_locations_on_tag_id"
+  end
+
   create_table "measurements", force: :cascade do |t|
     t.float "unit"
     t.string "type_of_measurement"
@@ -39,6 +48,14 @@ ActiveRecord::Schema.define(version: 2020_02_27_033900) do
     t.integer "ingredient_order"
     t.index ["ingredient_id"], name: "index_measurements_on_ingredient_id"
     t.index ["recipe_id"], name: "index_measurements_on_recipe_id"
+  end
+
+  create_table "participants", force: :cascade do |t|
+    t.string "email"
+    t.string "first_name"
+    t.string "last_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "recipes", force: :cascade do |t|
@@ -66,6 +83,13 @@ ActiveRecord::Schema.define(version: 2020_02_27_033900) do
     t.integer "user_id"
     t.string "exercies"
     t.index ["user_id"], name: "index_sprints_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.string "new_tag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -106,5 +130,7 @@ ActiveRecord::Schema.define(version: 2020_02_27_033900) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "locations", "participants"
+  add_foreign_key "locations", "tags"
   add_foreign_key "tasks", "sprints"
 end
