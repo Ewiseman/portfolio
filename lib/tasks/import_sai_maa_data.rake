@@ -24,6 +24,7 @@ task :import_sai_maa_data => :environment do
       tags.each do |tag|
         new_tag = Tag.find_or_create_by!(name: tag)
         p tag
+
         new_tag.locations.create!(participant: new_participant)
       end
     end
