@@ -38,6 +38,18 @@ holding,task,value,day,confidence_score,category,rank
 ,170g of Protien,8,thursday,10,health,7
 ,170g of Protien,8,friday,10,health,7
 ,170g of Protien,8,sat/sun,10,health,7
+,Feed Sunshine AM,3,monday,5,health,3
+,Feed Sunshine AM,3,tuesday,5,health,3
+,Feed Sunshine AM,3,wednesday,5,health,3
+,Feed Sunshine AM,3,thursday,5,health,3
+,Feed Sunshine AM,3,friday,5,health,3
+,Feed Sunshine AM,3,sat/sun,5,health,3
+,Feed Sunshine PM,3,monday,5,health,3
+,Feed Sunshine PM,3,tuesday,5,health,3
+,Feed Sunshine PM,3,wednesday,5,health,3
+,Feed Sunshine PM,3,thursday,5,health,3
+,Feed Sunshine PM,3,friday,5,health,3
+,Feed Sunshine PM,3,sat/sun,5,health,3
 ,Rollout,5,monday,2,health,20
 ,Rollout,5,wednesday,2,health,20
 ,Rollout,5,friday,2,health,20

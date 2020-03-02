@@ -14,20 +14,19 @@ task :import_sai_maa_data => :environment do
     tag = row['Tags']
     tags = tag.split(',') if tag.present?
 
-
-      if tags.present?
-        new_participant =
-          Participant.create!(
-            email: row['Email'],
-            first_name: row['First Name'],
-            last_name: row['Last Name']
-          )
-        tags.each do |tag|
-          new_tag = Tag.find_or_create_by!(name: tag)
-          p tag
-          new_tag.locations.create!(participant: new_participant)
-        end
+    if tags.present?
+      new_participant =
+        Participant.create!(
+          email: row['Email'],
+          first_name: row['First Name'],
+          last_name: row['Last Name']
+        )
+      tags.each do |tag|
+        new_tag = Tag.find_or_create_by!(name: tag)
+        p tag
+        new_tag.locations.create!(participant: new_participant)
       end
+    end
 
 
 
