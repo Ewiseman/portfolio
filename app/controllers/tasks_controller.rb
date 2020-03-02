@@ -1,4 +1,4 @@
-lass TasksController < ApplicationController
+class TasksController < ApplicationController
 
   def create
     @sprint = Sprint.find(params[:sprint_id])
