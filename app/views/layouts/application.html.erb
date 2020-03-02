@@ -13,27 +13,40 @@
   <%= render 'application/favicon' %>
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CRoboto%7CJosefin+Sans:100,300,400,500" rel="stylesheet" type="text/css">
   </head>
-
-  <header class="header header-center">
-    <div class="container-fluid">
-
-      <div class="inner-navigation collapse">
-        <div class="inner-nav onepage-nav">
-          <ul>
-            <% if current_user %>
-              <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-            <% else %>
-              <li><a href="/users/sign_in"><span class="menu-item-span">Sign In</span></a></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-      <!-- <div class="nav-toggle"><a href="#" data-toggle="collapse" data-target=".inner-navigation"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a></div> -->
-    </div>
-  </header>
-
-
   <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#"></a>
+        </div>
+        <% if current_user.present? %>
+          <% if current_user.admin? %>
+            <ul class="nav navbar-nav">
+              <li><a href="/sprints">Sprints</a></li>
+              <li><a href="/admin">Admin</a></li>
+            </ul>
+          <% elsif current_user.sai_maa? %>
+            <ul class="nav navbar-nav">
+              <li><a href="/tags">Programs</a></li>
+              <li><a href="#">Participants</a></li>
+            </ul>
+          <% end %>
+        <% end %>
+          <ul class="nav navbar-nav">
+
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+          <% if current_user %>
+            <%= link_to "Sign out", destroy_user_session_path, method: :delete, li: true,  class: "glyphicon glyphicon-log-in" %>
+          <% else %>
+            <li><a href="/users/sign_in"><span class="glyphicon glyphicon-log-in"></span> Sign In</a></li>
+          <% end %>
+
+
+        </ul>
+      </div>
+    </nav>
     <%= yield %>
+
   </body>
 </html>

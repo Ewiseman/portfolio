@@ -1,4 +1,5 @@
-def index
-  @sprints = Sprint.all
-  authorize @sprints
+class TagsController < ApplicationController
+  def index
+    @tags = Tag.all
+  end
 end

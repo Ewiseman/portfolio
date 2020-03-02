@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+
   devise_for :users
 
   devise_scope :user do
     authenticated :user do
-      root 'sprints#index', as: :authenticated_root
+      root 'welcome#home', as: :authenticated_root
     end
 
     unauthenticated do
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
   resource :scrum_maps, only: :show, :defaults => { :format => 'csv' }
 
   resources :recipes, only: [:index]
+  resources :tags, only: [:index]
 
   resources :sprints, only: [:new, :create, :index, :update, :edit, :show, :destroy] do
     resources :tasks, only: [:create, :destroy, :edit, :update]
