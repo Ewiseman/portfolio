@@ -25,6 +25,11 @@
 .env
 
 
+/muscle_building.csv
+/endurance.csv
+/sai-maa-data-2-14.csv
+
+
 /node_modules
 /yarn-error.log
 
