@@ -1,11 +1,11 @@
-class SprintPolicy < ApplicationPolicy
+class TagPolicy < ApplicationPolicy
 
   def index?
-    user.admin?
+    user.sai_maa?
   end
 
   def show?
-    user.admin?
+    user.sai_maa?
   end
 
   def new?
@@ -13,7 +13,7 @@ class SprintPolicy < ApplicationPolicy
   end
 
   def create?
-    user.admin?
+    user.sai_maa?
   end
 
   def update?

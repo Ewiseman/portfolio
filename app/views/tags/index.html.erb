@@ -1,13 +1,12 @@
 <div class="section-big">
   <div class="container">
     <div class="col-md-12 col-sm-12 col-xs-12>
-      <div class="float-md-left">
 
-      </div>
       <div class="ibox-content">
+        <%= render 'notices' %>
         <div class="center_div">
           <div class="row">
-            <h3 class="table-labels">Active</h3>
+            <h3 class="table-labels">Sai Maa Tags</h3>
 
           </div>
           <div class="row-table ">
@@ -24,14 +23,18 @@
                 <% @tags.each do |tag| %>
                   <tr>
                     <td>
-                      <%= link_to tag.name, tag_path(tag) %>
+                      <%= tag.name %>
                     </td>
                     <td>
-                      45%
+                      <%= tag.locations.count %>
                     </td>
+                    <td>
+                    <% if tag.new_tag.present? %>
+                      <%= tag.new_tag %> <%= link_to "(edit)", edit_tag_path(tag) %>
+                    <% else %>
+                      <%= link_to "Edit Tag", edit_tag_path(tag) %>
+                    <% end %>
 
-                    <td>
-                      45%
                     </td>
                   </tr>
                 <% end %>
@@ -39,3 +42,4 @@
             </table>
           </div>
         </div>
+<%= render 'edit_tags' %>

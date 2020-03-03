@@ -1,0 +1,19 @@
+<div class="container">
+  <%= form_for @tag do |f| %>
+    <form>
+      <hr>
+      <div class="row">
+
+        <div class="col-md-6 clear">
+          <%= f.select :new_tag, Tag::PROGRAMS, {include_blank: ""}, {class: "clear form-control safari-dropdown"} %>
+        </div>
+      </div>
+
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+    </form>
+  <% end %>
+  <br>
+  <br>
+  <br>
+  <%= link_to "Delete Tag", @tag, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this file?  This cannot be un-done.' } %>
+</div>
