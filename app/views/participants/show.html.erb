@@ -1,4 +1,34 @@
 <div class="container">
   <h2><%= @participant.first_name %> <%= @participant.last_name %></h2>
   <p><%= @participant.email %></p>
+
+  <p><%= @participant.system_language %></p>
+<p><%= @participant.street_address_one %></p>
+<p><%= @participant.street_address_two %></p>
+<p><%= @participant.city %></p>
+<p><%= @participant.country %></p>
+<p><%= @participant.state_province %></p>
+<p><%= @participant.postal_code %></p>
+<p><%= @participant.profession %></p>
+<p><%= @participant.preferred_name %></p>
+<p><%= @participant.primary_language %></p>
+<p><%= @participant.email_preference_language %></p>
+<p><%= @participant.other_fluent_languages %></p>
+<p><%= @participant.gender %></p>
+<p><%= @participant.marital_status %></p>
+<p><%= @participant.children %></p>
+<p><%= @participant.birthday %></p>
+<p><%= @participant.cell_phone %></p>
+<p><%= @participant.emergency_contact_name %></p>
+<p><%= @participant.emergency_primary_phone_number %></p>
+<p><%= @participant.emergency_secondary_phone_number %></p>
+<p><%= @participant.emergency_time_zone %></p>
+<p><%= @participant.emergency_country %></p>
+<p><%= @participant.active_campaign_tag %></p>
+
+<h3>Current Tags</h3>
+<% @participant.tags.each do |tag| %>
+  <p><%= link_to tag.name, tag_path(tag) %></p>
+<% end %>
+
 </div>
