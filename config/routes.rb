@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resource :scrum_maps, only: :show, :defaults => { :format => 'csv' }
 
   resources :recipes, only: [:index]
-  resources :tags, only: [:index, :edit, :update, :destroy]
+  resources :tags, only: [:index, :show, :edit, :update, :destroy]
 
   resources :sprints, only: [:new, :create, :index, :update, :edit, :show, :destroy] do
     resources :tasks, only: [:create, :destroy, :edit, :update]

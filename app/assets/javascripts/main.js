@@ -31,6 +31,10 @@ $(document).ready(function () {
         $('#wrapper').toggleClass('toggled');
   });
 
+  $(document).ready(function() {
+    $('#participant-table').DataTable();
+} );
+
 });
 // Parallex Scrolling Header Fade //
   $(window).on('load scroll', function () {
