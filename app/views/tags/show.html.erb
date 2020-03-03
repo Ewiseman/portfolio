@@ -23,7 +23,7 @@
                 <% @tag.participants.each do |tag| %>
                   <tr>
                     <td>
-                      <%= tag.email %>
+                      <%= link_to tag.email, participant_path(tag)  %>
                     </td>
                     <td>
                       <%= tag.first_name %>

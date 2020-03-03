@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
+  #Devise
   devise_for :users
-
   devise_scope :user do
     authenticated :user do
       root 'welcome#home', as: :authenticated_root
@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       root 'devise/sessions#new', as: :unauthenticated_root
     end
   end
+
+  #Adminstrate Admim
   namespace :admin do
     resources :sprints
     resources :tasks
@@ -18,20 +20,26 @@ Rails.application.routes.draw do
     resources :ingredients
     resources :measurements
     resources :cookbooks
-
     root to: "tasks#index"
   end
 
+  #scrum
+  resources :sprints, only: [:new, :create, :index, :update, :edit, :show, :destroy] do
+    resources :tasks, only: [:create, :destroy, :edit, :update]
+  end
+  #scrum visualizations
   resource :scrum_reports, only: :show, :defaults => { :format => 'csv' }
   resource :task_reports, only: :show, :defaults => { :format => 'csv' }
   resource :scrum_maps, only: :show, :defaults => { :format => 'csv' }
 
+  #Recipes
   resources :recipes, only: [:index]
-  resources :tags, only: [:index, :show, :edit, :update, :destroy]
+  resource :grocery_lists, only: :show, :defaults => { :format => 'csv' }
+  resources :measurements, only: [:show], path: "recipes"
 
-  resources :sprints, only: [:new, :create, :index, :update, :edit, :show, :destroy] do
-    resources :tasks, only: [:create, :destroy, :edit, :update]
-  end
+  #Sai Maa
+  resources :tags, only: [:index, :show, :edit, :update, :destroy]
+  resources :participants, only: [:index, :show]
 
   get 'dashboard' =>'dashboards#main'
 
@@ -62,6 +70,5 @@ Rails.application.routes.draw do
   get 'welcome', to: 'messages#new', as: 'welcome'
   post 'welcome', to: 'messages#create'
 
-  resource :grocery_lists, only: :show, :defaults => { :format => 'csv' }
-  resources :measurements, only: [:show], path: "recipes"
+
 end
