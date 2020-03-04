@@ -1,7 +1,7 @@
 class ParticipantsController < ApplicationController
 
   def index
-    @hello = Participant.select(:first_name,:last_name).group(:first_name,:last_name).having("count(*) > 1")
+    @hello = Participant.select([:first_name,:last_name]).group(:first_name,:last_name).having("count(*) > 1").size
   end
 
   def show
