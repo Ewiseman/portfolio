@@ -2,6 +2,7 @@ class TagsController < ApplicationController
   def index
     # @tags = Tag.all
     @tags = Tag.joins(:participants).group(:id).order('COUNT(tags.id) DESC')
+    authorize @tags
   end
 
   def show

@@ -1,12 +1,13 @@
 class ParticipantsController < ApplicationController
 
   def index
-    @hello = Participant.select([:first_name,:last_name]).group(:first_name,:last_name).having("count(*) > 1").size
+    @duplicates = Participant.select([:first_name,:last_name]).group(:first_name,:last_name).having("count(*) > 1").size
+    # authorize @participants
   end
 
   def show
     @participant = Participant.find(params[:id])
-    # authorize @participant
+    authorize @participant
   end
 
 end

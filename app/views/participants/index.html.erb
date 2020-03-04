@@ -9,7 +9,7 @@
         <%= render 'notices' %>
         <div class="center_div">
           <div class="row">
-            <h3 class="table-labels">Tags</h3>
+            <h3 class="table-labels">Duplicates</h3>
 
           </div>
           <div class="row-table ">
@@ -23,16 +23,16 @@
                 </tr>
               </thead>
               <tbody>
-                <% @hello.each do |participant| %>
+                <% @duplicates.each do |duplicate| %>
                   <tr>
                     <td>
-                      <%= participant.flatten(2)[0] %>
+                      <%= duplicate.flatten(2)[0] %>
                     </td>
                     <td>
-                      <%= participant.flatten(2)[1] %>
+                      <%= duplicate.flatten(2)[1] %>
                     </td>
                     <td>
-                      <%= participant.flatten(2).last %>
+                      <%= duplicate.flatten(2).last %>
                     </td>
                   </tr>
                 <% end %>

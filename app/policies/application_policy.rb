@@ -7,15 +7,15 @@ class ApplicationPolicy
   end
 
   def index?
-    user.present?
+    user.present? && user.admin?
   end
 
   def show?
-    user.present?
+    user.present? && user.admin?
   end
 
   def create?
-    user.present?
+    user.present? && user.admin?
   end
 
   def new?
