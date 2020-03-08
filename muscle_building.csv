@@ -32,6 +32,8 @@ holding,task,value,day,confidence_score,category,rank
 ,Menu,3,tuesday,3,personal,
 ,Groceries,3,tuesday,3,personal,
 ,Trash,3,wednesday,,personal,
+,Shave Head,3,sat/sun,5,personal,
+,Water Plant,1,wednesday,,personal,
 ,170g of Protien,8,monday,10,health,7
 ,170g of Protien,8,tuesday,10,health,7
 ,170g of Protien,8,wednesday,10,health,7
