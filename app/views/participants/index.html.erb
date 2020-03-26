@@ -19,20 +19,20 @@
                 <tr>
                   <th data-sortable="true"> Last Name</th>
                   <th data-sortable="true"> First Name</th>
-                  <th data-sortable="true"> New Tag</th>
+                  <th data-sortable="true"> Count</th>
                 </tr>
               </thead>
               <tbody>
                 <% @duplicates.each do |duplicate| %>
                   <tr>
                     <td>
-                      <%= duplicate.flatten(2)[0] %>
+                      <%= duplicates.flatten[0] %>
                     </td>
                     <td>
-                      <%= duplicate.flatten(2)[1] %>
+                      <%= duplicate.flatten[1] %>
                     </td>
                     <td>
-                      <%= duplicate.flatten(2).last %>
+                      <%= duplicate.flatten(3)[1] %>
                     </td>
                   </tr>
                 <% end %>
