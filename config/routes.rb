@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   #Sai Maa
   resources :tags, only: [:index, :show, :edit, :update, :destroy]
   resources :participants, only: [:index, :show]
+  resource :duplicates, only: :show, :defaults => { :format => 'csv' }
 
   get 'dashboard' =>'dashboards#main'
 

@@ -1,24 +1,18 @@
 class ParticipantsController < ApplicationController
 
   def index
-    # @duplicates = (Participant.group(:first_name,:last_name)
+    require 'csv'
 
+    csv = ""
 
-
-
-
-
-
-    # @duplicates = @duplicates.having("count(*) > 1").size
-
-
-    # @duplicates = Participant.all.select([:first_name,:last_name]).group(:first_name,:last_name).having("count(*) > 1").size
-  #@duplicates = Participant.group("concat_ws(' ', first_name, last_name)").having('count(*) > 1').pluck("concat_ws(' ', first_name, last_name)", "array_agg(email)")
+    csv << "Produce\n"
 
     @duplicates = Participant.group("concat_ws(' ', first_name, last_name)").having('count(*) > 1').pluck("concat_ws(' ', first_name, last_name)", "array_agg(email)")
 
+    @duplicates.each do |row|
+       csv << "#{row[1]},#{row[2]}\n"
+    end
 
-    # authorize @participants
   end
 
   def show
