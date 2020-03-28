@@ -12,7 +12,10 @@ class ParticipantsController < ApplicationController
     # @duplicates = @duplicates.having("count(*) > 1").size
 
 
-    @duplicates = Participant.all.select([:first_name,:last_name, :email]).group(:first_name,:last_name).having("count(*) > 1").size
+    # @duplicates = Participant.all.select([:first_name,:last_name]).group(:first_name,:last_name).having("count(*) > 1").size
+  #@duplicates = Participant.group("concat_ws(' ', first_name, last_name)").having('count(*) > 1').pluck("concat_ws(' ', first_name, last_name)", "array_agg(email)")
+
+    @duplicates = Participant.group("concat_ws(' ', first_name, last_name)").having('count(*) > 1').pluck("concat_ws(' ', first_name, last_name)", "array_agg(email)")
 
 
     # authorize @participants
