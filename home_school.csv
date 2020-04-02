@@ -1,53 +1,160 @@
 holding,task,value,day,confidence_score,category,rank
-,Run 2 miles,5,monday,10,health,
-,Run 3 miles,5,wednesday,10,health,
-,Run 2 miles,5,friday,10,health,
-,HIIT 30 min,10,tuesday,8,health,
-,HIIT 30 min,10,thursday,8,health,
-,HIIT 30 min,10,sat/sun,8,health,
-,Meditate,5,monday,5,health,
-,Meditate,5,tuesday,5,health,
-,Meditate,5,wednesday,5,health,
-,Meditate,5,thursday,5,health,
-,Meditate,5,friday,5,health,
-,Meditate,5,sat/sun,5,health,
-,Wake up 5am,5,monday,8,health,
-,Wake up 5am,5,tuesday,8,health,
-,Wake up 5am,5,wednesday,8,health,
-,Wake up 5am,5,thursday,8,health,
-,Wake up 5am,5,friday,8,health,
-,Wake up 5am,5,sat/sun,8,health,
-,Intermittent Fasting,8,monday,10,health,
-,Intermittent Fasting,8,tuesday,10,health,
-,Intermittent Fasting,8,wednesday,10,health,
-,Intermittent Fasting,8,thursday,10,health,
-,Intermittent Fasting,8,friday,10,health,
-,Intermittent Fasting,8,sat/sun,10,health,
-,Lemon Water / BCAA / Creatine,3,monday,5,health,
-,Lemon Water / BCAA / Creatine,3,tuesday,5,health,
-,Lemon Water / BCAA / Creatine,3,wednesday,5,health,
-,Lemon Water / BCAA / Creatine,3,thursday,5,health,
-,Lemon Water / BCAA / Creatine,3,friday,5,health,
-,Lemon Water / BCAA / Creatine,3,sat/sun,5,health,
-,Laundry,5,sat/sun,3,personal,
-,Menu,3,tuesday,3,personal,
-,Shave Head,3,sat/sun,5,personal,
-,Water Plant,1,wednesday,,personal,
-,Feed Sunshine AM,3,monday,5,health,3
-,Feed Sunshine AM,3,tuesday,5,health,3
-,Feed Sunshine AM,3,wednesday,5,health,3
-,Feed Sunshine AM,3,thursday,5,health,3
-,Feed Sunshine AM,3,friday,5,health,3
-,Feed Sunshine AM,3,sat/sun,5,health,3
-,Feed Sunshine PM,3,monday,5,health,3
-,Feed Sunshine PM,3,tuesday,5,health,3
-,Feed Sunshine PM,3,wednesday,5,health,3
-,Feed Sunshine PM,3,thursday,5,health,3
-,Feed Sunshine PM,3,friday,5,health,3
-,Feed Sunshine PM,3,sat/sun,5,health,3
-,Rollout,5,monday,5,health,10
-,Rollout,5,tuesday,5,health,10
-,Rollout,5,wednesday,5,health,10
-,Rollout,5,thursday,5,health,10
-,Rollout,5,friday,5,health,10
-,Rollout,5,sat/sun,5,health,10
+,Wake up 5am,5,monday,8,health,1
+,Meditate,5,monday,5,health,2
+,Run 3 miles,5,monday,10,health,3
+,Lemon Water / BCAA / Creatine,3,monday,5,health,4
+,Feed Sunshine AM,3,monday,5,health,5
+,Intermittent Fasting,8,monday,10,health,6
+,Follow Along Reading,1,monday,,home school,7
+,Practical Life,1,monday,,home school,8
+,Reading Tutor,1,monday,,home school,9
+,Snack,1,monday,,home school,10
+,Exercise,5,monday,,home school,11
+,Reading Flash Cards,3,monday,,home school,12
+,Lunch,2,monday,,home school,13
+,Free Play,1,monday,,home school,14
+,Science,5,monday,,home school,15
+,Mathbook,3,monday,,home school,16
+,Reading Passage,3,monday,,home school,17
+,Mine Craft / Virtual Playdate,2,monday,,home school,18
+,Chores,4,monday,,home school,19
+,Feed Sunshine PM,3,monday,5,personal,20
+,Rollout,5,monday,5,health,21
+,Wake up 5am,5,tuesday,8,health,1
+,Meditate,5,tuesday,5,health,2
+,Run 3 miles,5,tuesday,10,health,3
+,Lemon Water / BCAA / Creatine,3,tuesday,5,health,4
+,Feed Sunshine AM,3,tuesday,5,health,5
+,Intermittent Fasting,8,tuesday,10,health,6
+,Follow Along Reading,1,tuesday,,home school,7
+,Lexia,1,tuesday,,home school,8
+,Practical Life,1,tuesday,,home school,9
+,Snack,1,tuesday,,home school,10
+,Exercise,5,tuesday,,home school,11
+,Reading Flash Cards,3,tuesday,,home school,12
+,Lunch,2,tuesday,,home school,13
+,Free Play,1,tuesday,,home school,14
+,Art,5,tuesday,,home school,15
+,Mathbook,3,tuesday,,home school,16
+,Reading Passage,3,tuesday,,home school,17
+,Mine Craft / Virtual Playdate,2,tuesday,,home school,18
+,Chores,4,tuesday,,home school,19
+,Feed Sunshine PM,3,tuesday,5,personal,20
+,Rollout,5,tuesday,5,health,21
+,Wake up 5am,5,wednesday,8,health,1
+,Meditate,5,wednesday,5,health,2
+,Run 3 miles,5,wednesday,10,health,3
+,Lemon Water / BCAA / Creatine,3,wednesday,5,health,4
+,Feed Sunshine AM,3,wednesday,5,health,5
+,Intermittent Fasting,8,wednesday,10,health,6
+,Follow Along Reading,1,wednesday,,home school,7
+,Practical Life,1,wednesday,,home school,8
+,Reading Tutor,1,wednesday,,home school,9
+,Snack,1,wednesday,,home school,10
+,Exercise,5,wednesday,,home school,11
+,Reading Flash Cards,3,wednesday,,home school,12
+,Lunch,2,wednesday,,home school,13
+,Free Play,1,wednesday,,home school,14
+,Science,5,wednesday,,home school,15
+,Mathbook,3,wednesday,,home school,16
+,Reading Passage,3,wednesday,,home school,17
+,Chores,5,wednesday,,home school,18
+,Mine Craft / Virtual Playdate,2,wednesday,,home school,19
+,Feed Sunshine PM,3,wednesday,5,personal,20
+,Rollout,5,wednesday,5,health,21
+,Wake up 5am,5,thursday,8,health,1
+,Meditate,5,thursday,5,health,2
+,Run 3 miles,5,thursday,10,health,3
+,Lemon Water / BCAA / Creatine,3,thursday,5,health,4
+,Feed Sunshine AM,3,thursday,5,health,5
+,Intermittent Fasting,8,thursday,10,health,6
+,Follow Along Reading,1,thursday,,home school,7
+,Lexia,1,thursday,,home school,8
+,Practical Life,1,thursday,,home school,9
+,Snack,1,thursday,,home school,10
+,Exercise,5,thursday,,home school,11
+,Drum Lesson,3,thursday,,home school,12
+,Lunch,2,thursday,,home school,13
+,Free Play,1,thursday,,home school,14
+,DPS Tutor,5,thursday,,home school,15
+,Mathbook,3,thursday,,home school,16
+,Reading Passage,3,thursday,,home school,17
+,Mine Craft / Virtual Playdate,2,thursday,,home school,18
+,Chores,4,thursday,,home school,19
+,Feed Sunshine PM,3,thursday,5,personal,20
+,Rollout,5,thursday,5,health,21
+,Wake up 5am,5,friday,8,health,1
+,Meditate,5,friday,5,health,2
+,Run 3 miles,5,friday,10,health,3
+,Lemon Water / BCAA / Creatine,3,friday,5,health,4
+,Feed Sunshine AM,3,friday,5,health,5
+,Intermittent Fasting,8,friday,10,health,6
+,Follow Along Reading,1,friday,,home school,7
+,Lexia,1,friday,,home school,8
+,Practical Life,1,friday,,home school,9
+,Snack,1,friday,,home school,10
+,Exercise,5,friday,,home school,11
+,Drum Lesson,3,friday,,home school,12
+,Lunch,2,friday,,home school,13
+,Free Play,1,friday,,home school,14
+,DPS Tutor,5,friday,,home school,15
+,Mathbook,3,friday,,home school,16
+,Reading Passage,3,friday,,home school,17
+,Mine Craft / Virtual Playdate,2,friday,,home school,18
+,Chores,4,friday,,home school,19
+,Feed Sunshine PM,3,friday,5,personal,20
+,Rollout,5,friday,5,health,21
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,Wake up 5am,5,tuesday,8,health,1
+,Meditate,5,tuesday,5,health,2
+,HIIT 30 min,10,tuesday,8,health,3
+,Lemon Water / BCAA / Creatine,3,tuesday,5,health,4
+,Feed Sunshine AM,3,tuesday,5,health,5
+,Intermittent Fasting,8,tuesday,10,health,6
+,Wake up 5am,5,wednesday,8,health,1
+,Meditate,5,wednesday,5,health,2
+,Run 3 miles,5,wednesday,10,health,3
+,Lemon Water / BCAA / Creatine,3,wednesday,5,health,4
+,Feed Sunshine AM,3,wednesday,5,health,5
+,Intermittent Fasting,8,wednesday,10,health,6
+,Wake up 5am,5,thursday,8,health,1
+,Meditate,5,thursday,5,health,2
+,HIIT 30 min,10,thursday,8,health,3
+,Lemon Water / BCAA / Creatine,3,thursday,5,health,4
+,Feed Sunshine AM,3,thursday,5,health,5
+,Intermittent Fasting,8,thursday,10,health,6
+,Wake up 5am,5,friday,8,health,1
+,Meditate,5,friday,5,health,2
+,Run 3 miles,5,friday,10,health,3
+,Lemon Water / BCAA / Creatine,3,friday,5,health,4
+,Feed Sunshine AM,3,friday,5,health,5
+,Intermittent Fasting,8,friday,10,health,6
+,Wake up 5am,5,sat/sun,8,health,1
+,Meditate,5,sat/sun,5,health,2
+,HIIT 30 min,10,sat/sun,8,health,3
+,Lemon Water / BCAA / Creatine,3,sat/sun,5,health,4
+,Feed Sunshine AM,3,sat/sun,5,health,5
+,Intermittent Fasting,8,sat/sun,10,health,6
