@@ -76,6 +76,26 @@ class SprintsController < ApplicationController
               day: day
             )
         end
+      elsif @sprint.exercies == 'home_school'
+            CSV.foreach('home_school.csv', headers: true) do |row|
+            task = row['task']
+            category = row['category']
+            value = row['value']
+            day = row['day']
+            confidence_score = row['confidence_score']
+            rank = row['rank']
+            Task.create!(
+              sprint_id: @sprint.id,
+              user_id: current_user.id,
+              task: task,
+              category: category,
+              value: value,
+              status: "to_do",
+              confidence_score: confidence_score,
+              ranks: rank,
+              day: day
+            )
+        end
       end
       flash[:notice] = "#{@sprint.sprint_date} has been created."
       redirect_to sprint_path(@sprint)

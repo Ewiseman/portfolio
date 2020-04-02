@@ -12,7 +12,7 @@ class Task < ApplicationRecord
   # default_scope { order('category DESC') }
   default_scope { order('status DESC', 'ranks ASC', 'category ASC', 'value DESC') }
 
-  CATEGORY = ["health", "personal", "programming", "sales", "admin", "vacation"]
+  CATEGORY = ["health", "personal", "programming", "sales", "admin", "vacation", "home_school"]
   VALUE = [1,2,3,5,8,10,15,20]
   STATUS = ["to_do", "complete"]
   DAY = ["monday", "tuesday", "wednesday","thursday", "friday", "sat/sun"]

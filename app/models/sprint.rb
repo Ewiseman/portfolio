@@ -3,7 +3,7 @@ class Sprint < ApplicationRecord
   belongs_to :user
   default_scope { order('sprint_date DESC') }
 
-  EXERCISES = ['muscle building', 'endurance']
+  EXERCISES = ['muscle building', 'endurance', 'home_school']
 
   def working
     tasks.where(status: "working")
