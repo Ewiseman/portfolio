@@ -19,7 +19,7 @@
 
 //= require d3v3
 //= require d3v5
-
+//= require draggable
 //= require main
 
 //= require_tree .

@@ -113,6 +113,7 @@ GEM
     dotenv-rails (2.5.0)
       dotenv (= 2.5.0)
       railties (>= 3.2, < 6.0)
+    draggable-rails (1.0.1)
     erubi (1.9.0)
     execjs (2.7.0)
     ffi (1.10.0)
@@ -312,6 +313,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   dotenv-rails
+  draggable-rails
   figaro
   font-awesome-sass
   groupdate
