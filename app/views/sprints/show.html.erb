@@ -16,43 +16,56 @@
   <div class="row">
     <div class="col-md-2">
       <div class="day-of-week">Monday</div>
-      <ul class='tasks-daily'>
-        <%= render @tasks_monday %>
+      <ul id="day-of-week" class='tasks-daily'>
+        <li>
+          <%= render @tasks_monday %>
+        </li>
       </ul>
     </div>
 
     <div class="col-md-2">
       <div class="day-of-week">Tuesday</div>
-        <ul class='tasks-daily'>
-          <%= render @tasks_tuesday %>
+        <ul id="day-of-week" class='tasks-daily'>
+          <li>
+
+            <%= render @tasks_tuesday %>
+          </li>
         </ul>
     </div>
 
     <div class="col-md-2">
       <div class="day-of-week">Wednesday</div>
-      <ul class='tasks-daily'>
-        <%= render @tasks_wednesday %>
+      <ul id="day-of-week" class='tasks-daily'>
+        <li>
+          <%= render @tasks_wednesday %>
+        </li>
       </ul>
     </div>
 
     <div class="col-md-2">
       <div class="day-of-week">Thursday</div>
-      <ul class='tasks-daily'>
-        <%= render @tasks_thursday %>
+      <ul id="day-of-week" class='tasks-daily'>
+        <li>
+          <%= render @tasks_thursday %>
+        </li>
       </ul>
     </div>
 
     <div class="col-md-2">
       <div class="day-of-week">Friday</div>
-      <ul class='tasks-daily'>
-        <%= render @tasks_friday %>
+      <ul id="day-of-week" class='tasks-daily'>
+        <li>
+          <%= render @tasks_friday %>
+        </li>
       </ul>
     </div>
 
     <div class="col-md-2">
       <div class="day-of-week">Sat / Sun</div>
-      <ul class='tasks-daily'>
-        <%= render @tasks_sat_sun %>
+      <ul id="day-of-week" class='tasks-daily'>
+        <li>
+          <%= render @tasks_sat_sun %>
+        </li>
       </ul>
     </div>
   </div>
@@ -62,8 +75,10 @@
   <div class="row">
     <div class="col-md-2">
       <div class="day-of-week">Tasks</div>
-      <ul class='js-tasks'>
-        <%= render @tasks.where(day: "") %>
+      <ul id="day-of-week" class='js-tasks'>
+        <li>
+          <%= render @tasks.where(day: "") %>
+        </li>
       </ul>
     </div>
   </div>

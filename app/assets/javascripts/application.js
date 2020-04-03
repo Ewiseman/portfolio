@@ -12,7 +12,9 @@
 //
 //= require_self
 //= require jquery
+
 //= require jquery_ujs
+//= require jquery-ui
 //= require lodash
 //= require turbolinks
 //= require bootstrap

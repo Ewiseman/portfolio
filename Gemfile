@@ -22,6 +22,7 @@ gem 'lodash-rails'
 gem 'devise'
 gem 'pundit'
 gem 'pry', '~> 0.12.2'
+gem "jquery-ui-rails"
 
 group :production do
 

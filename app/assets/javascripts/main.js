@@ -35,6 +35,8 @@ $(document).ready(function () {
     $('#participant-table').DataTable();
 } );
 
+$('#faqs').sortable();
+
 });
 // Parallex Scrolling Header Fade //
   $(window).on('load scroll', function () {
