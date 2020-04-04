@@ -52,22 +52,11 @@
     </div>
   </div>
 
-    <br>
-
-  <div class="row">
-    <div class="col-md-2">
-      <div class="day-of-week">Tasks</div>
-      <ul class='js-tasks'>
-        <%= render @tasks.where(day: "") %>
-      </ul>
-    </div>
-
-  </div>
-
   <br>
   <br>
   <br>
   <br>
 
 </div>
+  <%= render partial: 'tasks/edit_modal' %>
   <%= render partial: 'tasks/task_modal' %>

@@ -21,10 +21,7 @@
       <div class="col-md-6 col-sm-12 col-xs-12 form-spacer">
         <label class="sr-only">Client size</label>
         <%= f.select :value, Task::VALUE, {include_blank: "Value"}, {class: "clear form-control safari-dropdown"} %>
-
       </div>
-
-
     </div>
     <br>
     <%= f.hidden_field :status, value: 'to_do'%>
