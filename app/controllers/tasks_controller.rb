@@ -1,12 +1,22 @@
 class TasksController < ApplicationController
 
+  def new
+    @sprint = Sprint.find(params[:sprint_id])
+    @task = Task.new
+  end
+
   def create
     @sprint = Sprint.find(params[:sprint_id])
     @task = @sprint.tasks.new(task_params)
     @task.user = current_user
     @new_task = Task.new
     authorize @task
-    @task.save
+    if @task.save
+      flash[:notice] = "A new task has been created."
+      redirect_to sprint_path(@sprint)
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -40,6 +50,15 @@ class TasksController < ApplicationController
     else
       flash[:error] = "There was an error saving the post. Please try again."
       render :new
+    end
+  end
+
+  def sort
+    params[:task].each_with_index do |id, index|
+      Task.where(id: id).update_all(position: index + 1)
+    end
+    respond_to do |format|
+      format.js
     end
   end
 

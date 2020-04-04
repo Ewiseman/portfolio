@@ -21,8 +21,6 @@ class SprintsController < ApplicationController
     @tasks_friday = @sprint.tasks.where(day: "friday")
     @tasks_sat_sun = @sprint.tasks.where(day: "sat/sun")
 
-
-
     @tasks_today = @sprint.tasks.where(status: "today")
     @tasks_complete = @sprint.tasks.where(status: 'complete')
     @task = Task.new

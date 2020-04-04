@@ -1,19 +1,14 @@
 
 <div class="container-fluid">
-  <h1><%= format_long_date(@sprint.sprint_date) %></h1>
-  <%= link_to "Edit Sprint", edit_sprint_path, class: 'btn btn-primary' %>
-  <br>
-  <br>
-  <div class='new-note'>
-    <%= render partial: 'tasks/form', locals: { sprint: @sprint, task: @task } %>
-  </div>
-  <br>
-  <br>
-  <br>
+  <h3>Week of <%= format_long_date(@sprint.sprint_date) %> <%= link_to "edit", edit_sprint_path, class: 'small' %></h3>
 
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#task-modal">
+    Add Task
+  </button>
 
 
   <div class="row">
+      <br>
     <div class="col-md-2">
       <div class="day-of-week">Monday</div>
       <ul class='tasks-daily'>
@@ -66,6 +61,7 @@
         <%= render @tasks.where(day: "") %>
       </ul>
     </div>
+
   </div>
 
   <br>
@@ -74,3 +70,4 @@
   <br>
 
 </div>
+  <%= render partial: 'tasks/task_modal' %>

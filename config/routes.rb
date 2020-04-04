@@ -23,9 +23,17 @@ Rails.application.routes.draw do
     root to: "tasks#index"
   end
 
+  resources :spans do
+
+end
+
   #scrum
   resources :sprints, only: [:new, :create, :index, :update, :edit, :show, :destroy] do
-    resources :tasks, only: [:create, :destroy, :edit, :update]
+    resources :tasks, only: [:new, :create, :destroy, :edit, :update] do
+      collection do
+        patch :sort
+      end
+    end
   end
   #scrum visualizations
   resource :scrum_reports, only: :show, :defaults => { :format => 'csv' }

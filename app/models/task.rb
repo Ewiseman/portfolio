@@ -1,5 +1,6 @@
 class Task < ApplicationRecord
   belongs_to :sprint
+  acts_as_list scope: :sprint
   belongs_to :user
 
   validates :category, presence: true
@@ -10,7 +11,7 @@ class Task < ApplicationRecord
   validates :user_id, presence: true
 
   # default_scope { order('category DESC') }
-  default_scope { order('status DESC', 'ranks ASC', 'category ASC', 'value DESC') }
+  #default_scope { order('status DESC', 'ranks ASC', 'category ASC', 'value DESC') }
 
   CATEGORY = ["health", "personal", "programming", "sales", "admin", "vacation", "home_school"]
   VALUE = [1,2,3,5,8,10,15,20]

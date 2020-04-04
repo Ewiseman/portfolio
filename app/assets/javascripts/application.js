@@ -23,3 +23,23 @@
 //= require main
 
 //= require_tree .
+
+
+// $(document).on('turbolinks:load', function() {
+//   sortable('#tasks', {
+//     items: 'tr'
+//   });
+//   if (typeof sortable('#spans')[0] != 'undefined'){
+//     sortable('#spans')[0].addEventListener('sortupdate', function(e) {
+//       var dataIDList = $(this).children().map(function(index){
+//          $(this).find( ".position" ).text(index + 1)
+//          return "span[]=" + $(this).data("id");
+//       }).get().join("&");
+//       Rails.ajax({
+//           url: $(this).data("url"),
+//           type: "PATCH",
+//           data: dataIDList,
+//         });
+//     });
+//   }
+// })

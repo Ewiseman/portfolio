@@ -22,6 +22,7 @@ gem 'lodash-rails'
 gem 'devise'
 gem 'pundit'
 gem 'pry', '~> 0.12.2'
+gem 'acts_as_list'
 
 group :production do
 

@@ -32,7 +32,7 @@ $(document).ready(function () {
   });
 
   $(document).ready(function() {
-    $('#participant-table').DataTable();
+    // $('#participant-table').DataTable();
 } );
 
 });
