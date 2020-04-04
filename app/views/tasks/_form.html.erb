@@ -1,15 +1,9 @@
 <%= form_for [@sprint, @task], remote: true do |f| %>
   <form>
     <div class="row">
-      <div class="col-md-6 col-sm-12 col-xs-12 form-spacer">
+      <div class="col-md-6">
         <label class="sr-only">Task Category</label>
-        <%= f.select :category, Task::CATEGORY, {include_blank: "Category"}, {class: "clear form-control safari-dropdown"} %>
-        <br>
-      </div>
-
-      <div class="col-md-12 col-sm-12 col-xs-12 form-spacer">
-        <label class="sr-only">Client name</label>
-        <%= f.text_field :task, class: "clear form-control input-sm", placeholder: "Task" %>
+        <%= f.select :category, Task::CATEGORY, {include_blank: "Category"}, {class: "form-control safari-dropdown"} %>
         <br>
       </div>
 
@@ -17,16 +11,24 @@
         <%= f.select :day, Task::DAY, {include_blank: "Day"}, {class: "clear form-control safari-dropdown"} %>
         <br>
       </div>
-
-      <div class="col-md-6 col-sm-12 col-xs-12 form-spacer">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <%= f.text_field :task, class: "clear form-control input-sm", placeholder: "Task" %>
+          <br>
+      </div>
+      <div class="col-md-6 col-sm-12 col-xs-12">
         <label class="sr-only">Client size</label>
         <%= f.select :value, Task::VALUE, {include_blank: "Value"}, {class: "clear form-control safari-dropdown"} %>
+        <br>
       </div>
+
+
     </div>
     <br>
     <%= f.hidden_field :status, value: 'to_do'%>
     <div class="modal-footer">
       <%= f.submit "Submit", class: "btn btn-primary" %>
     </div>
+
+
   </form>
 <% end %>
