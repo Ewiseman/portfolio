@@ -1,5 +1,5 @@
 class Sprint < ApplicationRecord
-  has_many :tasks, -> { order(position: :asc) }
+  has_many :tasks, -> { order(position: :asc) }, dependent: :destroy
   belongs_to :user
   default_scope { order('sprint_date DESC') }
 
