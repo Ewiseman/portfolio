@@ -11,7 +11,7 @@ class Task < ApplicationRecord
   validates :user_id, presence: true
 
   # default_scope { order('category DESC') }
-  #default_scope { order('status DESC', 'ranks ASC', 'category ASC', 'value DESC') }
+  default_scope { order('ranks ASC') }
 
   CATEGORY = ["health", "personal", "programming", "sales", "admin", "vacation", "home_school"]
   VALUE = [1,2,3,5,8,10,15,20]

@@ -1,5 +1,5 @@
 <div class="section-big">
-  <div class="container">
+  <div class="col-md-6 col-md-offset-3">
     <%= form_for [@sprint, @task], remote: true do |f| %>
       <form>
         <div class="col-md-12 radio-button-box">
@@ -39,6 +39,12 @@
           <div class="col-md-6 col-sm-12 col-xs-12 form-spacer">
             <label class="sr-only">Client size</label>
             <%= f.select :value, Task::VALUE, {include_blank: "Value"}, {class: "clear form-control safari-dropdown"} %>
+              <br>
+          </div>
+
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <%= f.text_field :ranks, class: "clear form-control input-sm", placeholder: "Rank" %>
+
           </div>
         </div>
         <br>
