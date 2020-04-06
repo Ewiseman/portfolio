@@ -63,6 +63,7 @@ class GroceryListsController < ApplicationController
     csv << "Seb Snacks?\n"
     csv << "Coffee?\n"
     csv << "Lemon Juice\n"
+    csv << "Gluten Free Crackers\n"
     csv << "\n"
 
     csv << "Canned Good\n"
