@@ -1,4 +1,3 @@
 <div class="col-md-12 task-card <%= task.status %> <%= task.category %> " id="task-<%= task.id %>" data-url = "<%= sort_sprint_tasks_path(@sprint.id) %>">
   <div><%= link_to "#{task.task.truncate(20, separator: ' ')}", edit_sprint_task_path(@sprint, task), class: "btn btn-mini to-do-list" %>  <%= link_to "-", [@sprint, task], method: :delete, class:'pull-right', remote: true %>  <span class="super-small"><%= "(#{task.ranks})" %></span></div>
-
 </div>
