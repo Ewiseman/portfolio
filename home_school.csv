@@ -29,8 +29,8 @@ holding,task,value,day,confidence_score,category,rank
 ,Wake up 4:40am,5,tuesday,20,health,1
 ,Meditate,5,tuesday,5,health,2
 ,Program,8,tuesday,10,programming,3
-,Brush / Wash / Make Bed,5,tuesday,5,health,4
-,Feed Sunshine AM,3,tuesday,3,personal,5
+,Feed Sunshine AM,3,tuesday,3,personal,4
+,Brush / Wash / Make Bed,5,tuesday,5,health,5
 ,Lemon Water / BCAA / Creatine,3,tuesday,5,health,6
 ,Follow Along Reading,1,tuesday,,home_school,7
 ,Lexia,1,tuesday,,home_school,8
@@ -57,6 +57,7 @@ holding,task,value,day,confidence_score,category,rank
 ,Meditate,5,wednesday,5,health,2
 ,Program,8,wednesday,10,programming,3
 ,Feed Sunshine AM,3,wednesday,3,personal,4
+,Brush / Wash / Make Bed,5,wednesday,5,health,5
 ,Lemon Water / BCAA / Creatine,3,wednesday,5,health,6
 ,Follow Along Reading,1,wednesday,,home_school,7
 ,Reading Tutor,1,wednesday,,home_school,8
@@ -82,6 +83,7 @@ holding,task,value,day,confidence_score,category,rank
 ,Meditate,5,thursday,5,health,2
 ,Program,8,thursday,10,programming,3
 ,Feed Sunshine AM,3,thursday,3,personal,4
+,Brush / Wash / Make Bed,5,thursday,5,health,5
 ,Lemon Water / BCAA / Creatine,3,thursday,5,health,6
 ,Follow Along Reading,1,thursday,,home_school,7
 ,Lexia,1,thursday,,home_school,8
@@ -125,6 +127,6 @@ holding,task,value,day,confidence_score,category,rank
 ,Science,5,friday,,home_school,21
 ,5 Mile run,8,friday,,home_school,22
 ,Feed Sunshine PM,3,friday,5,personal,23
-,Wash face ,5,friday,5,health,24
-,Floss,5,friday,5,health,25
-,Reading,3,friday,,home_school,26
+,Reading,3,friday,,home_school,24
+,Wash face ,5,friday,5,health,25
+,Floss,5,friday,5,health,26
