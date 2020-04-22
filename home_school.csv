@@ -23,8 +23,9 @@ holding,task,value,day,confidence_score,category,rank
 ,Science,5,monday,,home_school,22
 ,5 Mile run,8,monday,,home_school,23
 ,Feed Sunshine PM,3,monday,5,personal,24
-,Wash face ,5,monday,5,health,25
-,Floss,5,monday,5,health,26
+,Reading,3,monday,,home_school,25
+,Wash face ,5,monday,5,health,26
+,Floss,5,monday,5,health,27
 ,Wake up 4:40am,5,tuesday,20,health,1
 ,Meditate,5,tuesday,5,health,2
 ,Program,8,tuesday,10,programming,3
@@ -49,8 +50,9 @@ holding,task,value,day,confidence_score,category,rank
 ,Science,5,tuesday,,home_school,22
 ,5 Mile run,8,tuesday,,home_school,23
 ,Feed Sunshine PM,3,tuesday,5,personal,24
-,Wash face ,5,tuesday,5,health,25
-,Floss,5,tuesday,5,health,26
+,Reading,3,tuesday,,home_school,25
+,Wash face ,5,tuesday,5,health,26
+,Floss,5,tuesday,5,health,27
 ,Wake up 4:40am,5,wednesday,20,health,1
 ,Meditate,5,wednesday,5,health,2
 ,Program,8,wednesday,10,programming,3
@@ -73,8 +75,9 @@ holding,task,value,day,confidence_score,category,rank
 ,Reading Passage,3,wednesday,,home_school,21
 ,Science,5,wednesday,,home_school,22
 ,Feed Sunshine PM,3,wednesday,5,personal,23
-,Wash face ,5,wednesday,5,health,24
-,Floss,5,wednesday,5,health,25
+,Reading,3,wednesday,,home_school,24
+,Wash face ,5,wednesday,5,health,25
+,Floss,5,wednesday,5,health,26
 ,Wake up 4:40am,5,thursday,20,health,1
 ,Meditate,5,thursday,5,health,2
 ,Program,8,thursday,10,programming,3
@@ -97,8 +100,9 @@ holding,task,value,day,confidence_score,category,rank
 ,Science,5,thursday,,home_school,21
 ,5 Mile run,8,thursday,,home_school,22
 ,Feed Sunshine PM,3,thursday,5,personal,23
-,Wash face ,5,thursday,5,health,24
- ,Floss,5,thursday,5,health,25
+,Reading,3,thursday,,home_school,24
+,Wash face ,5,thursday,5,health,25
+ ,Floss,5,thursday,5,health,26
 ,Wake up 4:40am,5,friday,20,health,1
 ,Meditate,5,friday,5,health,2
 ,Program,8,friday,10,programming,3
@@ -122,4 +126,5 @@ holding,task,value,day,confidence_score,category,rank
 ,5 Mile run,8,friday,,home_school,22
 ,Feed Sunshine PM,3,friday,5,personal,23
 ,Wash face ,5,friday,5,health,24
-,Floss,5,friday,6,health,25
+,Floss,5,friday,5,health,25
+,Reading,3,friday,,home_school,26
