@@ -6,7 +6,7 @@ $(document).ready(function() {
   }
 
   var formatDate = d3v3.time.format("%b"),
-      formatDay = function(d) { return formatDate(new Date(2007, d, 0)); };
+      formatDay = function(d) { return formatDate(new Date(2019, d, 0)); };
 
   var width = $("#radial-area").width()-10,
       height = $("#radial-area").width()*.7,
@@ -128,6 +128,7 @@ $(document).ready(function() {
         .attr("dy", ".71em")
         .attr("text-anchor", "middle")
         .text(function(d) { return formatDay(d); });
+
   });
 
   function type(d) {

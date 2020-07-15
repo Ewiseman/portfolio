@@ -2,8 +2,8 @@ class ScrumMapsController < ApplicationController
 require 'csv'
   def show
 
-   # time_ago = Date.parse("2016-1-1")
-   # time_here = Date.parse("2019-1-1")
+   # time_ago = Date.parse("2015-12-1")
+   # time_here = Date.parse("2020-7-1")
 
    time_ago = Sprint.all.last.sprint_date + 1.month
    time_here = Sprint.all.first.sprint_date
