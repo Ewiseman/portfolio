@@ -1,3 +1,53 @@
+.task-form {
+  margin-bottom: 25px;
+}
+
+.task-card {
+  border-radius: 6px;
+  margin-bottom: 6px;
+  margin-left: -15px;
+  text-align: center;
+}
+
+.task-card.complete {
+  opacity: 0.2;
+}
+
+.task-card.health {
+  background-color: #6DCEED;
+  border: 1px solid #6DCEED;
+}
+
+.task-card.personal {
+  background-color: #F9DF91;
+  border: 1px solid #F9DF91;
+}
+
+.task-card.programming {
+  background-color: #F3946F;
+  border: 1px solid #F3946F;
+}
+
+.task-card.admin {
+  background-color: #feff9c;
+  border: 1px solid #feff9c;
+}
+
+.task-card.sales {
+  background-color: #ff7eb9;
+  border: 1px solid #ff7eb9;
+}
+
+.task-card.programming {
+  background-color: #F3946F;
+  border: 1px solid #F3946F;
+}
+
+.task-card.vacation {
+  background-color: #E6F6FC;
+  border: 1px solid #E6F6FC;
+}
+
 .axis line {
   stroke: #000;
   opacity: .2;
@@ -11,4 +61,44 @@
 
 .axis + .axis g text {
   display: none;
+}
+
+.task-card.home_school {
+  background-color: #7FFFD4;
+  border: 1px solid #7FFFD4;
+}
+
+.super-small {
+  font-size: 0.6em;
+}
+
+.chat {
+  margin-top: 10px;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.day-of-week {
+  font-size: 2em;
+  text-align: center;
+}
+
+.tasks-daily {
+  margin-left: -20px !important;
+}
+
+
+.to-do-list {
+    color: #333;
+}
+
+.to-do-list:hover,
+.style:focus {
+    color: darkred;
+}
+
+.chat.today {
+  margin-top:72px;
 }

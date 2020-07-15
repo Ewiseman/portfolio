@@ -27,7 +27,22 @@ $(document).ready(function() {
       .range([innerRadius, outerRadius]);
 
   var z = d3v3.scale.ordinal()
-      .range(["#8FBC8F", "#ff8c00", "#98abc5", "#7b6888", "#CD5C5C", "#87e5da", "#c7f2e3", "#f7aa00", "#db2d43"]);
+
+
+      .range(["#0A2F51",
+      "#0E4D64",
+      "#137177",
+      "#188977",
+      "#1D9A6C",
+      "#39A96B",
+      "#56B870",
+      "#74C67A",
+      "#99D492",
+      "#BFE1B0",
+      "#DEEDCF",
+      "#B5FFCF",
+      "#D2FFD9"
+    ]);
 
   var stack = d3v3.layout.stack()
       .offset("zero")
@@ -85,7 +100,8 @@ $(document).ready(function() {
         .attr("class", "layer")
         .attr("d", function(d) { return area(d.values); })
         .style("fill", function(d, i) { return z(i); })
-        .style("stroke", "#fff")
+        .style("stroke", "#2B2D42")
+        .style("stroke-opacity", 0.5)
         .style("opacity", 0.7)
         .on("mouseover", function(d, i) {
           svg.selectAll(".layer")
