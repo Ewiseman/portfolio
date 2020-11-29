@@ -6,7 +6,7 @@
   </div>
   <div class="col-lg-6 col-md-6">
     <% @measurement_ingredients.each do | y | %>
-      <p class="recipe-ingredients"><%= y.ingredient.name %> x <%= "%g" % y.unit %> <%= y.type_of_measurement %></p>
+      <p class="recipe-ingredients"><%= y.ingredient.name %> (<%= "%g" % y.unit %> <%= y.type_of_measurement %>)</p>
     <% end %>
   </div>
 </div>

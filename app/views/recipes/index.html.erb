@@ -9,7 +9,7 @@
       <% @recipes.each do |recipe| %>
         <% if recipe.type_of_food == food_type %>
           <%= link_to measurement_path(recipe) do %>
-            <h5><%= recipe.name %><%= recipe.multiplier_view %></h5>
+            <h5><%= recipe.name %></h5>
           <% end %>
         <% end %>
       <% end %>
