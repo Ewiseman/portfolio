@@ -21,7 +21,7 @@ gem 'ionicons-rails'
 gem 'lodash-rails'
 gem 'devise'
 gem 'pundit'
-gem 'pry', '~> 0.12.2'
+gem 'pry', '~> 0.14.1'
 gem 'acts_as_list'
 
 group :production do
